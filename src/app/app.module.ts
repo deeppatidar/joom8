@@ -1,16 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgModule }       from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+/* App Root */
+import { AppComponent }   from './app.component';
+
+/* Feature Modules */
+import { HomeModule }    from './home/home.module';
+import {CollectionModule} from './collection/collection.module';
+
+
+/* Routing Module */
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    CommonModule,
+    BrowserModule,
+    HomeModule,
+    CollectionModule,
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [ AppComponent],
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
+
+
+/*
+Copyright 2017 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
