@@ -42,12 +42,12 @@ export class Collection {
       };
 
       public getUrl() {
-        var index = this.url.indexOf('nagpur')+7;
-        this.url = this.url.substring(index, this.url.indexOf('?'));
         return this.url;
       };
 
       public setUrl(u) {
+        var index = u.indexOf('nagpur')+7;
+        var u = u.substring(index, u.indexOf('?'));
          this.url = u;
       };
 
