@@ -1,12 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
-import { Observable } from 'rxjs/Observable';
-import { Collection } from '../model/collection';
+import { Component, OnInit} from '@angular/core';
+import { CollectionInterface } from '../shared/collectionInterface';
+import { Collection} from '../model/collection';
 import {CollectionService} from './collection.service';
 
-
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-collection',
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.css']
@@ -14,26 +11,27 @@ import {CollectionService} from './collection.service';
 
 export class CollectionComponent implements OnInit {
 
-  // Constructor with injected service
-  constructor(private collectionService: CollectionService) {}
-   collections = [];
-   ngOnInit() {
-    this.loadCollection();
-  }
+public collection : CollectionInterface[] = [];
+public collections : Collection[] = [];
+errorMessage: string;
 
-  loadCollection() {
-      this.collectionService.getCollection().subscribe(
-           data => {
-             //console.log(data['collections']);
-             //console.log(this.collections instanceof Array)
-             //this.collections = data['collectionArray'];
-             this.collections = data['collections'];
-             console.log(this.collections);
-           },
-           err => {
-               // Log errors if any
-               console.log(err);
-        });
-  }
+constructor(private collectionService : CollectionService) {}
+
+ngOnInit() {
+  this.collectionService.getCollection()
+  .subscribe((data) => this.collections = data['collections']);
 
 }
+//this.collection = data['collections']
+}
+//data['collectionArray'];
+// loadCollection() {
+//     this.collectionService.getCollection().subscribe(
+//          data => {
+//            this.collections = data['collectionArray'];
+//            console.log(this.collections);
+//          },
+//          err => {
+//              console.log(err);
+//       });
+// }
