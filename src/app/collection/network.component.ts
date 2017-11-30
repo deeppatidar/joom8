@@ -4,20 +4,22 @@ import { Collection} from '../model/collection';
 import {CollectionService} from './collection.service';
 
 @Component({
-  selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.css']
+  selector: 'network-collection',
+  templateUrl: './network.component.html',
+  styleUrls: ['./network.component.css']
 })
 
-export class CollectionComponent implements OnInit {
-
+export class NetworkComponent implements OnInit {
   public collection : CollectionInterface[] = [];
   public collections : Collection[] = [];
   errorMessage: string;
 
   constructor(private collectionService : CollectionService) {}
-    ngOnInit() {
-      this.collectionService.getCollection()
-      .subscribe((data) => this.collections = data['collections']);
+
+  ngOnInit() {
+    this.collectionService.getCollection()
+    .subscribe((data) => this.collections = data['collections']);
+
   }
+
 }
