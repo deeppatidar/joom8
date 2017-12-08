@@ -1,0 +1,327 @@
+<!-- <p>
+   collection works!
+   </p>
+   <ul *ngIf="collections">
+   <li *ngFor="let collection of collections">
+       {{collection.getCollection_id() | json}}
+       {{collection.getImage_url() | json}}
+     </li>
+   </ul> -->
+<!DOCTYPE html>
+<html  lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>Zomato Collections | Explore the best restaurants in Indore with Zomato Collections</title>
+      <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, initial-scale=1">
+      <link rel="icon" type="image/png" href="https://b.zmtcdn.com/images/logo/zomato_favicon5.png" />
+      <link rel="apple-touch-icon-precomposed" href="https://b.zmtcdn.com/images/logo/zomato_favicon5.png" /
+      <link rel="stylesheet" type="text/css" href="https://static.zmtcdn.com/gencss/t-fce05e705b469d889fdc20033ca4cdb8/l-H4sIAAAAAAAAA0tKLE7Vz0nVTS_KTNFLLi7WqcrPTUosKYawi0sSSzKTwezi1NzEPCBHH8YAiQIAP2LJTT4AAAA/h-2f145239b917f063e3211aa83757f44d" />
+
+   </head>
+   <body class="collections_page is-responsive en"  >
+      <div class="ghboxcontainer"  style="visibility: hidden; display: none;">
+         <div id="ghbox"></div>
+      </div>
+      <div class="claims-app-container" id="claims-app-container"></div>
+      <div id="sticky_header" class="ui sticky v2" >
+         <header class="header  breadcrumb-present  navbar" id="header">
+            <div class="header__links__container">
+               <div class="header__links__wrapper">
+                  <a href="#" class="link">Products for Businesses</a>
+                  <a href="#" class="link">We&#039;re hiring</a>
+               </div>
+            </div>
+            <div class="header__container">
+               <div class="header__wrapper clearfix">
+                  <a class="logo__container left" href="https://www.zomato.com/" title="Restaurants in India, United Kingdom, UAE, South Africa, Philippines, New Zealand, Qatar &amp; Sri Lanka. Delhi Restaurants, Mumbai Restaurants, Gurgaon Restaurants, London Restaurants, Dubai Restaurants, Bangalore Restaurants, Pune, Abu Dhabi, Colombo, Hyderabad, Kolkata, Chennai, Sharjah, Manila, Auckland, Wellington, Cape Town, Johannesburg Restaurants">
+                  <img src="https://b.zmtcdn.com/images/logo/zomato_white.svg" alt="Restaurants in India, United Kingdom, UAE, South Africa, Philippines, New Zealand, Qatar &amp; Sri Lanka. Delhi Restaurants, Mumbai Restaurants, Gurgaon Restaurants, London Restaurants, Dubai Restaurants, Bangalore Restaurants, Pune, Abu Dhabi, Colombo, Hyderabad, Kolkata, Chennai, Sharjah, Manila, Auckland, Wellington, Cape Town, Johannesburg Restaurants"/>
+                  </a>
+                  <div class="search__container left">
+                     <div class="header__search-bar">
+                        <div id="search_main_container" class="full_search  ">
+                           <div id="search_bar_wrapper" class="search_bar search-zindex" role="form">
+                              <div class="search_type flex-shrink-0">
+                                 <div id="location_contianer">
+                                    <div id="location_pretext">
+                                       <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
+                                          <span class="location_placeholder ml5">
+                                          <i class="location_select_icon" data-icon="&#129;"></i>
+                                          </span>
+                                          <span id="location_input_sp" class="location_input_sp mr5">Indore</span>
+                                          <span class="right location-dropdown"><i class="ui icon tiny caret down left"></i></span>
+                                       </div>
+                                       <div class="l-pre-2 hidden">
+                                          <span class="location_placeholder ml5">
+                                          <i class="location_select_icon" data-icon="&#129;"></i>
+                                          <label class="hdn" id="label_search_location">Please type a location...</label>
+                                          <input id="location_input" role="combobox" aria-labelledby="label_search_location" aria-expanded="true" aria-autocomplete="list" aria-owns="explore-location-suggest" placeholder="Please type a location..."
+                                             autocomplete="off" />
+                                          </span>
+                                       </div>
+                                    </div>
+                                    <!-- Location drop down starts   -->
+                                    <div role="listbox" id="explore-location-suggest" class=" suggest-box start-steps clearfix">
+                                       <div id="location-all" class="item" data-entity_type="city" data-entity_id="14">All of Indore</div>
+                                       <ul id="location-recent" role="presentation">
+                                          <li class="label ttupper">Recent Locations</li>
+                                       </ul>
+                                       <ul id="location-popular" role="presentation">
+                                          <li class="label ttupper">Popular Locations</li>
+                                          <li class="item grey-text" role="option" data-entity_type="subzone" data-entity_id="14101" >Vijay Nagar, Indore</li>
+                                          <li class="item grey-text" role="option" data-entity_type="subzone" data-entity_id="14001" >South Tukoganj, Indore</li>
+                                          <li class="item grey-text" role="option" data-entity_type="subzone" data-entity_id="14204" >New Palasia, Indore</li>
+                                       </ul>
+                                       <ul id="location-suggestion-container" role="presentation"></ul>
+                                    </div>
+                                    <!-- Location dro down ends   -->
+                                 </div>
+                              </div>
+                              <div class="flex-shrink-1 search-box plr0i ml5 mr5">
+                                 <div id="keywords_container" class="col-s-16 pr0">
+                                    <div id="keywords_pretext">
+                                       <div class="k-pre-1 hidden" style="overflow:hidden;">
+                                          <span class="search-bar-icon mr5">
+                                          <i class="search icon tiny"></i>
+                                          </span>
+                                          <div class="keyword_placeholder nowrap">
+                                             <div class="keyword_div">Search for restaurants or cuisines...</div>
+                                          </div>
+                                       </div>
+                                       <div class="k-pre-2  w100">
+                                          <span class="search-bar-icon mr5"><i class="search icon tiny"></i></span>
+                                          <label id="label_search_res" class="hdn">Search for restaurants or cuisines...</label>
+                                          <input role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="keywords-by"
+                                             aria-labelledby="label_search_res" id="keywords_input" class="discover-search"
+                                             placeholder="Search for restaurants or cuisines..."
+                                             autocomplete="off"/>
+                                       </div>
+                                    </div>
+                                    <!-- keywords dro down starts   -->
+                                    <div id="explore-keywords-dropdown" class=" ">
+                                       <div id="keywords-dd">
+                                          <ul id="keywords-by" role="listbox">
+                                          </ul>
+                                       </div>
+                                       <div class="keyword-search-start start-steps clearfix">
+                                          <div class="search-screen-block hidden">
+                                             <div class="ui inverted dimmer screen-block-loader">
+                                                <div class="ui text loader">Coming right up...</div>
+                                             </div>
+                                          </div>
+                                          <ul id="no-results" class="hidden">
+                                             <li class="item no-result-found">
+                                                <a class="item">
+                                                   <div class="keywords-dd-l">No results found</div>
+                                                </a>
+                                             </li>
+                                          </ul>
+                                          <div class="popular-searches">
+                                             <ul id="popular-results"
+                                                data-entity-id='14'
+                                                data-entity-type='city'>
+                                                <li class="label">Trending Searches</li>
+                                             </ul>
+                                          </div>
+                                          <ul id="explore-by">
+                                             <li class="label">Suggested Searches</li>
+                                             <li class="item" data-item_type="cat"  data-item_id="1">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Delivery" />
+                                                   <span>Delivery</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="cat"  data-item_id="8">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Breakfast" />
+                                                   <span>Breakfast</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="cat"  data-item_id="9">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Lunch" />
+                                                   <span>Lunch</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="cat"  data-item_id="10">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Dinner" />
+                                                   <span>Dinner</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="cat"  data-item_id="6">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Cafés" />
+                                                   <span>Cafés</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="cat"  data-item_id="3">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Drinks & Nightlife" />
+                                                   <span>Drinks & Nightlife</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="specials"  data-item_id="13">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_13.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="North Indian" />
+                                                   <span>North Indian</span>
+                                                </div>
+                                             </li>
+                                             <li class="item" data-item_type="specials"  data-item_id="31">
+                                                <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png?fit=around%7C88%3A88&crop=88%3A88%3B%2A%2C%2A" src="https://b.zmtcdn.com/images/pixel.gif"
+                                                      alt="Chinese" />
+                                                   <span>Chinese</span>
+                                                </div>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                    <!-- keywords dro down ends   -->
+                                 </div>
+                              </div>
+                              <div class="flex-shrink-0 plr0i">
+                                 <div role="button" tabindex="0" id="search_button" class="left ui red button">
+                                    Search
+                                 </div>
+                              </div>
+                              <div class="clear"></div>
+                           </div>
+                           <form id="search-keyword" method="GET" action="https://www.zomato.com/index.php" class="hidden">
+                              <input type="hidden" name="category"        id="category" value="0"/>
+                              <input type="hidden" name="tokens"          id="selected-tokens" value=""/>
+                              <input type="hidden" name="special"         id="special" value="0"/>
+                              <input type="hidden" name="cuisine"         id="cuisine" value="0"/>
+                              <input type="hidden" name="city"            id="city" value="14"/>
+                              <input type="hidden" name="subzone"         id="subzone" value=""/>
+                              <input type="hidden" name="zone"            id="zone" value=""/>
+                              <input type="hidden" name="landmark"        id="landmark" value=""/>
+                              <input type="hidden" name="near-me"         id="near_me" value=""/>
+                              <input type="hidden" name="zipcode"         id="zipcode" value=""/>
+                              <input type="hidden" name="zipcode_area"    id="zipcode_area" value=""/>
+                              <input type="hidden" name="group"           id="group" value=""/>
+                              <input type="hidden" name="metro"           id="metro" value=""/>
+                              <input type="hidden" name="street"          id="street" value="" />
+                              <input type="hidden" name="entity_type"     id="form_entity_type" value="city"/>
+                              <input type="hidden" name="entity_id"       id="form_entity_id" value="14"/>
+                              <input type="hidden" name="order-online"    id="online-ordering" value=""/>
+                              <input type="hidden" name="q"               id="keywords_query" value=""/>
+                              <input type="hidden" name="place_id"        id="place_id" value="" />
+                              <input type="hidden" name="table_booking"   id="tr-header-input" value="" />
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="login-navigation" class="login__container right">
+                     <div class="header-link">
+                        <a href="#" class="signin-link header-login-button ui button mr0" id="signin-link">Log in</a>
+                        <a href="#" class="signup-link header-login-button ui button mr0" id="signup-link">Create an account</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="header__navigation__container">
+               <div class="header__navigation__wrapper clearfix">
+                  <div class="left h100">
+                     <a href="https://www.zomato.com/mobile?ref=new_header_top_nav" class="header__navigation__link get-the-app">
+                     <img src="https://b.zmtcdn.com/images/icons/get-the-app-plain.svg"/>
+                     <span class="label">Get the App</span>
+                     </a>
+                  </div>
+                  <div class="right h100">
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="mini-header row">
+            <div class="wrapper">
+               <div class="row mini-header__breadcrumb">
+                  <div class="col-l-10 col-m-10">
+                     <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
+                           class="ui mini breadcrumb">
+                           <span>
+                           <a href="https://www.zomato.com" itemprop="item" class="tduh section home">
+                           <span itemprop="name" class="grey-text">Home
+                           </span>
+                           </a>
+                           </span>
+                           <meta itemprop="position" content="1" />
+                        </li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
+                           class="ui mini breadcrumb ">
+                           <div class="left"> <i class="right angle tiny icon"></i>
+                           </div>
+                           <span>
+                           <a href="https://www.zomato.com/indore/" itemprop="item">
+                           <span itemprop="name" class="tduh grey-text">Indore</span>
+                           </a>
+                           </span>
+                           <meta itemprop="position" content="2" />
+                        </li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
+                           class="ui mini breadcrumb ">
+                           <div class="left"> <i class="right angle tiny icon"></i>
+                           </div>
+                           <span>
+                           <a href="https://www.zomato.com/indore/collections#featured" itemprop="item">
+                           <span itemprop="name" class="tduh grey-text">Collections</span>
+                           </a>
+                           </span>
+                           <meta itemprop="position" content="3" />
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="resp-search-container" class="search-box-area"></div>
+      <div class="wrapper mtop ">
+         <div class="row">
+            <div class="collections-page">
+               <div class="mtop mbot0 clearfix col-l-16">
+                  <div class="left">
+                     <h1 class="mb5">Collections - Indore</h1>
+                     <p class="subtitle">Create and browse lists of the finest restaurants</p>
+                  </div>
+                  <div class="right mt15">
+                     <button type="button" id="user-add-collection" class="ui green button">
+                     Create Collection
+                   </button>
+                  </div>
+               </div>
+            </div>
+            <!-- /hero-about -->
+            <div class="clear"></div>
+
+            <div class="pt10">
+               <div class="col-l-16 mbot ">
+                  <div class="collections-menu ui menu large">
+                     <a routerLink="featured" class="collections-menu-item collections-tab item {{featured ? 'active': ''}}"  data-tab="featured"><span class="fontsize2">Handpicked</span></a>
+                     <a routerLink="network" class="collections-menu-item collections-tab item" data-tab="network"><span class="fontsize2">Following</span></a>
+                     <a routerLink="bookmarked" class="collections-menu-item  collections-tab item" data-tab="bookmarked"><span class="fontsize2">Saved Collections</span></a>
+                     <a routerLink="me" class="collections-menu-item  collections-tab item" data-tab="me"><span class="fontsize2">My Collections</span></a>
+                  </div>
+               </div>
+               <div class="clear"></div>
+               <div class = "col-l-16 collections-tab-content mbot">
+                 <router-outlet></router-outlet>
+                </div>
+               <div class="clear"></div>
+               <div class="mtop">
+               </div>
+            </div>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <footer id="footer" class=" ">
+      </footer>
+   </body>
+</html>
