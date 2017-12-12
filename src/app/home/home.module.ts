@@ -1,13 +1,20 @@
 import { NgModule }           from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent }     from './home.component';
+import { HomeService }     from './home.service';
+import { ConfigService} from '../shared/config.service';
+import { ClickOutsideDirective }  from '../shared/directives/dropdown.directive';
+
+import { LetterBoldPipe } from '../shared/letter-bold.pipe';
+import { SearchFilterPipe } from '../shared/filter-pipe';
 
 
 @NgModule({
-  imports:      [HomeRoutingModule ],
-  declarations: [ HomeComponent ],
-  providers:    [  ]
+  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule],
+  declarations: [HomeComponent, ClickOutsideDirective, LetterBoldPipe, SearchFilterPipe],
+  providers:  [ HomeService, ConfigService]
 })
 export class HomeModule { }
 

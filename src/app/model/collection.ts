@@ -48,7 +48,7 @@ export class Collection {
       public setUrl(u) {
         var index = u.indexOf('nagpur')+7;
         var u = u.substring(index, u.indexOf('?'));
-         this.url = u;
+         this.url = u.substring(u.lastIndexOf("/") + 1);
       };
 
       public getTitle() {

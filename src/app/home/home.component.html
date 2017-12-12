@@ -46,7 +46,7 @@
     <div class="zimagery" style="background-image: url(https://b.zmtcdn.com/images/foodshots/cover/pizza3.jpg);; background-size: cover;">
         <div class="zimagery-overlay" style="background: rgba(0,0,0,0.4);">
             <div id="sticky_header" class="ui sticky v2">
-                <header class="header   " id="header">
+                <header class="header " id="header">
                     <div class="header__links__container">
                         <div class="header__links__wrapper">
                             <a href="https://www.zomato.com/business?ref=new_header_top_nav" class="link">Products for Businesses</a>
@@ -87,7 +87,7 @@
                     </a>
                 </div>
                 <h1 class="h-city-home-title">
-        Find the best restaurants, cafés, and bars in Indore    </h1>
+        Find the best restaurants, cafés, and bars in Indore  </h1>
                 <div class="wrapper">
 
                     <div id="search_main_container" class="full_search  ">
@@ -96,38 +96,24 @@
                                 <div id="location_contianer">
                                     <div id="location_pretext">
                                         <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
-                                            <span class="location_placeholder ml5">
-                                                            <i class="location arrow icon tiny pr2"></i>
-                                                    </span>
-                                            <span id="location_input_sp" class="location_input_sp mr5">Indore</span>
-                                            <span class="right location-dropdown"><i class="ui icon tiny caret down left"></i></span>
-                                        </div>
-                                        <div class="l-pre-2 hidden">
-                                            <span class="location_placeholder ml5">
-                                                            <i class="location arrow icon tiny pr2"></i>
-                                                        <label class="hdn" id="label_search_location">Please type a location...</label>
-                            <input id="location_input" role="combobox" aria-labelledby="label_search_location" aria-expanded="true" aria-autocomplete="list" aria-owns="explore-location-suggest" placeholder="Please type a location..."
-                            autocomplete="off" />
-                        </span>
+                                            <!-- <span class="location_placeholder ml5">
+                                              <i class="location arrow icon tiny pr2"></i>
+                                            </span> -->
+                                            <label class="hdn" id="label_search_location">Please type a location...</label>
+                                            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar ' type='text'>
+                                             </form>
+                                             <div clickOutside (clickOutside)="closeDropDown()">
+                                                 <div *ngIf='showDropDown' class='search-drop-down '>
+                                                     <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                                                         <a [innerHTML]="s | letterBold: getSearchValue()">
+                                                                {{s}}
+                                                         </a>
+                                                     </div>
+                                                 </div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <!-- Location drop down starts   -->
-                                    <div role="listbox" id="explore-location-suggest" class="homepage suggest-box start-steps clearfix">
-                                        <div id="location-all" class="item" data-entity_type="city" data-entity_id="14">All of Indore</div>
-                                        <ul id="location-recent" role="presentation">
-                                            <li class="label ttupper">Recent Locations</li>
-                                        </ul>
-                                        <ul id="location-popular" role="presentation">
-                                            <li class="label ttupper">Popular Locations</li>
-                                            <li class="item grey-text" role="option" data-entity_type="subzone" data-entity_id="14101">Vijay Nagar, Indore</li>
-                                            <li class="item grey-text" role="option" data-entity_type="subzone" data-entity_id="14001">South Tukoganj, Indore</li>
-                                            <li class="item grey-text" role="option" data-entity_type="subzone" data-entity_id="14204">New Palasia, Indore</li>
-                                        </ul>
-                                        <ul id="location-suggestion-container" role="presentation"></ul>
-                                    </div>
-
-                                    <!-- Location dro down ends   -->
                                 </div>
                             </div>
                             <div class="flex-shrink-1 search-box plr0i ml5 mr5">
@@ -135,15 +121,13 @@
                                     <div id="keywords_pretext">
                                         <div class="k-pre-1 hidden" style="overflow:hidden;">
                                             <span class="search-bar-icon mr5">
-                            <i class="search icon tiny"></i>
-                        </span>
-
+                                                <i class="search icon tiny"></i>
+                                            </span>
                                             <div class="keyword_placeholder nowrap">
                                                 <div class="keyword_div">Search for restaurants or cuisines...</div>
                                             </div>
                                         </div>
                                         <div class="k-pre-2  w100">
-                                            <span class="search-bar-icon mr5"><i class="search icon tiny"></i></span>
                                             <label id="label_search_res" class="hdn">Search for restaurants or cuisines...</label>
                                             <input role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="keywords-by" aria-labelledby="label_search_res" id="keywords_input" class="discover-search" placeholder="Search for restaurants or cuisines..." autocomplete="off" />
                                         </div>
@@ -224,7 +208,6 @@
                                                         <span>North Indian</span>
                                                     </div>
                                                 </li>
-
                                                 <li class="item" data-item_type="specials" data-item_id="31">
                                                     <div class="start-step-label">
                                                         <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Chinese" />
@@ -234,7 +217,6 @@
                                             </ul>
                                         </div>
                                     </div>
-
                                     <!-- keywords dro down ends   -->
                                 </div>
                             </div>
@@ -287,91 +269,22 @@
                             </span>
                         </h2>
                 <div class="collections-grid row">
-                    <div class="col-l-8 col-s-16 mbot">
+                    <div class="col-l-8 col-s-16 mbot" *ngFor = "let collection of collections">
                         <div class="ui fluid card">
                             <a href="/indore/top-restaurants">
                                 <div class="row">
                                     <div class="col-s-7">
-                                        <div title="Top Restaurants in Indore" class="collection-box-bg lazy-collection-load">
-                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="assets/images/collection/collection1.jpg" />
+                                        <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
+                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="{{collection.getImage_url()}}" />
                                         </div>
                                     </div>
                                     <div class="col-s-9">
                                         <div class="row">
                                             <div class="ptop0 mr20 ml5 coll_detail">
                                                 <div class="heading bold ln20">
-                                                    Trending this week
+                                                    {{collection.getTitle()}}
                                                 </div>
-                                                <div class="zblack fontsize4 description mt5  hp ">The most popular restaurants in town this week</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-l-8 col-s-16 mbot">
-                        <div class="ui fluid card">
-                            <a href="/indore/great-food-no-bull">
-                                <div class="row">
-                                    <div class="col-s-7">
-                                        <div title="Great food, no bull" class="collection-box-bg lazy-collection-load">
-                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="assets/images/collection/collection2.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="col-s-9">
-                                        <div class="row">
-                                            <div class="ptop0 mr20 ml5 coll_detail">
-                                                <div class="heading bold ln20">
-                                                    Great food, no bull
-                                                </div>
-                                                <div class="zblack fontsize4 description mt5  hp ">The hunt for the highest-rated restaurants in your city ends here</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-l-8 col-s-16 mbot">
-                        <div class="ui fluid card">
-                            <a href="/indore/best-bars-and-pubs">
-                                <div class="row">
-                                    <div class="col-s-7">
-                                        <div title="&#127867; Best Bars and Pubs in Indore" class="collection-box-bg lazy-collection-load">
-                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="assets/images/collection/collection3.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="col-s-9">
-                                        <div class="row">
-                                            <div class="ptop0 mr20 ml5 coll_detail">
-                                                <div class="heading bold ln20">
-                                                    Best bars &amp; pubs
-                                                </div>
-                                                <div class="zblack fontsize4 description mt5  hp ">The top places to enjoy a drink</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-l-8 col-s-16 mbot">
-                        <div class="ui fluid card">
-                            <a href="/indore/street-food">
-                                <div class="row">
-                                    <div class="col-s-7">
-                                        <div title="Best Street Food in Indore" class="collection-box-bg lazy-collection-load">
-                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="assets/images/collection/collection4.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="col-s-9">
-                                        <div class="row">
-                                            <div class="ptop0 mr20 ml5 coll_detail">
-                                                <div class="heading bold ln20">
-                                                    Street food
-                                                </div>
-                                                <div class="zblack fontsize4 description mt5  hp ">Delectable bites for when you&#039;re on-the-go</div>
+                                                <div class="zblack fontsize4 description mt5  hp ">{{collection.getDescription()}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -380,10 +293,15 @@
                         </div>
                     </div>
                     <div class="col-l-16 col-s-16">
-                        <a routerLink="/indore/collections/featured" routerLinkActive="">
+                        <!-- <a routerLink="/collections/featured/{{cityName}}" routerLinkActive="">
                             <div class="ui segment zred tac">
                                 All collections in Indore </div>
+                        </a> -->
+                        <a (click)="redirectToCollection()">
+                          <div class="ui segment zred tac">
+                              All collections in {{cityName}}</div>
                         </a>
+
                     </div>
                 </div>
             </div>

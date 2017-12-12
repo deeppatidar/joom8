@@ -15,18 +15,19 @@ import { Collection } from '../model/collection';
 
 @Injectable()
 export class CollectionService {
-  private url = 'https://developers.zomato.com/api/v2.1/collections?city_id=4';
+  private url = 'https://developers.zomato.com/api/v2.1/';
 
    constructor (private http: Http) {}
 
-   getCollection() : Observable<Collection[]> {
+   getCollection(cityId) : Observable<Collection[]> {
+     var _url = this.url + 'collections?city_id=' + cityId;
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
             'user-key' : '7d5ef14e15e09640098cbeef0df74871'
            })
         });
-        return this.http.get(this.url, options)
+        return this.http.get(_url, options)
          .map((resp: Response) => new CollectionAdapter(resp.json()))
          .catch(this.handleError);
    }
