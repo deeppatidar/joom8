@@ -10,6 +10,7 @@ import { AppComponent }   from './app.component';
 import { HomeModule }    from './home/home.module';
 import {CollectionModule} from './collection/collection.module';
 
+import {HeaderModule} from './header/header.module'
 
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     CommonModule,
     BrowserModule,
+    HeaderModule,
     HomeModule,
     CollectionModule,
     AppRoutingModule

@@ -5,15 +5,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent }     from './home.component';
 import { HomeService }     from './home.service';
 import { ConfigService} from '../shared/config.service';
-import { ClickOutsideDirective }  from '../shared/directives/dropdown.directive';
+import { ApplicationDirectives }  from '../shared/directives/application.directives';
 
-import { LetterBoldPipe } from '../shared/letter-bold.pipe';
-import { SearchFilterPipe } from '../shared/filter-pipe';
+import {ApplicationPipes} from '../shared/application.pipes';
 
 
 @NgModule({
-  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule],
-  declarations: [HomeComponent, ClickOutsideDirective, LetterBoldPipe, SearchFilterPipe],
+  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives],
+  declarations: [HomeComponent],
   providers:  [ HomeService, ConfigService]
 })
 export class HomeModule { }

@@ -30,7 +30,6 @@ export class FeaturedComponent implements OnInit {
     //console.log(this.configService.cityId);
     if(this.route.params) {
       this.route.params.subscribe(params => {
-        console.log(this.cityId);
         this.cityName = params['city'];
         this.collectionService.getCollection(this.cityId).subscribe(data => this.collections = data['collections']);
       });

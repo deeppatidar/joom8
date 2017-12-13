@@ -6,6 +6,7 @@ import {FeaturedComponent} from './featured.component';
 import {NetworkComponent} from './network.component';
 import {BookmarkedComponent} from './bookmark.component';
 import {MyCollectionComponent} from './mycollection.component';
+import {CollectionDetailComponent} from './collectionDetail.component';
 
 import {CollectionService} from './collection.service';
 
@@ -34,7 +35,9 @@ import {CollectionService} from './collection.service';
           component: MyCollectionComponent,
         }
       ]
-    }
+    },
+    { path: ':cityName/:category', component: CollectionDetailComponent }
+
   ])],
   exports: [RouterModule]
 })
