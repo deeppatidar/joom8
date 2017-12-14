@@ -4,6 +4,7 @@ import { Component, OnInit} from '@angular/core';
 import { CollectionInterface } from '../shared/collectionInterface';
 import { ConfigService } from '../shared/config.service';
 import { Collection} from '../model/collection';
+
 import {HeaderService} from '../header/header.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -16,11 +17,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class HeaderComponent {
   showDropDown : boolean = false;
   stateForm: FormGroup;
-  cityData : City;
   cityId : number;
   cityName : string;
   public collections : Collection[] = [];
-  states = ['India', 'Indore', 'Bhopla', 'Kota', 'Jaipur', 'Jodhpur', 'Ajmer', 'Udaipur', 'Bikaner', 'Alwar', 'Jaisalmer'];
+
+  states = ['Fastfood', 'Indore', 'Dinner', 'Delivery', 'Jaipur', 'Jodhpur', 'Ajmer', 'Udaipur', 'Bikaner', 'Alwar', 'Jaisalmer'];
 
   constructor( private fb: FormBuilder, private headerService : HeaderService, private router : Router, private route : ActivatedRoute, private configService : ConfigService) {
     this.initForm()
@@ -58,10 +59,14 @@ export class HeaderComponent {
    this.showDropDown = false;
    this.stateForm.patchValue({"search": value});
    console.log(value);
-   //this.headerService.getCityByCityName(value).subscribe((data) => this.router.navigate(['/home', data['cityObj'].name]));
+   var navigate = this.cityName+'/'+value;
+   this.router.navigate([navigate]);
+   //this.headerService.getfreeFlowSearch(value).subscribe((data) => this.searchCollection = data['searchCollection']);
+
  }
 
   closeDropDown() {
+    console.log('closed');
     this.showDropDown = !this.showDropDown;
   }
 

@@ -64,6 +64,8 @@ export class HomeComponent {
  }
 
   closeDropDown() {
+    console.log('closed');
+    console.log(this.showDropDown);
     this.showDropDown = !this.showDropDown;
   }
 

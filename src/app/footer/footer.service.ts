@@ -16,9 +16,8 @@ import { SearchCollectionAdapter } from '../adapter/searchcollection.adapter'
 
 
 @Injectable()
-export class HeaderService {
+export class FooterService {
   private url = 'https://developers.zomato.com/api/v2.1/';
-
 
    constructor (private http: Http) {}
 
@@ -34,22 +33,6 @@ export class HeaderService {
          .map((resp: Response) => new CityAdapter(resp.json()))
          .catch(this.handleError);
    };
-
-   getCityCollection(cityId) : Observable<Collection[]> {
-        var _url = this.url + 'collections?city_id=' + cityId;
-        var options = new RequestOptions({
-           headers: new Headers({
-           'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
-           })
-        });
-        return this.http.get(_url, options)
-         .map((resp: Response) => new CollectionAdapter(resp.json()))
-         .catch(this.handleError);
-   };
-
-  
-
 
    private handleError(error: any): Promise<any> {
        console.error('An error occurred', error);

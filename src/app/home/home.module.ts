@@ -8,10 +8,10 @@ import { ConfigService} from '../shared/config.service';
 import { ApplicationDirectives }  from '../shared/directives/application.directives';
 
 import {ApplicationPipes} from '../shared/application.pipes';
-
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
-  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives],
+  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives, FooterModule],
   declarations: [HomeComponent],
   providers:  [ HomeService, ConfigService]
 })

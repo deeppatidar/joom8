@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import {ClickOutsideDirective} from './dropdown.directive';
+import {ClickOutside} from './clickoutside.directive';
 
 
 
@@ -9,10 +10,10 @@ import {ClickOutsideDirective} from './dropdown.directive';
     // dep modules
   ],
   declarations: [
-    ClickOutsideDirective
+    ClickOutsideDirective,ClickOutside
   ],
   exports: [
-    ClickOutsideDirective
+    ClickOutsideDirective,ClickOutside
   ]
 })
 export class ApplicationDirectives {}

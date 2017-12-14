@@ -17,9 +17,10 @@ import {CollectionService} from './collection.service';
 import { ConfigService } from '../shared/config.service';
 
 import { HeaderModule } from '../header/header.module';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
-  imports:      [CollectionRoutingModule, HttpModule, CommonModule, BrowserModule, HeaderModule],
+  imports:      [CollectionRoutingModule, HttpModule, CommonModule, BrowserModule, HeaderModule, FooterModule],
   declarations: [CollectionComponent, FeaturedComponent, NetworkComponent, BookmarkedComponent, MyCollectionComponent, CollectionDetailComponent],
   providers:    [CollectionService, ConfigService]
 })

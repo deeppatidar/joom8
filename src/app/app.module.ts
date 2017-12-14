@@ -11,6 +11,7 @@ import { HomeModule }    from './home/home.module';
 import {CollectionModule} from './collection/collection.module';
 
 import {HeaderModule} from './header/header.module'
+import {FooterModule} from './footer/footer.module'
 
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     CommonModule,
     BrowserModule,
     HeaderModule,
+    FooterModule,
     HomeModule,
     CollectionModule,
     AppRoutingModule
