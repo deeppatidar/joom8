@@ -1,0 +1,111 @@
+<header class="header  breadcrumb-present  navbar" id="header">
+   <div class="header__links__container">
+      <div class="header__links__wrapper">
+         <a href="#" class="link">Products for Businesses</a>
+         <a href="#" class="link">We&#039;re hiring</a>
+      </div>
+   </div>
+   <div class="header__container">
+      <div class="header__wrapper clearfix">
+         <a class="logo__container left" href="https://www.zomato.com/" title="Restaurants in India, United Kingdom, UAE, South Africa, Philippines, New Zealand, Qatar &amp; Sri Lanka. Delhi Restaurants, Mumbai Restaurants, Gurgaon Restaurants, London Restaurants, Dubai Restaurants, Bangalore Restaurants, Pune, Abu Dhabi, Colombo, Hyderabad, Kolkata, Chennai, Sharjah, Manila, Auckland, Wellington, Cape Town, Johannesburg Restaurants">
+         <img src="https://b.zmtcdn.com/images/logo/zomato_white.svg" alt="Restaurants in India, United Kingdom, UAE, South Africa, Philippines, New Zealand, Qatar &amp; Sri Lanka. Delhi Restaurants, Mumbai Restaurants, Gurgaon Restaurants, London Restaurants, Dubai Restaurants, Bangalore Restaurants, Pune, Abu Dhabi, Colombo, Hyderabad, Kolkata, Chennai, Sharjah, Manila, Auckland, Wellington, Cape Town, Johannesburg Restaurants"/>
+         </a>
+         <div class="search__container left">
+            <div class="header__search-bar">
+               <div id="search_main_container" class="full_search  ">
+                  <div id="search_bar_wrapper" class="search_bar search-zindex" role="form">
+                     <div class="search_type flex-shrink-0">
+                        <div id="location_contianer">
+                           <div id="location_pretext">
+                             <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
+                                 <label class="hdn" id="label_search_location">Please type a location...</label>
+                                 <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                      <input id='search' placeholder="Search for a state" formControlName='search'  class=' input-underline search-bar ' type='text'>
+                                  </form>
+                                  <div>
+                                      <!-- <div *ngIf='showDropDown' class='search-drop-down '>
+                                          <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                                              <a [innerHTML]="s | letterBold: getSearchValue()">
+                                                     {{s}}
+                                              </a>
+                                          </div>
+                                      </div> -->
+                                 </div>
+                             </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="flex-shrink-1 search-box plr0i ml5 mr5">
+                        <div>
+                           <div id="keywords_pretext">
+                             <label class="hdn" id="label_search_location">Please type a location...</label>
+                             <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                  <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar ' type='text'>
+                              </form>
+                              <div>
+                                  <div *ngIf='showDropDown' class='free-search-drop-down'>
+                                      <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                                          <a [innerHTML]="s">
+                                                 {{s}}
+                                          </a>
+                                      </div>
+                                  </div>
+                             </div>
+                           </div>
+
+                        </div>
+                     </div>
+                     <div class="flex-shrink-0 plr0i">
+                        <div role="button" tabindex="0" id="search_button" class="left ui red button">
+                           Search
+                        </div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <form id="search-keyword" method="GET" action="https://www.zomato.com/index.php" class="hidden">
+                     <input type="hidden" name="category"        id="category" value="0"/>
+                     <input type="hidden" name="tokens"          id="selected-tokens" value=""/>
+                     <input type="hidden" name="special"         id="special" value="0"/>
+                     <input type="hidden" name="cuisine"         id="cuisine" value="0"/>
+                     <input type="hidden" name="city"            id="city" value="14"/>
+                     <input type="hidden" name="subzone"         id="subzone" value=""/>
+                     <input type="hidden" name="zone"            id="zone" value=""/>
+                     <input type="hidden" name="landmark"        id="landmark" value=""/>
+                     <input type="hidden" name="near-me"         id="near_me" value=""/>
+                     <input type="hidden" name="zipcode"         id="zipcode" value=""/>
+                     <input type="hidden" name="zipcode_area"    id="zipcode_area" value=""/>
+                     <input type="hidden" name="group"           id="group" value=""/>
+                     <input type="hidden" name="metro"           id="metro" value=""/>
+                     <input type="hidden" name="street"          id="street" value="" />
+                     <input type="hidden" name="entity_type"     id="form_entity_type" value="city"/>
+                     <input type="hidden" name="entity_id"       id="form_entity_id" value="14"/>
+                     <input type="hidden" name="order-online"    id="online-ordering" value=""/>
+                     <input type="hidden" name="q"               id="keywords_query" value=""/>
+                     <input type="hidden" name="place_id"        id="place_id" value="" />
+                     <input type="hidden" name="table_booking"   id="tr-header-input" value="" />
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div id="login-navigation" class="login__container right">
+            <div class="header-link">
+               <a href="#" class="signin-link header-login-button ui button mr0" id="signin-link">Log in</a>
+               <a href="#" class="signup-link header-login-button ui button mr0" id="signup-link">Create an account</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="header__navigation__container">
+      <div class="header__navigation__wrapper clearfix">
+         <div class="left h100">
+            <a href="https://www.zomato.com/mobile?ref=new_header_top_nav" class="header__navigation__link get-the-app">
+            <img src="https://b.zmtcdn.com/images/icons/get-the-app-plain.svg"/>
+            <span class="label">Get the App</span>
+            </a>
+         </div>
+         <div class="right h100">
+         </div>
+      </div>
+   </div>
+</header>

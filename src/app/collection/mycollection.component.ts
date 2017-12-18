@@ -4,22 +4,20 @@ import { Collection} from '../model/collection';
 import {CollectionService} from './collection.service';
 
 @Component({
-  selector: 'bookmark-collection',
-  templateUrl: './bookmark.component.html',
-  styleUrls: ['./bookmark.component.css']
+  selector: 'my-collection',
+  templateUrl: './mycollection.component.html',
+  styleUrls: ['./mycollection.component.css']
 })
 
-export class BookmarkedComponent implements OnInit {
+export class MyCollectionComponent implements OnInit {
+
   public collection : CollectionInterface[] = [];
   public collections : Collection[] = [];
   errorMessage: string;
 
   constructor(private collectionService : CollectionService) {}
-
-  ngOnInit() {
-    // this.collectionService.getCollection()
-    // .subscribe((data) => this.collections = data['collections']);
-
+    ngOnInit() {
+      // this.collectionService.getCollection()
+      // .subscribe((data) => this.collections = data['collections']);
   }
-
 }

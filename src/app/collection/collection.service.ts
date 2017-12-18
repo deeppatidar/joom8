@@ -11,25 +11,56 @@ import { Observable } from 'rxjs/Rx';
 //import { CollectionInterface } from '../shared/collectionInterface';
 
 import { CollectionAdapter } from '../adapter/collection.adapter';
+import { CityAdapter } from '../adapter/city.adapter';
+import { SearchCollectionAdapter } from '../adapter/searchcollection.adapter';
+import { SearchCollection } from '../model/searchCollection';
 import { Collection } from '../model/collection';
+import { City } from '../model/city';
 
 @Injectable()
 export class CollectionService {
-  private url = 'https://developers.zomato.com/api/v2.1/collections?city_id=4';
+  private url = 'https://developers.zomato.com/api/v2.1/';
 
    constructor (private http: Http) {}
 
-   getCollection() : Observable<Collection[]> {
+   getCityByCityName(city) : Observable<City> {
+        var _url = this.url + 'cities?q=' +city;
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
             'user-key' : '7d5ef14e15e09640098cbeef0df74871'
            })
         });
-        return this.http.get(this.url, options)
+        return this.http.get(_url, options)
+         .map((resp: Response) => new CityAdapter(resp.json()))
+         .catch(this.handleError);
+   };
+
+   getCollection(cityId) : Observable<Collection[]> {
+     var _url = this.url + 'collections?city_id=' + cityId;
+        var options = new RequestOptions({
+           headers: new Headers({
+           'Accept': 'application/json',
+            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+           })
+        });
+        return this.http.get(_url, options)
          .map((resp: Response) => new CollectionAdapter(resp.json()))
          .catch(this.handleError);
-   }
+   };
+
+   getfreeFlowSearch(id, value) : Observable<SearchCollection[]> {
+        var _url = this.url + '/search?entity_id='+id+'&q=' + value;
+        var options = new RequestOptions({
+           headers: new Headers({
+           'Accept': 'application/json',
+            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+           })
+        });
+        return this.http.get(_url, options)
+         .map((resp: Response) => new SearchCollectionAdapter(resp.json()))
+         .catch(this.handleError);
+   };
 
    private handleError(error: any): Promise<any> {
        console.error('An error occurred', error);

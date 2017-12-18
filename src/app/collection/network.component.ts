@@ -17,8 +17,8 @@ export class NetworkComponent implements OnInit {
   constructor(private collectionService : CollectionService) {}
 
   ngOnInit() {
-    this.collectionService.getCollection()
-    .subscribe((data) => this.collections = data['collections']);
+    // this.collectionService.getCollection()
+    // .subscribe((data) => this.collections = data['collections']);
 
   }
 
