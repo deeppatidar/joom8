@@ -6,7 +6,6 @@
     <meta content="origin" name="referrer" />
 
     <!-- <link rel="preconnect" href="//b.zmtcdn.com" /> -->
-
     <!-- <link rel="alternate" hreflang="en" href="https://www.zomato.com/indore" />
     <link rel="alternate" hreflang="tr" href="https://www.zomato.com/tr/indore" />
     <link rel="alternate" hreflang="es" href="https://www.zomato.com/es/indore" />
@@ -98,7 +97,8 @@
                                         <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
                                             <label class="hdn" id="label_search_location">Please type a location...</label>
                                             <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
-                                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar ' type='text'>
+                                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar' type='text'
+                                                 autocomplete="off">
                                              </form>
                                              <div clickOutside (clickOutside)="closeDropDown()">
                                                  <div *ngIf='showDropDown' class='search-drop-down '>
@@ -126,92 +126,76 @@
                                         </div>
                                         <div class="k-pre-2  w100">
                                             <label id="label_search_res" class="hdn">Search for restaurants or cuisines...</label>
-                                            <input role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="keywords-by" aria-labelledby="label_search_res" id="keywords_input" class="discover-search" placeholder="Search for restaurants or cuisines..." autocomplete="off" />
+                                            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                                <input role="combobox" aria-expanded="true" aria-autocomplete="list" formControlName='keywords_input' aria-owns="keywords-by" aria-labelledby="label_search_res" id="keywords_input" class="discover-search" placeholder="Search for restaurants or cuisines..." autocomplete="off" (click)="openCusineDropDown()"/>
+                                            </form>
                                         </div>
                                     </div>
+
                                     <!-- keywords dro down starts   -->
-                                    <div id="explore-keywords-dropdown" class="homepage ">
-                                        <div id="keywords-dd">
-                                            <ul id="keywords-by" role="listbox">
+                                    <div *ngIf='cusineDropDown' id="explore-keywords-dropdown">
+                                        <div class="popular-searches">
+                                            <ul >
+                                                <li class="label">Trending Searches</li>
                                             </ul>
                                         </div>
-                                        <div class="keyword-search-start start-steps clearfix">
-                                            <div class="search-screen-block hidden">
-                                                <div class="ui inverted dimmer screen-block-loader">
-                                                    <div class="ui text loader">Coming right up...</div>
-                                                </div>
-                                            </div>
-
-                                            <ul id="no-results" class="hidden">
-                                                <li class="item no-result-found">
-                                                    <a class="item">
-                                                        <div class="keywords-dd-l">No results found</div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <div class="popular-searches">
-                                                <ul id="popular-results" data-entity-id='14' data-entity-type='city'>
-                                                    <li class="label">Trending Searches</li>
-                                                </ul>
-                                            </div>
+                                        <div>
                                             <ul id="explore-by">
-                                                <li class="label">Suggested Searches</li>
+                                               <li class="label">Suggested Searches</li>
 
-                                                <li class="item" data-item_type="cat" data-item_id="1">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Delivery" />
-                                                        <span>Delivery</span>
-                                                    </div>
-                                                </li>
+                                               <li class="item" data-item_type="cat" data-item_id="1" (click)="selectval('Delivery')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png" alt="Delivery" />
+                                                       <span>Delivery</span>
+                                                   </div>
+                                               </li>
 
-                                                <li class="item" data-item_type="cat" data-item_id="8">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Breakfast" />
+                                               <li class="item" data-item_type="cat" data-item_id="8"  (click)="selectval('Breakfast')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" alt="Breakfast" />
                                                         <span>Breakfast</span>
-                                                    </div>
-                                                </li>
+                                                   </div>
+                                               </li>
 
-                                                <li class="item" data-item_type="cat" data-item_id="9">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Lunch" />
+                                               <li class="item" data-item_type="cat" data-item_id="9"  (click)="selectval('Lunch')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" alt="Lunch" />
                                                         <span>Lunch</span>
-                                                    </div>
-                                                </li>
-
-                                                <li class="item" data-item_type="cat" data-item_id="10">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Dinner" />
+                                                   </div>
+                                               </li>
+                                               <li class="item" data-item_type="cat" data-item_id="10" (click)="selectval('Dinner')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" alt="Dinner" />
                                                         <span>Dinner</span>
-                                                    </div>
-                                                </li>
-
-                                                <li class="item" data-item_type="cat" data-item_id="6">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Cafés" />
+                                                   </div>
+                                               </li>
+                                               <li class="item" data-item_type="cat" data-item_id="6"  (click)="selectval('Cafés')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" alt="Cafés" />
                                                         <span>Cafés</span>
-                                                    </div>
-                                                </li>
+                                                   </div>
+                                               </li>
 
-                                                <li class="item" data-item_type="cat" data-item_id="3">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Drinks & Nightlife" />
+                                               <li class="item" data-item_type="cat" data-item_id="3"  (click)="selectval('Drinks & Nightlife')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" alt="Drinks & Nightlife" />
                                                         <span>Drinks & Nightlife</span>
-                                                    </div>
-                                                </li>
+                                                   </div>
+                                               </li>
 
-                                                <li class="item" data-item_type="specials" data-item_id="13">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_13.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="North Indian" />
+                                               <li class="item" data-item_type="specials" data-item_id="13" (click)="selectval('North Indian')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_13.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_13.png" alt="North Indian" />
                                                         <span>North Indian</span>
-                                                    </div>
-                                                </li>
-                                                <li class="item" data-item_type="specials" data-item_id="31">
-                                                    <div class="start-step-label">
-                                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png?" src="https://b.zmtcdn.com/images/pixel.gif" alt="Chinese" />
+                                                   </div>
+                                               </li>
+                                               <li class="item" data-item_type="specials" data-item_id="31" (click)="selectval('Chinese')">
+                                                   <div class="start-step-label">
+                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png" alt="Chinese" />
                                                         <span>Chinese</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                   </div>
+                                               </li>
+                                           </ul>
                                         </div>
                                     </div>
                                     <!-- keywords dro down ends   -->

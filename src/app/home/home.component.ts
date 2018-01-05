@@ -18,12 +18,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent {
   showDropDown : boolean = false;
+  cusineDropDown : boolean = false;
   stateForm: FormGroup;
   cityData : City;
   cityId : number;
   cityName : string;
   public collections : Collection[] = [];
-  states = ['India', 'Indore', 'Bhopla', 'Kota', 'Jaipur', 'Jodhpur', 'Ajmer', 'Udaipur', 'Bikaner', 'Alwar', 'Jaisalmer'];
+  states = ['Indore', 'Bhopal','Jaipur','Udaipur','Pune','Bangalore','Mumbai','Nagpur'];
 
   constructor( private fb: FormBuilder, private homeService : HomeService, private router : Router, private route : ActivatedRoute, private configService : ConfigService) {
     this.initForm()
@@ -42,14 +43,12 @@ export class HomeComponent {
         );
       });
     }
-
   }
-
-
 
   initForm(): FormGroup {
     return this.stateForm = this.fb.group({
-      search: [null]
+      search: [null],
+       keywords_input: [null]
     })
   }
 
@@ -59,18 +58,23 @@ export class HomeComponent {
 
   selectValue(value) {
    this.showDropDown = false;
+   this.cityName = value;
+   console.log(" Value "+ value);
    this.stateForm.patchValue({"search": value});
-   this.homeService.getCityByCityName(value).subscribe((data) => this.router.navigate(['/home', data['cityObj'].name]));
+   this.homeService.getCityByCityName(value).subscribe((data) => {//this.router.navigate(['/home', data['cityObj'].name]
+    }
+    );
  }
 
   closeDropDown() {
-    console.log('closed');
-    console.log(this.showDropDown);
-    this.showDropDown = !this.showDropDown;
+    //this.showDropDown = !this.showDropDown;
   }
-
-  openDropDown() {
-    this.showDropDown = false;
+ openDropDown() {
+   this.showDropDown = !this.showDropDown;
+ }
+ //
+  openCusineDropDown() {
+      this.cusineDropDown = !this.cusineDropDown;
   }
 
   getSearchValue() {
@@ -81,4 +85,14 @@ export class HomeComponent {
     var navigate = this.cityName+'/collections/featured';
     this.router.navigate([navigate]);
   }
+ selectval(val) {
+      this.stateForm.patchValue({"keywords_input": val});
+      this.homeService.getCollectionByCusine(val,this.cityName,this.cityId).subscribe((data) => {
+      this.router.navigate([this.cityName+'/'+val+"-in-"+this.cityName]);
+     }
+
+  );
+    this.homeService.getCityCollection(this.cityId).subscribe(data => this.collections = data['collections']);
+     this.cusineDropDown = !this.cusineDropDown;
+ }
 }

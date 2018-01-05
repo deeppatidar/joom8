@@ -4,7 +4,7 @@ import { Component, OnInit} from '@angular/core';
 import { CollectionInterface } from '../shared/collectionInterface';
 import { ConfigService } from '../shared/config.service';
 import { Collection} from '../model/collection';
-
+import { City} from '../model/city';
 import {HeaderService} from '../header/header.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -15,13 +15,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: [ './header.component.css' ]
 })
 export class HeaderComponent {
-  showDropDown : boolean = false;
-  stateForm: FormGroup;
-  cityId : number;
-  cityName : string;
-  public collections : Collection[] = [];
-
-  states = ['Fastfood', 'Indore', 'Dinner', 'Delivery', 'Jaipur', 'Jodhpur', 'Ajmer', 'Udaipur', 'Bikaner', 'Alwar', 'Jaisalmer'];
+    showDropDown : boolean = false;
+    cusineDropDown : boolean = false;
+    stateForm: FormGroup;
+    cityData : City;
+    cityId : number;
+    cityName : string;
+    public collections : Collection[] = [];
+    states = ['Indore', 'Bhopal','Jaipur','Udaipur','Pune','Bangalore','Mumbai','Nagpur'];
 
   constructor( private fb: FormBuilder, private headerService : HeaderService, private router : Router, private route : ActivatedRoute, private configService : ConfigService) {
     this.initForm()
@@ -43,11 +44,10 @@ export class HeaderComponent {
 
   }
 
-
-
   initForm(): FormGroup {
     return this.stateForm = this.fb.group({
-      search: [null]
+      search: [null],
+      keywords_input: [null]
     })
   }
 
@@ -57,21 +57,20 @@ export class HeaderComponent {
 
   selectValue(value) {
    this.showDropDown = false;
+   this.cityName = value;
    this.stateForm.patchValue({"search": value});
-   console.log(value);
-   var navigate = this.cityName+'/'+value;
-   this.router.navigate([navigate]);
-   //this.headerService.getfreeFlowSearch(value).subscribe((data) => this.searchCollection = data['searchCollection']);
-
+   this.headerService.getCityByCityName(value).subscribe((data) => {});
  }
 
   closeDropDown() {
-    console.log('closed');
-    this.showDropDown = !this.showDropDown;
+    //this.showDropDown = !this.showDropDown;
   }
+ openDropDown() {
+   this.showDropDown = !this.showDropDown;
+ }
 
-  openDropDown() {
-    this.showDropDown = true;
+  openCusineDropDown() {
+      this.cusineDropDown = !this.cusineDropDown;
   }
 
   getSearchValue() {
@@ -82,4 +81,13 @@ export class HeaderComponent {
     var navigate = this.cityName+'/collections/featured';
     this.router.navigate([navigate]);
   }
+ selectval(val) {
+     this.stateForm.patchValue({"keywords_input": val});
+     this.headerService.getCollectionByCusine(val,this.cityName,this.cityId).subscribe((data) => {
+     this.router.navigate([this.cityName+'/'+val+"-in-"+this.cityName]);
+     }
+  );
+    this.headerService.getCityCollection(this.cityId).subscribe(data => this.collections = data['collections']);
+     this.cusineDropDown = !this.cusineDropDown;
+ }
 }

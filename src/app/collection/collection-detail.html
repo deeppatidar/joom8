@@ -74,7 +74,7 @@
                <span class="trending-icon pr10 pt5"> <img class="ui micro image" src="https://b.zmtcdn.com/images/trending_icon.svg"> </span>
                <p class="pb5"><b> Recommended for this area </b></p>
               </div>
-              <div class="col-l-16 pb20 pt5 pl0 pr0 hero_searches_container " data-query-type="category" data-query-id="8">
+              <!-- <div class="col-l-16 pb20 pt5 pl0 pr0 hero_searches_container " data-query-type="category" data-query-id="8">
                <a href="/index.php?city=14&amp;newly-opened=1&amp;hero_searches_data=YXR0cmlidXRlJCQzMTY%3D&amp;category=8" data-query-type="attribute" data-query-id="316" data-query-name="Newly Opened" class="hero_search_tags">
                 <div class="
                                                                             round_tag_button_without_subtitle
@@ -124,6 +124,7 @@
                  </div>
                 </div> </a>
               </div>
+ -->
               <div class="clear"></div>
               <!-- tag functionality end -->
              </div>
@@ -161,26 +162,26 @@
                     Sort by
                    </div>
                   </div>
-                  <a href="https://www.zomato.com/indore/breakfast">
+                  <!-- <a (click)="getCollectionByFilter('Popularity','desc')">
                    <div class="search_filter sort cursor-pointer">
                     <span class="zgreen bold">Popularity <span class="grey-text"> - high to low </span></span>
-                   </div></a>
-                  <a href="https://www.zomato.com/indore/best-breakfast-restaurants">
+                   </div></a> -->
+                  <a (click)="getCollectionByFilter('rating','desc')">
                    <div class="search_filter sort cursor-pointer">
                     <span class="link_hover">Rating <span class="grey-text"> - high to low </span></span>
                    </div></a>
-                  <a href="/indore/breakfast?sort=cd">
+                  <a (click)="getCollectionByFilter('cost','desc')">
                    <div class="search_filter sort cursor-pointer">
                     <span class="link_hover">Cost <span class="grey-text"> - high to low </span></span>
                    </div></a>
-                  <a href="/indore/breakfast?sort=ca">
+                  <a (click)="getCollectionByFilter('cost','asc')">
                    <div class="search_filter sort cursor-pointer">
                     <span class="link_hover">Cost <span class="grey-text"> - low to high </span></span>
                    </div></a>
-                  <a href="/indore/breakfast?sort=recent">
+                  <!-- <a href="/indore/breakfast?sort=recent">
                    <div class="search_filter sort cursor-pointer">
                     <span class="link_hover">Recently Added <span class="grey-text"> - new to old </span></span>
-                   </div></a>
+                   </div></a> -->
                  </div>
                  <div class="filter-padding search-filter-tab pt0 pb0 mtop">
                   <div class="ui header small mb0">
@@ -541,7 +542,12 @@
                 <div class="row">
                  <div class="col-s-16 search_results mbot">
                   <section id="search-results-container" class="clearfix">
-                   <div class="orig-search-list-container  ">
+                      <div class="spinner"
+                      [ngStyle]="showSpinner ? {'align': 'center'} : {'display' :'none'}">
+                      <h2>Loading:</h2>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                        </div>
+                   <div class="orig-search-list-container" *ngIf="!showSpinner">
                     <div class="ui inverted dimmer">
                      <div class="ui red text loader" style="top: 70%; position: fixed;"></div>
                     </div>
@@ -549,7 +555,7 @@
                     <div id="orig-search-list" class="ui cards">
                      <!-- START SHOWING SEARCH RESULTS -->
 
-                       <div  *ngFor="let searchObj of searchCollection" class="card  search-snippet-card  all_web_jumbo_impr_track all_web_jumbo_click_track   search-card">
+                       <div  *ngFor="let searchObj of displaysearchCollection" class="card  search-snippet-card  all_web_jumbo_impr_track all_web_jumbo_click_track   search-card">
                         <div class="content">
                          <div class="js-search-result-li even  status 1">
                           <article class="search-result  first  ">
@@ -624,30 +630,28 @@
 
                    </div>
                    </div>
-                   <div class="search-pagination-top clearfix  mtop ">
+                   <div class="search-pagination-top clearfix  mtop " *ngIf="!showSpinner">
                     <div class="row">
-                     <div class="col-l-4 mtop pagination-number" tabindex="0" aria-label="Page 1 of 16 ">
-                      <div>
-                       Page
-                       <b>1</b> of
-                       <b>16</b>
-                      </div>
-                     </div>
                      <div class="col-l-12">
                       <div class="res-right right">
                        <div role="listbox" data-only_page_str="" class=" ui pagination menu small pagination-control res-menu-paginator">
-                        <div class="item paginator_item   disabled prev" aria-hidden="true">
+                        <div class="item paginator_item  prev" aria-hidden="true">
                          <div class="pr5">
                           <i class="left angle icon"></i>
                          </div>
                         </div>
-                        <a class="paginator_item active item " aria-selected="true" aria-label="Go to Page 1" href="/indore/breakfast?page=1" title="Go to Page 1">1</a>
-                        <a class="paginator_item item" aria-label="Go to Page 2" href="/indore/breakfast?page=2" title="Go to Page 2">2</a>
-                        <a class="paginator_item item" aria-label="Go to Page 3" href="/indore/breakfast?page=3" title="Go to Page 3">3</a>
-                        <a class="paginator_item item" aria-label="Go to Page 4" href="/indore/breakfast?page=4" title="Go to Page 4">4</a>
-                        <a class="paginator_item item" aria-label="Go to Page 5" href="/indore/breakfast?page=5" title="Go to Page 5">5</a>
-                        <a class="paginator_item item" aria-label="Next 5 Pages" href="/indore/breakfast?page=6" title="Next 5 Pages">...</a>
-                        <a class="paginator_item   next item" aria-label="Next Page" href="/indore/breakfast?page=2" title="Next Page">
+                        <a
+                        [ngStyle]="enablePrev ? {'color': '#d7d7dc','cursor': 'no-drop'} : {'color' :'blue'}"
+                        [ngClass]="{disabled:enablePrev}"
+                        class="paginator_item item" aria-selected="true" aria-label="Go to Page 1" title="Go to Page 1" (click)="previous()">Prev</a>
+
+                        <a
+                        [ngStyle]="enableNext ? {'color': '#d7d7dc','cursor': 'no-drop'} : {'color' :'blue'}"
+                        [ngClass]="{disabled:enableNext}"
+                        class="paginator_item active item " aria-selected="true" aria-label="Go to Page 1" title="Go to Page 1" (click)="next()">Next</a>
+
+                        <a
+                        class="paginator_item next item" aria-label="Next Page" title="Next Page">
                          <div class="ml5">
                           <i class="right angle icon"></i>
                          </div> </a>
@@ -659,19 +663,12 @@
                     <div class="ui divider"></div>
                    </div>
                    <script>
-                                                        var tdata = tdata || {};
-                                                         tdata["restaurants_shown"] = "1402314,1402960,18601095,1401948,18511264,18254231,1400186,1401637,1400208,1400169,1400126,1402359,1400365,1400315,1400478|;"
-
-
-
-
-                tdata["empty_search_data"] = {};
-                tdata["empty_search_data"]= JSON.stringify({"query":"","timestamp":"20171214","city_id":14,"subzone_id":0,"time":1513229298,"extra":""});
-                tdata["empty_search_data_type"] = "consumer";
-
-
-
-                                                    </script>
+                    var tdata = tdata || {};
+                     tdata["restaurants_shown"] = "1402314,1402960,18601095,1401948,18511264,18254231,1400186,1401637,1400208,1400169,1400126,1402359,1400365,1400315,1400478|;"
+                    tdata["empty_search_data"] = {};
+                    tdata["empty_search_data"]= JSON.stringify({"query":"","timestamp":"20171214","city_id":14,"subzone_id":0,"time":1513229298,"extra":""});
+                    tdata["empty_search_data_type"] = "consumer";
+                </script>
                   </section>
                  </div>
                  <div class="col-s-16 restaurant_search hidden">
@@ -681,7 +678,7 @@
                 </div>
                </div>
                <div class="col-l-5 col-s-16 right-column-container pl0 ">
-                <div class="ui fluid image lazy show_search_map" data-original="https://b.zmtcdn.com/images/search-map-placeholder.jpg" style="border-radius: 3px;background-image: url('https://b.zmtcdn.com/images/photoback.png'); background-size: cover;height: 60px;border-radius:4px;">
+                <!-- <div class="ui fluid image lazy show_search_map" data-original="https://b.zmtcdn.com/images/search-map-placeholder.jpg" style="border-radius: 3px;background-image: url('https://b.zmtcdn.com/images/photoback.png'); background-size: cover;height: 60px;border-radius:4px;">
                  <div class="search-map-overlay fontsize4 medium zblack">
                   View search results on map
                  </div>
@@ -694,7 +691,7 @@
                   Showing a selection of sponsored listings and popular places
                  </div>
                  <div id="cat-banner-ads"></div>
-                </div>
+                </div> -->
                 <div class="clear"></div>
                 <div id="mobile_banner_search_module" class="clearfix ui segment hidden content">
                  <div id="mobile-banner-module" class="pb5">
