@@ -832,8 +832,8 @@ body {
 }
 @font-face {
     font-family: zombatsregular;
-    src: url(/stylesheets/fonts/zombatsregular-webfont-web.eot?7e93cc077cc55c0b7a00e0ed33a43023);
-    src: url(/stylesheets/fonts/zombatsregular-webfont-web.eot?#iefix) format("embedded-opentype"), url(/stylesheets/fonts/zombatsregular-webfont-web.woff2?7e93cc077cc55c0b7a00e0ed33a43023) format("woff2"), url(/stylesheets/fonts/zombatsregular-webfont-web.woff?7e93cc077cc55c0b7a00e0ed33a43023) format("woff"), url(/stylesheets/fonts/zombatsregular-webfont-web.ttf?7e93cc077cc55c0b7a00e0ed33a43023) format("truetype"), url(/stylesheets/fonts/zombatsregular-webfont-web.svg?7e93cc077cc55c0b7a00e0ed33a43023#zombatsregular) format("svg");
+    /* src: url(/stylesheets/fonts/zombatsregular-webfont-web.eot?7e93cc077cc55c0b7a00e0ed33a43023);
+    src: url(/stylesheets/fonts/zombatsregular-webfont-web.eot?#iefix) format("embedded-opentype"), url(/stylesheets/fonts/zombatsregular-webfont-web.woff2?7e93cc077cc55c0b7a00e0ed33a43023) format("woff2"), url(/stylesheets/fonts/zombatsregular-webfont-web.woff?7e93cc077cc55c0b7a00e0ed33a43023) format("woff"), url(/stylesheets/fonts/zombatsregular-webfont-web.ttf?7e93cc077cc55c0b7a00e0ed33a43023) format("truetype"), url(/stylesheets/fonts/zombatsregular-webfont-web.svg?7e93cc077cc55c0b7a00e0ed33a43023#zombatsregular) format("svg"); */
     font-weight: 400;
     font-style: normal
 }
@@ -20058,10 +20058,11 @@ ol.ui.horizontal.list li:before {
     background-color: rgba(0, 0, 0, .05);
     color: rgba(0, 0, 0, .95)
 }
-.ui.menu .item.disabled,
+.ui.menu .item.disabled,#pagination,
 .ui.menu .item.disabled:hover {
     cursor: default;
-    background-color: transparent!important;
+    border:1px solid red;
+        background: red!important;
     color: rgba(40, 40, 40, .3)
 }
 .ui.menu:not(.vertical) .left.item,
@@ -28294,6 +28295,7 @@ select.ui.dropdown {
     -webkit-animation-name: jiggle;
     animation-name: jiggle
 }
+
 @-webkit-keyframes flash {
     0%, 100%, 50% {
         opacity: 1

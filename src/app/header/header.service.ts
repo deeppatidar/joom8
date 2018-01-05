@@ -18,16 +18,13 @@ import { SearchCollectionAdapter } from '../adapter/searchcollection.adapter'
 @Injectable()
 export class HeaderService {
   private url = 'https://developers.zomato.com/api/v2.1/';
-
-
    constructor (private http: Http) {}
-
    getCityByCityName(city) : Observable<City> {
         var _url = this.url + 'cities?q=' +city;
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
            })
         });
         return this.http.get(_url, options)
@@ -40,7 +37,7 @@ export class HeaderService {
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
            })
         });
         return this.http.get(_url, options)
@@ -48,8 +45,18 @@ export class HeaderService {
          .catch(this.handleError);
    };
 
-  
-
+   getCollectionByCusine(cusine, city , cityId) {
+       var _url = this.url + 'search?entity_id=' + cityId + '&entity_type=city&q=' + cusine+ '-in-'+ city;
+       var options = new RequestOptions({
+          headers: new Headers({
+          'Accept': 'application/json',
+           'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
+          })
+       });
+       return this.http.get(_url, options)
+        .map((resp: Response) => (resp.json()))
+        .catch(this.handleError);
+   };
 
    private handleError(error: any): Promise<any> {
        console.error('An error occurred', error);

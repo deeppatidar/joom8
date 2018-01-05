@@ -1,13 +1,8 @@
-
-
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-
-
 //import { CollectionInterface } from '../shared/collectionInterface';
 
 import { CollectionAdapter } from '../adapter/collection.adapter';
@@ -22,13 +17,13 @@ export class CollectionService {
   private url = 'https://developers.zomato.com/api/v2.1/';
 
    constructor (private http: Http) {}
-
+   //3682a3849e84c0b5d2ad352021b6efb1
    getCityByCityName(city) : Observable<City> {
         var _url = this.url + 'cities?q=' +city;
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
            })
         });
         return this.http.get(_url, options)
@@ -41,7 +36,7 @@ export class CollectionService {
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
            })
         });
         return this.http.get(_url, options)
@@ -50,11 +45,11 @@ export class CollectionService {
    };
 
    getfreeFlowSearch(id, value) : Observable<SearchCollection[]> {
-        var _url = this.url + '/search?entity_id='+id+'&q=' + value;
+        var _url = this.url + 'search?entity_id='+id+'&entity_type=city&q=' + value;
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
            })
         });
         return this.http.get(_url, options)
@@ -62,14 +57,25 @@ export class CollectionService {
          .catch(this.handleError);
    };
 
+   getCollectionByFilter(id, value ,filter , order) : Observable<SearchCollection[]> {
+       var _url = this.url + 'search?entity_id='+id+'&entity_type=city&q=' + value + '&sort='+filter+'&order='+order;
+       var options = new RequestOptions({
+          headers: new Headers({
+          'Accept': 'application/json',
+           'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
+          })
+       });
+       return this.http.get(_url, options)
+        .map((resp: Response) => new SearchCollectionAdapter(resp.json()))
+        .catch(this.handleError);
+    };
+
    private handleError(error: any): Promise<any> {
        console.error('An error occurred', error);
        return Promise.reject(error.message || error);
    };
 
 };
-
-
 
   //  getCollection(): Promise<Array<collectionInterface[]>> {
   //    var options = new RequestOptions({
