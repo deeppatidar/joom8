@@ -1,504 +1,461 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="origin" name="referrer" />
+<div class="claims-app-container" id="claims-app-container"></div>
 
-    <!-- <link rel="preconnect" href="//b.zmtcdn.com" /> -->
-    <!-- <link rel="alternate" hreflang="en" href="https://www.zomato.com/indore" />
-    <link rel="alternate" hreflang="tr" href="https://www.zomato.com/tr/indore" />
-    <link rel="alternate" hreflang="es" href="https://www.zomato.com/es/indore" />
-    <link rel="alternate" hreflang="pt" href="https://www.zomato.com/pt/indore" />
-    <link rel="alternate" hreflang="id" href="https://www.zomato.com/id/indore" />
-    <link rel="alternate" hreflang="cs" href="https://www.zomato.com/cs/indore" />
-    <link rel="alternate" hreflang="sk" href="https://www.zomato.com/sk/indore" />
-    <link rel="alternate" hreflang="pl" href="https://www.zomato.com/pl/indore" />
-    <link rel="alternate" hreflang="it" href="https://www.zomato.com/it/indore" />
-    <link rel="alternate" hreflang="vi" href="https://www.zomato.com/vi/indore" /> -->
-
-    <title>Restaurants - Indore Restaurants, Restaurants in Indore | Zomato India</title>
-
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, initial-scale=1">
-
-    <link rel="icon" type="image/png" href="https://b.zmtcdn.com/images/logo/zomato_favicon5.png" />
-    <link rel="apple-touch-icon-precomposed" href="https://b.zmtcdn.com/images/logo/zomato_favicon5.png" />
-
-    <link rel="stylesheet" type="text/css" href="assets/css/global.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/global1.css" />
-
-    <script type="text/javascript"></script>
-
-
-
-  <meta property="og:image" content="https://b.zmtcdn.com/images/logo/zomato.jpg" />
-</head>
-
-<body class="start ct-present is-responsive en">
-
-    <div class="ghboxcontainer" style="visibility: hidden; display: none;">
-        <div id="ghbox"></div>
-    </div>
-
-    <div class="claims-app-container" id="claims-app-container"></div>
-
-    <div class="zimagery" style="background-image: url(https://b.zmtcdn.com/images/foodshots/cover/pizza3.jpg);; background-size: cover;">
-        <div class="zimagery-overlay" style="background: rgba(0,0,0,0.4);">
-            <div id="sticky_header" class="ui sticky v2">
-                <header class="header " id="header">
-                    <div class="header__links__container">
-                        <div class="header__links__wrapper">
-                            <a href="https://www.zomato.com/business?ref=new_header_top_nav" class="link">Products for Businesses</a>
-                            <a href="https://www.zomato.com/careers?ref=new_header_top_nav" class="link">We&#039;re hiring</a>
-                        </div>
-                    </div>
-                    <div class="header__navigation__container">
-                        <div class="header__navigation__wrapper clearfix">
-                            <div class="left h100">
-                                <a href="https://www.zomato.com/mobile?ref=new_header_top_nav" class="header__navigation__link get-the-app">
-                                    <img src="https://b.zmtcdn.com/images/icons/get-the-app-plain.svg" />
-                                    <span class="label">Get the App</span>
-                                </a>
-                            </div>
-                            <div class="right h100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header__container">
-                        <div class="header__wrapper">
-                            <div id="login-navigation" class="login__container right">
-                                <div class="header-link">
-                                    <a href="#" class="signin-link header-login-button ui button mr0" id="signin-link">Log in</a>
-                                    <a href="#" class="signup-link header-login-button ui button mr0" id="signup-link">Create an account</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            </div>
-            <div id="resp-search-container" class="search-box-area"></div>
-
-            <div class="h-city-main p-relative" id="zimagery-container">
-                <div class="logo--home">
-                    <a class="logo--header" href="https://www.zomato.com/indore" title="Find the best restaurants, cafés, and bars in Indore">
-                        <img src="https://b.zmtcdn.com/images/logo/zomato_logo.svg" alt="Find the best restaurants, cafés, and bars in Indore" />
-                    </a>
-                </div>
-                <h1 class="h-city-home-title">
-        Find the best restaurants, cafés, and bars in Indore  </h1>
-                <div class="wrapper">
-
-                    <div id="search_main_container" class="full_search  ">
-                        <div id="search_bar_wrapper" class="search_bar search-zindex" role="form">
-                            <div class="search_type flex-shrink-0">
-                                <div id="location_contianer">
-                                    <div id="location_pretext">
-                                        <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
-                                            <label class="hdn" id="label_search_location">Please type a location...</label>
-                                            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
-                                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar' type='text'
-                                                 autocomplete="off">
-                                             </form>
-                                             <div clickOutside (clickOutside)="closeDropDown()">
-                                                 <div *ngIf='showDropDown' class='search-drop-down '>
-                                                     <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
-                                                         <a [innerHTML]="s | letterBold: getSearchValue()">
-                                                                {{s}}
-                                                         </a>
-                                                     </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-shrink-1 search-box plr0i ml5 mr5">
-                                <div id="keywords_container" class="col-s-16 pr0">
-                                    <div id="keywords_pretext">
-                                        <div class="k-pre-1 hidden" style="overflow:hidden;">
-                                            <span class="search-bar-icon mr5">
-                                                <i class="search icon tiny"></i>
-                                            </span>
-                                            <div class="keyword_placeholder nowrap">
-                                                <div class="keyword_div">Search for restaurants or cuisines...</div>
-                                            </div>
-                                        </div>
-                                        <div class="k-pre-2  w100">
-                                            <label id="label_search_res" class="hdn">Search for restaurants or cuisines...</label>
-                                            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
-                                                <input role="combobox" aria-expanded="true" aria-autocomplete="list" formControlName='keywords_input' aria-owns="keywords-by" aria-labelledby="label_search_res" id="keywords_input" class="discover-search" placeholder="Search for restaurants or cuisines..." autocomplete="off" (click)="openCusineDropDown()"/>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <!-- keywords dro down starts   -->
-                                    <div *ngIf='cusineDropDown' id="explore-keywords-dropdown">
-                                        <div class="popular-searches">
-                                            <ul >
-                                                <li class="label">Trending Searches</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <ul id="explore-by">
-                                               <li class="label">Suggested Searches</li>
-
-                                               <li class="item" data-item_type="cat" data-item_id="1" (click)="selectval('Delivery')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png" alt="Delivery" />
-                                                       <span>Delivery</span>
-                                                   </div>
-                                               </li>
-
-                                               <li class="item" data-item_type="cat" data-item_id="8"  (click)="selectval('Breakfast')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" alt="Breakfast" />
-                                                        <span>Breakfast</span>
-                                                   </div>
-                                               </li>
-
-                                               <li class="item" data-item_type="cat" data-item_id="9"  (click)="selectval('Lunch')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" alt="Lunch" />
-                                                        <span>Lunch</span>
-                                                   </div>
-                                               </li>
-                                               <li class="item" data-item_type="cat" data-item_id="10" (click)="selectval('Dinner')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" alt="Dinner" />
-                                                        <span>Dinner</span>
-                                                   </div>
-                                               </li>
-                                               <li class="item" data-item_type="cat" data-item_id="6"  (click)="selectval('Cafés')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" alt="Cafés" />
-                                                        <span>Cafés</span>
-                                                   </div>
-                                               </li>
-
-                                               <li class="item" data-item_type="cat" data-item_id="3"  (click)="selectval('Drinks & Nightlife')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" alt="Drinks & Nightlife" />
-                                                        <span>Drinks & Nightlife</span>
-                                                   </div>
-                                               </li>
-
-                                               <li class="item" data-item_type="specials" data-item_id="13" (click)="selectval('North Indian')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_13.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_13.png" alt="North Indian" />
-                                                        <span>North Indian</span>
-                                                   </div>
-                                               </li>
-                                               <li class="item" data-item_type="specials" data-item_id="31" (click)="selectval('Chinese')">
-                                                   <div class="start-step-label">
-                                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png" alt="Chinese" />
-                                                        <span>Chinese</span>
-                                                   </div>
-                                               </li>
-                                           </ul>
-                                        </div>
-                                    </div>
-                                    <!-- keywords dro down ends   -->
-                                </div>
-                            </div>
-                            <div class="flex-shrink-0 plr0i">
-                                <div role="button" tabindex="0" id="search_button" class="left ui red button">
-                                    Search </div>
-                            </div>
-
-                            <div class="clear"></div>
-                        </div>
-                        <form id="search-keyword" method="GET" action="https://www.zomato.com/index.php" class="hidden">
-                            <input type="hidden" name="category" id="category" value="0" />
-                            <input type="hidden" name="tokens" id="selected-tokens" value="" />
-                            <input type="hidden" name="special" id="special" value="0" />
-                            <input type="hidden" name="cuisine" id="cuisine" value="0" />
-                            <input type="hidden" name="city" id="city" value="14" />
-                            <input type="hidden" name="subzone" id="subzone" value="" />
-                            <input type="hidden" name="zone" id="zone" value="" />
-                            <input type="hidden" name="landmark" id="landmark" value="" />
-                            <input type="hidden" name="near-me" id="near_me" value="" />
-                            <input type="hidden" name="zipcode" id="zipcode" value="" />
-                            <input type="hidden" name="zipcode_area" id="zipcode_area" value="" />
-                            <input type="hidden" name="group" id="group" value="" />
-                            <input type="hidden" name="metro" id="metro" value="" />
-                            <input type="hidden" name="street" id="street" value="" />
-                            <input type="hidden" name="entity_type" id="form_entity_type" value="city" />
-                            <input type="hidden" name="entity_id" id="form_entity_id" value="14" />
-                            <input type="hidden" name="order-online" id="online-ordering" value="" />
-                            <input type="hidden" name="q" id="keywords_query" value="" />
-                            <input type="hidden" name="place_id" id="place_id" value="" />
-                            <input type="hidden" name="table_booking" id="tr-header-input" value="" />
-                        </form>
+<div class="zimagery" style="background-image: url(https://b.zmtcdn.com/images/foodshots/cover/pizza3.jpg);; background-size: cover;">
+    <div class="zimagery-overlay" style="background: rgba(0,0,0,0.4);">
+        <div id="sticky_header" class="ui sticky v2">
+            <header class="header " id="header">
+                <div class="header__links__container">
+                    <div class="header__links__wrapper">
+                        <a href="https://www.zomato.com/business?ref=new_header_top_nav" class="link">Products for Businesses</a>
+                        <a href="https://www.zomato.com/careers?ref=new_header_top_nav" class="link">We&#039;re hiring</a>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        <!-- zimagery-overlay -->
-    </div>
-    <!-- zimagery -->
-    <div class="pbot clearfix"></div>
-    <section class="wrapper mtop2">
-        <div class="row">
-            <div class="col-l-2by3">
-                <h2 class="ui header">
-                            <span class="segment_heading">Collections</span>
-                            <span class="sub header">
-                                <span class="segment_sub_heading">
-                                    Explore curated lists of top restaurants, cafes, pubs, and bars in and around Indore, based on trends                                </span>
-                            </span>
-                        </h2>
-                <div class="collections-grid row">
-                    <div class="col-l-8 col-s-16 mbot" *ngFor = "let collection of collections">
-                        <div class="ui fluid card">
-                            <a href="/indore/top-restaurants">
-                                <div class="row">
-                                    <div class="col-s-7">
-                                        <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
-                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="{{collection.getImage_url()}}" />
-                                        </div>
-                                    </div>
-                                    <div class="col-s-9">
-                                        <div class="row">
-                                            <div class="ptop0 mr20 ml5 coll_detail">
-                                                <div class="heading bold ln20">
-                                                    {{collection.getTitle()}}
-                                                </div>
-                                                <div class="zblack fontsize4 description mt5  hp ">{{collection.getDescription()}}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="header__navigation__container">
+                    <div class="header__navigation__wrapper clearfix">
+                        <div class="left h100">
+                            <a href="https://www.zomato.com/mobile?ref=new_header_top_nav" class="header__navigation__link get-the-app">
+                                <img src="https://b.zmtcdn.com/images/icons/get-the-app-plain.svg" />
+                                <span class="label">Get the App</span>
                             </a>
                         </div>
+                        <div class="right h100">
+                        </div>
                     </div>
-                    <div class="col-l-16 col-s-16">
-                        <!-- <a routerLink="/collections/featured/{{cityName}}" routerLinkActive="">
-                            <div class="ui segment zred tac">
-                                All collections in Indore </div>
-                        </a> -->
-                        <a (click)="redirectToCollection()">
-                          <div class="ui segment zred tac">
-                              All collections in {{cityName}}</div>
+                </div>
+                <div class="header__container">
+                    <div class="header__wrapper">
+                        <div id="login-navigation" class="login__container right">
+                            <div class="header-link">
+                                <a href="#" class="signin-link header-login-button ui button mr0" id="signin-link">Log in</a>
+                                <a href="#" class="signup-link header-login-button ui button mr0" id="signup-link">Create an account</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div id="resp-search-container" class="search-box-area"></div>
+
+        <div class="h-city-main p-relative" id="zimagery-container">
+            <div class="logo--home">
+                <a class="logo--header" href="https://www.zomato.com/indore" title="Find the best restaurants, cafés, and bars in Indore">
+                    <img src="https://b.zmtcdn.com/images/logo/zomato_logo.svg" alt="Find the best restaurants, cafés, and bars in Indore" />
+                </a>
+            </div>
+            <h1 class="h-city-home-title">
+    Find the best restaurants, cafés, and bars in Indore  </h1>
+            <div class="wrapper">
+
+                <div id="search_main_container" class="full_search  ">
+                    <div id="search_bar_wrapper" class="search_bar search-zindex" role="form">
+                        <div class="search_type flex-shrink-0">
+                            <div id="location_contianer">
+                                <div id="location_pretext">
+                                    <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
+                                        <label class="hdn" id="label_search_location">Please type a location...</label>
+                                        <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                             <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar' type='text'
+                                             autocomplete="off">
+                                         </form>
+                                         <div clickOutside (clickOutside)="closeDropDown()">
+                                             <div *ngIf='showDropDown' class='search-drop-down '>
+                                                 <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                                                     <a [innerHTML]="s | letterBold: getSearchValue()">
+                                                            {{s}}
+                                                     </a>
+                                                 </div>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-1 search-box plr0i ml5 mr5">
+                            <div id="keywords_container" class="col-s-16 pr0">
+                                <div id="keywords_pretext">
+                                    <div class="k-pre-1 hidden" style="overflow:hidden;">
+                                        <span class="search-bar-icon mr5">
+                                            <i class="search icon tiny"></i>
+                                        </span>
+                                        <div class="keyword_placeholder nowrap">
+                                            <div class="keyword_div">Search for restaurants or cuisines...</div>
+                                        </div>
+                                    </div>
+                                    <div class="k-pre-2  w100">
+                                        <label id="label_search_res" class="hdn">Search for restaurants or cuisines...</label>
+                                        <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                            <input role="combobox" aria-expanded="true" aria-autocomplete="list" formControlName='keywords_input' aria-owns="keywords-by" aria-labelledby="label_search_res" id="keywords_input" class="discover-search" placeholder="Search for restaurants or cuisines..." autocomplete="off" (click)="openCusineDropDown()"/>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- keywords dro down starts   -->
+                                <div *ngIf='cusineDropDown' id="explore-keywords-dropdown">
+                                    <div class="popular-searches">
+                                        <ul >
+                                            <li class="label">Trending Searches</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul id="explore-by">
+                                           <li class="label">Suggested Searches</li>
+
+                                           <li class="item" data-item_type="cat" data-item_id="1" (click)="selectval('Delivery')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png" alt="Delivery" />
+                                                   <span>Delivery</span>
+                                               </div>
+                                           </li>
+
+                                           <li class="item" data-item_type="cat" data-item_id="8"  (click)="selectval('Breakfast')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" alt="Breakfast" />
+                                                    <span>Breakfast</span>
+                                               </div>
+                                           </li>
+
+                                           <li class="item" data-item_type="cat" data-item_id="9"  (click)="selectval('Lunch')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" alt="Lunch" />
+                                                    <span>Lunch</span>
+                                               </div>
+                                           </li>
+                                           <li class="item" data-item_type="cat" data-item_id="10" (click)="selectval('Dinner')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" alt="Dinner" />
+                                                    <span>Dinner</span>
+                                               </div>
+                                           </li>
+                                           <li class="item" data-item_type="cat" data-item_id="6"  (click)="selectval('Cafés')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" alt="Cafés" />
+                                                    <span>Cafés</span>
+                                               </div>
+                                           </li>
+
+                                           <li class="item" data-item_type="cat" data-item_id="3"  (click)="selectval('Drinks & Nightlife')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" alt="Drinks & Nightlife" />
+                                                    <span>Drinks & Nightlife</span>
+                                               </div>
+                                           </li>
+
+                                           <li class="item" data-item_type="specials" data-item_id="13" (click)="selectval('North Indian')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_13.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_13.png" alt="North Indian" />
+                                                    <span>North Indian</span>
+                                               </div>
+                                           </li>
+                                           <li class="item" data-item_type="specials" data-item_id="31" (click)="selectval('Chinese')">
+                                               <div class="start-step-label">
+                                                   <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png?" src="https://b.zmtcdn.com/images/search_tokens/app_icons/special_31.png" alt="Chinese" />
+                                                    <span>Chinese</span>
+                                               </div>
+                                           </li>
+                                       </ul>
+                                    </div>
+                                </div>
+                                <!-- keywords dro down ends   -->
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 plr0i">
+                            <div role="button" tabindex="0" id="search_button" class="left ui red button">
+                                Search </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <form id="search-keyword" method="GET" action="https://www.zomato.com/index.php" class="hidden">
+                        <input type="hidden" name="category" id="category" value="0" />
+                        <input type="hidden" name="tokens" id="selected-tokens" value="" />
+                        <input type="hidden" name="special" id="special" value="0" />
+                        <input type="hidden" name="cuisine" id="cuisine" value="0" />
+                        <input type="hidden" name="city" id="city" value="14" />
+                        <input type="hidden" name="subzone" id="subzone" value="" />
+                        <input type="hidden" name="zone" id="zone" value="" />
+                        <input type="hidden" name="landmark" id="landmark" value="" />
+                        <input type="hidden" name="near-me" id="near_me" value="" />
+                        <input type="hidden" name="zipcode" id="zipcode" value="" />
+                        <input type="hidden" name="zipcode_area" id="zipcode_area" value="" />
+                        <input type="hidden" name="group" id="group" value="" />
+                        <input type="hidden" name="metro" id="metro" value="" />
+                        <input type="hidden" name="street" id="street" value="" />
+                        <input type="hidden" name="entity_type" id="form_entity_type" value="city" />
+                        <input type="hidden" name="entity_id" id="form_entity_id" value="14" />
+                        <input type="hidden" name="order-online" id="online-ordering" value="" />
+                        <input type="hidden" name="q" id="keywords_query" value="" />
+                        <input type="hidden" name="place_id" id="place_id" value="" />
+                        <input type="hidden" name="table_booking" id="tr-header-input" value="" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- zimagery-overlay -->
+</div>
+<!-- zimagery -->
+<div class="pbot clearfix"></div>
+<section class="wrapper mtop2">
+    <div class="row">
+        <div class="col-l-2by3">
+            <h2 class="ui header">
+                        <span class="segment_heading">Collections</span>
+                        <span class="sub header">
+                            <span class="segment_sub_heading">
+                                Explore curated lists of top restaurants, cafes, pubs, and bars in and around Indore, based on trends                                </span>
+                        </span>
+                    </h2>
+            <div class="collections-grid row">
+                <div class="col-l-8 col-s-16 mbot" *ngFor = "let collection of collections">
+                    <div class="ui fluid card">
+                        <a href="/indore/top-restaurants">
+                            <div class="row">
+                                <div class="col-s-7">
+                                    <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
+                                        <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="{{collection.getImage_url()}}" />
+                                    </div>
+                                </div>
+                                <div class="col-s-9">
+                                    <div class="row">
+                                        <div class="ptop0 mr20 ml5 coll_detail">
+                                            <div class="heading bold ln20">
+                                                {{collection.getTitle()}}
+                                            </div>
+                                            <div class="zblack fontsize4 description mt5  hp ">{{collection.getDescription()}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </a>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-l-1by3 homepage_order_widget">
-                <h2 class="ui header">
-                            <span class="segment_heading">Order Food Online</span>
-                            <span class="sub header">
-                                <span class="segment_sub_heading">
-                                    From the best restaurants delivering to your doorstep                                </span>
-                            </span>
-                        </h2>
-                <div class="ui segment" style="min-height:333px;">
-                    <div class="content">
-                        <h4 class="header">Enter your delivery location</h4>
-                        <div class="ui fluid order search mb15">
-                            <div class="ui left icon large input w100" style="float: none;">
-                                <i class="location arrow small icon"></i>
-                                <input class="location prompt" placeholder="Type delivery location here..." autocomplete="off" value="" />
-                                <div class="input-separator"></div>
-                                <button type="button" class="ui icon button auto-detect">
-                                    <span class="hide-on-mobile">Detect</span>
-                                    <i class="icon" data-icon="8"></i>
-                                </button>
-                            </div>
-                            <div class="results"></div>
-                        </div>
-                        <div class="ui fluid green fluid button go-location homepage">Order Food Online!</div>
-                        <div class="ui divider"></div>
-                        <div class="not-available-errors hidden clearfix">
-                            <div class="col-s-16">
-                                <div class="ui warning message">We are not yet at your location</div>
-                            </div>
-                        </div>
-                        <div class="location-errors hidden clearfix">
-                            <div class="col-s-16">
-                                <div class="ui warning message">Sorry, we could not detect your delivery location. Please select a delivery area by typing in the search box above.</div>
-                            </div>
-                        </div>
-                        <div class="fontsize4 zgreen pt5 tac mtop2">
-                            View restaurants delivering to you and get 15% off on your first order with the promo code <b>EATIN</b>. </div>
+                <div class="col-l-16 col-s-16">
+                    <!-- <a routerLink="/collections/featured/{{cityName}}" routerLinkActive="">
+                        <div class="ui segment zred tac">
+                            All collections in Indore </div>
+                    </a> -->
+                    <a (click)="redirectToCollection()">
+                      <div class="ui segment zred tac">
+                          All collections in {{cityName}}</div>
+                    </a>
 
-                    </div>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="col-l-1by3 homepage_order_widget">
+            <h2 class="ui header">
+                        <span class="segment_heading">Order Food Online</span>
+                        <span class="sub header">
+                            <span class="segment_sub_heading">
+                                From the best restaurants delivering to your doorstep                                </span>
+                        </span>
+                    </h2>
+            <div class="ui segment" style="min-height:333px;">
+                <div class="content">
+                    <h4 class="header">Enter your delivery location</h4>
+                    <div class="ui fluid order search mb15">
+                        <div class="ui left icon large input w100" style="float: none;">
+                            <i class="location arrow small icon"></i>
+                            <input class="location prompt" placeholder="Type delivery location here..." autocomplete="off" value="" />
+                            <div class="input-separator"></div>
+                            <button type="button" class="ui icon button auto-detect">
+                                <span class="hide-on-mobile">Detect</span>
+                                <i class="icon" data-icon="8"></i>
+                            </button>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                    <div class="ui fluid green fluid button go-location homepage">Order Food Online!</div>
+                    <div class="ui divider"></div>
+                    <div class="not-available-errors hidden clearfix">
+                        <div class="col-s-16">
+                            <div class="ui warning message">We are not yet at your location</div>
+                        </div>
+                    </div>
+                    <div class="location-errors hidden clearfix">
+                        <div class="col-s-16">
+                            <div class="ui warning message">Sorry, we could not detect your delivery location. Please select a delivery area by typing in the search box above.</div>
+                        </div>
+                    </div>
+                    <div class="fontsize4 zgreen pt5 tac mtop2">
+                        View restaurants delivering to you and get 15% off on your first order with the promo code <b>EATIN</b>. </div>
 
-    <section class="wrapper mtop2 ptop">
-        <h2 class="ui header">
-                <span class="segment_heading">Quick Searches</span>
-                <span class="sub header">
-                    <span class="segment_sub_heading">
-                        Discover restaurants by type of meal                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wrapper mtop2 ptop">
+    <h2 class="ui header">
+            <span class="segment_heading">Quick Searches</span>
+            <span class="sub header">
+                <span class="segment_sub_heading">
+                    Discover restaurants by type of meal
                 </span>
-            </h2>
-        <div class="ui segment eight column doubling padded grid">
-            <a href="https://www.zomato.com/indore/delivery" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_1.png" style="height: 48px; width: 48px;" />
-                <div>Delivery</div>
-            </a>
-            <a href="https://www.zomato.com/indore/breakfast" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_3.png" data-original="assets/images/category_10.png" style="height: 48px; width: 48px;" />
-                <div>Breakfast</div>
-            </a>
-            <a href="https://www.zomato.com/indore/lunch" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_6.png" data-original="assets/images/category_3.png" style="height: 48px; width: 48px;" />
-                <div>Lunch</div>
-            </a>
-            <a href="https://www.zomato.com/indore/dinner" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_8.png" data-original="assets/images/category_6.png" style="height: 48px; width: 48px;" />
-                <div>Dinner</div>
-            </a>
-            <a href="https://www.zomato.com/indore/cafés" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_9.png" data-original="assets/images/category_8.png" style="height: 48px; width: 48px;" />
-                <div>Cafés</div>
-            </a>
-            <a href="https://www.zomato.com/indore/restaurants?category=3" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_10.png" data-original="assets/images/category_9.png" style="height: 48px; width: 48px;" />
-                <div>Drinks & Nightlife</div>
-            </a>
+            </span>
+        </h2>
+    <div class="ui segment eight column doubling padded grid">
+        <a routerLink="quickSearch/:cityName/delivery" class="column ta-center start-categories-item">
+            <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_1.png" style="height: 48px; width: 48px;" />
+            <div>Delivery</div>
+        </a>
+        <a routerLink="quickSearch/:cityName/breakfast" class="column ta-center start-categories-item">
+            <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_3.png" data-original="assets/images/category_10.png" style="height: 48px; width: 48px;" />
+            <div>Breakfast</div>
+        </a>
+        <a routerLink="quickSearch/:cityName/lunch" class="column ta-center start-categories-item">
+            <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_6.png" data-original="assets/images/category_3.png" style="height: 48px; width: 48px;" />
+            <div>Lunch</div>
+        </a>
+        <a routerLink="quickSearch/:cityName/dinner" class="column ta-center start-categories-item">
+            <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_8.png" data-original="assets/images/category_6.png" style="height: 48px; width: 48px;" />
+            <div>Dinner</div>
+        </a>
+        <a routerLink="quickSearch/:cityName/cafes" class="column ta-center start-categories-item">
+            <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_9.png" data-original="assets/images/category_8.png" style="height: 48px; width: 48px;" />
+            <div>Cafés</div>
+        </a>
+        <a routerLink=":cityName/restaurants?category=3" class="column ta-center start-categories-item">
+            <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_10.png" data-original="assets/images/category_9.png" style="height: 48px; width: 48px;" />
+            <div>Drinks & Nightlife</div>
+        </a>
+    </div>
+</section>
+
+<section class="wrapper mtop2 ptop">
+    <h2 class="ui header">
+            <span class="segment_heading">
+                Popular localities in and around Indore                </span>
+            <span class="sub header">
+                <span class="segment_sub_heading">
+                    Explore restaurants, bars, and cafés by locality                    </span>
+            </span>
+        </h2>
+    <div class="ui segment row">
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Vijay Nagar" href="https://www.zomato.com/indore/vijay-nagar-restaurants">
+                    Vijay Nagar                        <span class="grey-text hide-on-mobile">(312 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Old Palasia" href="https://www.zomato.com/indore/old-palasia-restaurants">
+                    Old Palasia                        <span class="grey-text hide-on-mobile">(97 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in New Palasia" href="https://www.zomato.com/indore/new-palasia-restaurants">
+                    New Palasia                        <span class="grey-text hide-on-mobile">(82 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Bhawar Kuan" href="https://www.zomato.com/indore/bhawar-kuan-restaurants">
+                    Bhawar Kuan                        <span class="grey-text hide-on-mobile">(88 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in South Tukoganj" href="https://www.zomato.com/indore/south-tukoganj-restaurants">
+                    South Tukoganj                        <span class="grey-text hide-on-mobile">(53 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sapna Sangeeta" href="https://www.zomato.com/indore/sapna-sangeeta-restaurants">
+                    Sapna Sangeeta                        <span class="grey-text hide-on-mobile">(44 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in By Pass Road (North)" href="https://www.zomato.com/indore/by-pass-road-north-restaurants">
+                    By Pass Road (North)                        <span class="grey-text hide-on-mobile">(50 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Rau" href="https://www.zomato.com/indore/rau-restaurants">
+                    Rau                        <span class="grey-text hide-on-mobile">(26 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in RNT Marg" href="https://www.zomato.com/indore/rnt-marg-restaurants">
+                    RNT Marg                        <span class="grey-text hide-on-mobile">(49 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Geeta Bhavan" href="https://www.zomato.com/indore/geeta-bhavan-restaurants">
+                    Geeta Bhavan                        <span class="grey-text hide-on-mobile">(28 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in HIG-LIG" href="https://www.zomato.com/indore/hig-lig-restaurants">
+                    HIG-LIG                        <span class="grey-text hide-on-mobile">(25 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in YN Road" href="https://www.zomato.com/indore/yn-road-restaurants">
+                    YN Road                        <span class="grey-text hide-on-mobile">(21 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sarwate Bus Stand" href="https://www.zomato.com/indore/sarwate-bus-stand-restaurants">
+                    Sarwate Bus Stand                        <span class="grey-text hide-on-mobile">(25 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Annapurna Road" href="https://www.zomato.com/indore/annapurna-road-restaurants">
+                    Annapurna Road                        <span class="grey-text hide-on-mobile">(24 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in By Pass Road (South)" href="https://www.zomato.com/indore/by-pass-road-south-restaurants">
+                    By Pass Road (South)                        <span class="grey-text hide-on-mobile">(15 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in MR 10 Road" href="https://www.zomato.com/indore/mr-10-road-restaurants">
+                    MR 10 Road                        <span class="grey-text hide-on-mobile">(15 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Rajendra Nagar" href="https://www.zomato.com/indore/rajendra-nagar-restaurants">
+                    Rajendra Nagar                        <span class="grey-text hide-on-mobile">(23 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sudama Nagar" href="https://www.zomato.com/indore/sudama-nagar-restaurants">
+                    Sudama Nagar                        <span class="grey-text hide-on-mobile">(23 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sarafa Bazaar" href="https://www.zomato.com/indore/sarafa-bazaar-restaurants">
+                    Sarafa Bazaar                        <span class="grey-text hide-on-mobile">(12 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Khajrana" href="https://www.zomato.com/indore/khajrana-restaurants">
+                    Khajrana                        <span class="grey-text hide-on-mobile">(33 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Press Complex" href="https://www.zomato.com/indore/press-complex-restaurants">
+                    Press Complex                        <span class="grey-text hide-on-mobile">(16 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Chhavani" href="https://www.zomato.com/indore/chhavani-restaurants">
+                    Chhavani                        <span class="grey-text hide-on-mobile">(17 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Manik Bagh Road" href="https://www.zomato.com/indore/manik-bagh-road-restaurants">
+                    Manik Bagh Road                        <span class="grey-text hide-on-mobile">(16 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Airport Road" href="https://www.zomato.com/indore/airport-road-restaurants">
+                    Airport Road                        <span class="grey-text hide-on-mobile">(21 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Gangwal Bus Stand" href="https://www.zomato.com/indore/gangwal-bus-stand-restaurants">
+                    Gangwal Bus Stand                        <span class="grey-text hide-on-mobile">(9 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Navlakha" href="https://www.zomato.com/indore/navlakha-restaurants">
+                    Navlakha                        <span class="grey-text hide-on-mobile">(12 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Jail Road" href="https://www.zomato.com/indore/jail-road-restaurants">
+                    Jail Road                        <span class="grey-text hide-on-mobile">(7 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Ranjeet Hanuman" href="https://www.zomato.com/indore/ranjeet-hanuman-restaurants">
+                    Ranjeet Hanuman                        <span class="grey-text hide-on-mobile">(9 places)</span>
+                </a>
+        <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Kothari Market" href="https://www.zomato.com/indore/kothari-market-restaurants">
+                    Kothari Market                        <span class="grey-text hide-on-mobile">(12 places)</span>
+                </a>
+    </div>
+</section>
+
+<section class="wrapper ptop ta-center mbot2">
+    <div class="ui statistics grey-text small margin0" style="justify-content: center; -webkit-justify-content: center;">
+        <div class="statistic">
+            <div class="value">24</div>
+            <div class="label">COUNTRIES</div>
         </div>
-    </section>
-
-    <section class="wrapper mtop2 ptop">
-        <h2 class="ui header">
-                <span class="segment_heading">
-                    Popular localities in and around Indore                </span>
-                <span class="sub header">
-                    <span class="segment_sub_heading">
-                        Explore restaurants, bars, and cafés by locality                    </span>
-                </span>
-            </h2>
-        <div class="ui segment row">
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Vijay Nagar" href="https://www.zomato.com/indore/vijay-nagar-restaurants">
-                        Vijay Nagar                        <span class="grey-text hide-on-mobile">(312 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Old Palasia" href="https://www.zomato.com/indore/old-palasia-restaurants">
-                        Old Palasia                        <span class="grey-text hide-on-mobile">(97 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in New Palasia" href="https://www.zomato.com/indore/new-palasia-restaurants">
-                        New Palasia                        <span class="grey-text hide-on-mobile">(82 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Bhawar Kuan" href="https://www.zomato.com/indore/bhawar-kuan-restaurants">
-                        Bhawar Kuan                        <span class="grey-text hide-on-mobile">(88 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in South Tukoganj" href="https://www.zomato.com/indore/south-tukoganj-restaurants">
-                        South Tukoganj                        <span class="grey-text hide-on-mobile">(53 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sapna Sangeeta" href="https://www.zomato.com/indore/sapna-sangeeta-restaurants">
-                        Sapna Sangeeta                        <span class="grey-text hide-on-mobile">(44 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in By Pass Road (North)" href="https://www.zomato.com/indore/by-pass-road-north-restaurants">
-                        By Pass Road (North)                        <span class="grey-text hide-on-mobile">(50 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Rau" href="https://www.zomato.com/indore/rau-restaurants">
-                        Rau                        <span class="grey-text hide-on-mobile">(26 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in RNT Marg" href="https://www.zomato.com/indore/rnt-marg-restaurants">
-                        RNT Marg                        <span class="grey-text hide-on-mobile">(49 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Geeta Bhavan" href="https://www.zomato.com/indore/geeta-bhavan-restaurants">
-                        Geeta Bhavan                        <span class="grey-text hide-on-mobile">(28 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in HIG-LIG" href="https://www.zomato.com/indore/hig-lig-restaurants">
-                        HIG-LIG                        <span class="grey-text hide-on-mobile">(25 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in YN Road" href="https://www.zomato.com/indore/yn-road-restaurants">
-                        YN Road                        <span class="grey-text hide-on-mobile">(21 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sarwate Bus Stand" href="https://www.zomato.com/indore/sarwate-bus-stand-restaurants">
-                        Sarwate Bus Stand                        <span class="grey-text hide-on-mobile">(25 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Annapurna Road" href="https://www.zomato.com/indore/annapurna-road-restaurants">
-                        Annapurna Road                        <span class="grey-text hide-on-mobile">(24 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in By Pass Road (South)" href="https://www.zomato.com/indore/by-pass-road-south-restaurants">
-                        By Pass Road (South)                        <span class="grey-text hide-on-mobile">(15 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in MR 10 Road" href="https://www.zomato.com/indore/mr-10-road-restaurants">
-                        MR 10 Road                        <span class="grey-text hide-on-mobile">(15 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Rajendra Nagar" href="https://www.zomato.com/indore/rajendra-nagar-restaurants">
-                        Rajendra Nagar                        <span class="grey-text hide-on-mobile">(23 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sudama Nagar" href="https://www.zomato.com/indore/sudama-nagar-restaurants">
-                        Sudama Nagar                        <span class="grey-text hide-on-mobile">(23 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Sarafa Bazaar" href="https://www.zomato.com/indore/sarafa-bazaar-restaurants">
-                        Sarafa Bazaar                        <span class="grey-text hide-on-mobile">(12 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Khajrana" href="https://www.zomato.com/indore/khajrana-restaurants">
-                        Khajrana                        <span class="grey-text hide-on-mobile">(33 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Press Complex" href="https://www.zomato.com/indore/press-complex-restaurants">
-                        Press Complex                        <span class="grey-text hide-on-mobile">(16 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Chhavani" href="https://www.zomato.com/indore/chhavani-restaurants">
-                        Chhavani                        <span class="grey-text hide-on-mobile">(17 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Manik Bagh Road" href="https://www.zomato.com/indore/manik-bagh-road-restaurants">
-                        Manik Bagh Road                        <span class="grey-text hide-on-mobile">(16 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Airport Road" href="https://www.zomato.com/indore/airport-road-restaurants">
-                        Airport Road                        <span class="grey-text hide-on-mobile">(21 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Gangwal Bus Stand" href="https://www.zomato.com/indore/gangwal-bus-stand-restaurants">
-                        Gangwal Bus Stand                        <span class="grey-text hide-on-mobile">(9 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Navlakha" href="https://www.zomato.com/indore/navlakha-restaurants">
-                        Navlakha                        <span class="grey-text hide-on-mobile">(12 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Jail Road" href="https://www.zomato.com/indore/jail-road-restaurants">
-                        Jail Road                        <span class="grey-text hide-on-mobile">(7 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Ranjeet Hanuman" href="https://www.zomato.com/indore/ranjeet-hanuman-restaurants">
-                        Ranjeet Hanuman                        <span class="grey-text hide-on-mobile">(9 places)</span>
-                    </a>
-            <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Kothari Market" href="https://www.zomato.com/indore/kothari-market-restaurants">
-                        Kothari Market                        <span class="grey-text hide-on-mobile">(12 places)</span>
-                    </a>
+        <div class="statistic">
+            <div class="value">1.2M</div>
+            <div class="label">RESTAURANTS</div>
         </div>
-    </section>
-
-    <section class="wrapper ptop ta-center mbot2">
-        <div class="ui statistics grey-text small margin0" style="justify-content: center; -webkit-justify-content: center;">
-            <div class="statistic">
-                <div class="value">24</div>
-                <div class="label">COUNTRIES</div>
-            </div>
-            <div class="statistic">
-                <div class="value">1.2M</div>
-                <div class="label">RESTAURANTS</div>
-            </div>
-            <div class="statistic">
-                <div class="value">120M</div>
-                <div class="label">FOODIES EVERY MONTH</div>
-            </div>
-            <div class="statistic">
-                <div class="value">30M</div>
-                <div class="label">PHOTOS</div>
-            </div>
-            <div class="statistic">
-                <div class="value">10M</div>
-                <div class="label">REVIEWS</div>
-            </div>
-            <div class="statistic">
-                <div class="value">18M</div>
-                <div class="label">BOOKMARKS</div>
-            </div>
+        <div class="statistic">
+            <div class="value">120M</div>
+            <div class="label">FOODIES EVERY MONTH</div>
         </div>
-    </section>
+        <div class="statistic">
+            <div class="value">30M</div>
+            <div class="label">PHOTOS</div>
+        </div>
+        <div class="statistic">
+            <div class="value">10M</div>
+            <div class="label">REVIEWS</div>
+        </div>
+        <div class="statistic">
+            <div class="value">18M</div>
+            <div class="label">BOOKMARKS</div>
+        </div>
+    </div>
+</section>
 
-    <footer-component></footer-component>
-    <div class="search-container" id="search-container"></div>
-    <div id="photoviewer_container"></div>
-    <div class="clear" id="fb-root"></div>
-</body>
-
-</html>
+<footer-component></footer-component>
+<div class="search-container" id="search-container"></div>
+<div id="photoviewer_container"></div>
+<div class="clear" id="fb-root"></div>

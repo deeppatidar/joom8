@@ -3,6 +3,7 @@ html {
 }
 body {
     min-width: 320px;
+    margin: 0;
     -webkit-tap-highlight-color: transparent
 }
 .alpha {
@@ -10078,10 +10079,10 @@ only screen and (max-width: 740px) and (-webkit-device-pixel-ratio: 3) {
 .start .header__links__container:active,
 .start .header__links__container:focus,
 .start .header__links__container:hover {
-    background: #EDF1F4!important
+    background-color: #BA1E2B !important;
 }
 .start .header__links__container .header__links__wrapper .link {
-    color: #89959B!important;
+    color: #FFFFFF!important;
     background: 0 0
 }
 .start .header__links__container .header__links__wrapper .link:active,
@@ -10412,7 +10413,7 @@ only screen and (max-width: 740px) and (-webkit-device-pixel-ratio: 3) {
     background-color: #D94148
 }
 #sticky_header.v2 .header__container {
-    background-color: #cb202d;
+    background-color: #cb202d !important;
     padding: 10px 0;
     height: 62px
 }
@@ -20061,9 +20062,6 @@ ol.ui.horizontal.list li:before {
 .ui.menu .item.disabled,#pagination,
 .ui.menu .item.disabled:hover {
     cursor: default;
-    border:1px solid red;
-        background: red!important;
-    color: rgba(40, 40, 40, .3)
 }
 .ui.menu:not(.vertical) .left.item,
 .ui.menu:not(.vertical) .left.menu {
@@ -22631,7 +22629,8 @@ ol.ui.horizontal.list li:before {
 }
 .ui.fluid.card {
     width: 100%;
-    max-width: 9999px
+    max-width: 9999px;
+    background-color: #FFFFFF;
 }
 .ui.cards a.card,
 .ui.link.card,
