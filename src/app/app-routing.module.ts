@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home/indore', pathMatch: 'full'},
-    {path: 'home/:city' , component: HomeComponent },
+    {path: 'home/:cityName' , component: HomeComponent },
     { path: '**', redirectTo: 'home/indore'}
 
 ];
