@@ -1,7 +1,6 @@
 // Exact copy except import UserService from core
 import { Component, OnInit }      from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {HomeService} from './home.service';
 import {SearchService} from '../search/search.service';
 import { ConfigService} from '../shared/config.service';
 
@@ -19,7 +18,7 @@ export class HomeComponent {
   cityId : number;
   cityName : string;
   public collections : Collection[] = [];
-  constructor( private homeService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService ) {
+  constructor( private searchService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService ) {
   }
 
   private ngOnInit() {
@@ -27,15 +26,13 @@ export class HomeComponent {
       this.route.params.subscribe(params => {
         this.cityName = params['city'] ? params['city'] : 'Indore';
         this.configService.setCityName(this.cityName);
-        this.homeService.getCityByCityName(this.cityName).subscribe(data => {
+        this.searchService.getCityByCityName(this.cityName).subscribe(data => {
         this.cityId = data['cityObj']['id'];
         this.configService.setCityId(this.cityId);
-        this.homeService.getCityCollection(data['cityObj']['id']).subscribe(
-        data => {
-            this.collections = data['collections']});
-                }
-            );
-        });
-    }
-}
+        this.searchService.getCityCollection(data['cityObj']['id'])
+        .subscribe(data => {this.collections = data['collections']});
+          });
+       });
+     }
+   }
 }

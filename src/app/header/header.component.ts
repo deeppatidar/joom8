@@ -21,7 +21,7 @@ export class HeaderComponent {
     cityName : string;
     public collections : Collection[] = [];
 
-  constructor( private fb: FormBuilder, private headerService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService) {
+  constructor( private fb: FormBuilder, private searchService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService) {
   }
 
   private ngOnInit() {
@@ -29,10 +29,10 @@ export class HeaderComponent {
       this.route.params.subscribe(params => {
         this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
         this.configService.setCityName(this.cityName);
-        this.headerService.getCityByCityName(this.cityName).subscribe(data => {
+        this.searchService.getCityByCityName(this.cityName).subscribe(data => {
             this.cityId = data['cityObj']['id'];
             this.configService.setCityId(this.cityId);
-            this.headerService.getCityCollection(data['cityObj']['id']).subscribe(data => this.collections = data['collections']);
+            this.searchService.getCityCollection(data['cityObj']['id']).subscribe(data => this.collections = data['collections']);
          }
         );
       });
