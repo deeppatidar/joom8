@@ -19,7 +19,7 @@ export class HomeComponent {
   cityId : number;
   cityName : string;
   public collections : Collection[] = [];
-  constructor( private homeService : HomeService, private router : Router, private route : ActivatedRoute, private configService : ConfigService ) {
+  constructor( private homeService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService ) {
   }
 
   private ngOnInit() {
@@ -28,7 +28,6 @@ export class HomeComponent {
         this.cityName = params['city'] ? params['city'] : 'Indore';
         this.configService.setCityName(this.cityName);
         this.homeService.getCityByCityName(this.cityName).subscribe(data => {
-            console.log("hello");
         this.cityId = data['cityObj']['id'];
         this.configService.setCityId(this.cityId);
         this.homeService.getCityCollection(data['cityObj']['id']).subscribe(

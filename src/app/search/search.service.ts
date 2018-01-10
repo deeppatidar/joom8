@@ -14,9 +14,10 @@ import { CollectionAdapter } from '../adapter/collection.adapter';
 @Injectable()
 export class SearchService {
   private url = 'https://developers.zomato.com/api/v2.1/';
-  //e1ebfb80326ef471b017334afbe0b5ca
+  //85d045a17a9a97b7bedc15a8e910f8f4
   //7d5ef14e15e09640098cbeef0df74871
   //3682a3849e84c0b5d2ad352021b6efb1
+  //85d045a17a9a97b7bedc15a8e910f8f4
    constructor (private http: Http) {}
 
    getCityByCityName(city) : Observable<City> {
@@ -24,7 +25,7 @@ export class SearchService {
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '85d045a17a9a97b7bedc15a8e910f8f4'
            })
         });
         return this.http.get(_url, options)
@@ -37,7 +38,7 @@ export class SearchService {
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '85d045a17a9a97b7bedc15a8e910f8f4'
            })
         });
         return this.http.get(_url, options)
@@ -50,7 +51,7 @@ export class SearchService {
        var options = new RequestOptions({
           headers: new Headers({
           'Accept': 'application/json',
-           'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+           'user-key' : '85d045a17a9a97b7bedc15a8e910f8f4'
           })
        });
        return this.http.get(_url, options)

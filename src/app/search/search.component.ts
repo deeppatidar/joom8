@@ -66,7 +66,6 @@ export class SearchComponent {
             this.route.params.subscribe(params => {
                 // if(params.cityName!=this.cityName) {
                     if(this.router.url.indexOf('home') > 0) {
-                    console.log(this.router.url);
                     this.router.navigate(['/home', data['cityObj'].name]);
                 }
             });

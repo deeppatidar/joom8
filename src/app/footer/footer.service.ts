@@ -26,7 +26,7 @@ export class FooterService {
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',
-            'user-key' : '7d5ef14e15e09640098cbeef0df74871'
+            'user-key' : '85d045a17a9a97b7bedc15a8e910f8f4'
            })
         });
         return this.http.get(_url, options)

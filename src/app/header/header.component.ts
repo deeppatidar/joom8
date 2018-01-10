@@ -5,7 +5,6 @@ import { CollectionInterface } from '../shared/collectionInterface';
 import { ConfigService } from '../shared/config.service';
 import { Collection} from '../model/collection';
 import { City} from '../model/city';
-import {HeaderService} from '../header/header.service';
 import {SearchService} from '../search/search.service';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
