@@ -1,0 +1,97 @@
+<div class="wrapper">
+    <div id="search_main_container" class="full_search  ">
+        <div id="search_bar_wrapper" class="search_bar search-zindex" role="form">
+            <div class="search_type flex-shrink-0">
+                <div id="location_contianer">
+                    <div id="location_pretext">
+                        <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
+                            <label class="hdn" id="label_search_location">Please type a location...</label>
+                            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar' type='text'
+                                 autocomplete="off">
+                             </form>
+                             <div clickOutside (clickOutside)="closeDropDown()">
+                                 <div *ngIf='showDropDown' class='search-drop-down '>
+                                     <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                                         <a [innerHTML]="s | letterBold: getSearchValue()">
+                                                {{s}}
+                                         </a>
+                                     </div>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-shrink-1 search-box plr0i ml5 mr5">
+                <div id="keywords_container" class="col-s-16 pr0">
+                    <div id="keywords_pretext">
+                        <div class="k-pre-1 hidden" style="overflow:hidden;">
+                            <span class="search-bar-icon mr5">
+                                <i class="search icon tiny"></i>
+                            </span>
+                            <div class="keyword_placeholder nowrap">
+                                <div class="keyword_div">Search for restaurants or cuisines...</div>
+                            </div>
+                        </div>
+                        <div class="k-pre-2  w100">
+                            <label id="label_search_res" class="hdn">Search for restaurants or cuisines...</label>
+                            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                                <input role="combobox" aria-expanded="true" aria-autocomplete="list" formControlName='keywords_input' aria-owns="keywords-by" aria-labelledby="label_search_res" id="keywords_input" class="discover-search" placeholder="Search for restaurants or cuisines..." autocomplete="off" (click)="openCusineDropDown()"/>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- keywords dro down starts   -->
+                    <div *ngIf='cusineDropDown' id="explore-keywords-dropdown">
+                        <div class="popular-searches">
+                            <ul >
+                                <li class="label">Trending Searches</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul id="explore-by">
+                               <li class="label">Suggested Searches</li>
+                               <li (click)="selectval(cusine.description , cusine.item_id)" *ngFor="let cusine of collectionslist" class="item" data-item_type="cat" data-item_id="1" >
+                                   <div class="start-step-label">
+                                       <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original={cusine.image_url}} src={{cusine.image_url}} alt={{cusine.description}} />
+                                       <span>{{cusine.description}}</span>
+                                   </div>
+                               </li>
+                           </ul>
+                        </div>
+                    </div>
+                    <!-- keywords dro down ends   -->
+                </div>
+            </div>
+            <div class="flex-shrink-0 plr0i">
+                <div role="button" tabindex="0" id="search_button" class="left ui red button">
+                    Search </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <form id="search-keyword" method="GET" action="https://www.zomato.com/index.php" class="hidden">
+            <input type="hidden" name="category" id="category" value="0" />
+            <input type="hidden" name="tokens" id="selected-tokens" value="" />
+            <input type="hidden" name="special" id="special" value="0" />
+            <input type="hidden" name="cuisine" id="cuisine" value="0" />
+            <input type="hidden" name="city" id="city" value="14" />
+            <input type="hidden" name="subzone" id="subzone" value="" />
+            <input type="hidden" name="zone" id="zone" value="" />
+            <input type="hidden" name="landmark" id="landmark" value="" />
+            <input type="hidden" name="near-me" id="near_me" value="" />
+            <input type="hidden" name="zipcode" id="zipcode" value="" />
+            <input type="hidden" name="zipcode_area" id="zipcode_area" value="" />
+            <input type="hidden" name="group" id="group" value="" />
+            <input type="hidden" name="metro" id="metro" value="" />
+            <input type="hidden" name="street" id="street" value="" />
+            <input type="hidden" name="entity_type" id="form_entity_type" value="city" />
+            <input type="hidden" name="entity_id" id="form_entity_id" value="14" />
+            <input type="hidden" name="order-online" id="online-ordering" value="" />
+            <input type="hidden" name="q" id="keywords_query" value="" />
+            <input type="hidden" name="place_id" id="place_id" value="" />
+            <input type="hidden" name="table_booking" id="tr-header-input" value="" />
+        </form>
+    </div>
+</div>

@@ -9,9 +9,11 @@ import { ApplicationDirectives }  from '../shared/directives/application.directi
 
 import {ApplicationPipes} from '../shared/application.pipes';
 import { FooterModule } from '../footer/footer.module';
+import {SearchModule} from '../search/search.module';
+// import {SearchComponent} from '../search/search.component';
 
 @NgModule({
-  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives, FooterModule],
+  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives, FooterModule,SearchModule],
   declarations: [HomeComponent],
   providers:  [ HomeService, ConfigService]
 })
