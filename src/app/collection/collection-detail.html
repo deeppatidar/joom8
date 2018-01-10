@@ -25,25 +25,25 @@
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
                            class="ui mini breadcrumb">
                            <span>
-                           <a href="https://www.zomato.com" itemprop="item" class="tduh section home">
-                           <span itemprop="name" class="grey-text">Home
+                           <!-- <a href="https://www.zomato.com" itemprop="item" class="tduh section home"> -->
+                           <span>Home
                            </span>
-                           </a>
+                           <!-- </a> -->
                            </span>
                            <meta itemprop="position" content="1" />
                         </li>
-                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
+                        <li itemprop="itemListElement"
                            class="ui mini breadcrumb ">
                            <div class="left"> <i class="right angle tiny icon"></i>
                            </div>
                            <span>
-                           <a href="https://www.zomato.com/indore/" itemprop="item">
-                           <span itemprop="name" class="tduh grey-text">Indore</span>
-                           </a>
+                           <!-- <a href="https://www.zomato.com/indore/" itemprop="item"> -->
+                           <span >{{cityName}}</span>
+                           <!-- </a> -->
                            </span>
                            <meta itemprop="position" content="2" />
                         </li>
-                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
+                        <!-- <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
                            class="ui mini breadcrumb ">
                            <div class="left"> <i class="right angle tiny icon"></i>
                            </div>
@@ -53,7 +53,7 @@
                            </a>
                            </span>
                            <meta itemprop="position" content="3" />
-                        </li>
+                        </li> -->
                      </ol>
                   </div>
                </div>
@@ -68,7 +68,7 @@
            <div class="row">
             <div class="col-l-16 search-top-area clearfix">
              <div class="search-header mb5">
-              <h1 class="search_title ptop pb5 fn mb0 mt10 "> Breakfast in Indore </h1>
+              <h1 class="search_title ptop pb5 fn mb0 mt10 "> {{category}} in {{cityName}}  </h1>
               <div class="clear"></div>
               <div class="pl0 pr0 mt5 recommended_tags_text_container">
                <span class="trending-icon pr10 pt5"> <img class="ui micro image" src="https://b.zmtcdn.com/images/trending_icon.svg"> </span>
@@ -183,7 +183,7 @@
                     <span class="link_hover">Recently Added <span class="grey-text"> - new to old </span></span>
                    </div></a> -->
                  </div>
-                 <div class="filter-padding search-filter-tab pt0 pb0 mtop">
+                 <!-- <div class="filter-padding search-filter-tab pt0 pb0 mtop">
                   <div class="ui header small mb0">
                    <div class="search-filter-label pb5" tabindex="0" title="Category">
                     Category
@@ -385,9 +385,9 @@
                      <span class="right grey-text">1</span>
                     </div></a>
                   </div>
-                 </div>
+                 </div> -->
                  <div class="clear"></div>
-                 <div class="search-filter-tab pt0 pb0 mtop" id="filter-cost-html-area-close">
+                 <!-- <div class="search-filter-tab pt0 pb0 mtop" id="filter-cost-html-area-close">
                   <div class="ui header small mb0">
                    <div class="search-filter-label pb5" tabindex="0" title="Cost for two">
                     Cost for two
@@ -415,8 +415,9 @@
                      <span class="right grey-text">6</span>
                     </div></a>
                   </div>
-                 </div>
-                 <div class="search-filter-tab pt0 pb0 mtop" role="input">
+                 </div> -->
+
+                 <!-- <div class="search-filter-tab pt0 pb0 mtop" role="input">
                   <div class="ui header small mb0">
                    <div class="search-filter-label pb10" tabindex="0">
                     Restaurant Offers
@@ -434,8 +435,9 @@
                     <img class="right lazy-inv-image ml10" width="36" src="https://b.zmtcdn.com/images/pixel.gif" data-original="https://www.zomato.com/images/icici_logo.png">
                    </div>
                   </div>
-                 </div>
-                 <div class="filter-padding search-filter-tab pt0 pb0 mtop">
+                 </div> -->
+
+                 <!-- <div class="filter-padding search-filter-tab pt0 pb0 mtop">
                   <div class="ui header small mb0">
                    <div class="search-filter-label pb10" tabindex="0" title="Apply additional filters">
                     More filters
@@ -450,7 +452,7 @@
                        <input id="category-input" name="category" type="hidden" class="hidden" value="8">
                        <div class="ui celled list additional-options clearfix mt0">
                         <div class="open-now-filter prom-filter-1 search_filter checkboxes pb5">
-                         <!-- Filter: Timings - open now -->
+
                          <a title="Show restaurants which are open right now" class="pos-relative sf filter bboth option ui checkbox left" href="/indore/breakfast?open=now"> <span class="link_hover left">Open at</span>&nbsp;
                           <div class="right opennow_timer" data-ts="1513229298">
                            10:58 AM
@@ -498,7 +500,8 @@
                     </div>
                    </div>
                   </div>
-                 </div>
+                 </div> -->
+
                 </div>
                 <div class="clear"></div>
                </div>

@@ -1,21 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-
-
 /* App Root */
 import { AppComponent }   from './app.component';
-
 /* Feature Modules */
 import { HomeModule }    from './home/home.module';
 import {CollectionModule} from './collection/collection.module';
-
-import {HeaderModule} from './header/header.module'
-import {FooterModule} from './footer/footer.module'
-
+import {HeaderModule} from './header/header.module';
+import {SearchModule} from './search/search.module';
+import {FooterModule} from './footer/footer.module';
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
-
 
 @NgModule({
   imports: [
@@ -25,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     FooterModule,
     HomeModule,
     CollectionModule,
+    SearchModule,
     AppRoutingModule
   ],
   declarations: [ AppComponent],

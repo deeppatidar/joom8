@@ -11,56 +11,29 @@ import { CityAdapter } from '../adapter/city.adapter';
 import { City } from '../model/city';
 import { Collection } from '../model/collection';
 import { CollectionAdapter } from '../adapter/collection.adapter';
+import { SearchService } from '../search/search.service';
 
 @Injectable()
 export class HomeService {
-  private url = 'https://developers.zomato.com/api/v2.1/';
-   //3682a3849e84c0b5d2ad352021b6efb1
-   constructor (private http: Http) {}
+  // private url = 'https://developers.zomato.com/api/v2.1/';
+  //  //7d5ef14e15e09640098cbeef0df74871
+   constructor (private http: Http , private searchService: SearchService) {}
 
    getCityByCityName(city) : Observable<City> {
-        var _url = this.url + 'cities?q=' +city;
-        var options = new RequestOptions({
-           headers: new Headers({
-           'Accept': 'application/json',
-            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
-           })
-        });
-        return this.http.get(_url, options)
-         .map((resp: Response) => new CityAdapter(resp.json()))
-         .catch(this.handleError);
-   };
+       console.log("reached here");
+        return this.searchService.getCityByCityName(city);
+   }
 
    getCityCollection(cityId) : Observable<Collection[]> {
-        var _url = this.url + 'collections?city_id=' + cityId;
-        var options = new RequestOptions({
-           headers: new Headers({
-           'Accept': 'application/json',
-            'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
-           })
-        });
-        return this.http.get(_url, options)
-         .map((resp: Response) => new CollectionAdapter(resp.json()))
-         .catch(this.handleError);
+        return this.searchService.getCityCollection(cityId);
    };
 
-   getCollectionByCusine(cusine, city , cityId) {
-       var _url = this.url + 'search?entity_id=' + cityId + '&entity_type=city&q=' + cusine+ '-in-'+ city;
-       console.log(_url);
-       var options = new RequestOptions({
-          headers: new Headers({
-          'Accept': 'application/json',
-           'user-key' : '3682a3849e84c0b5d2ad352021b6efb1'
-          })
-       });
-       return this.http.get(_url, options)
-        .map((resp: Response) => (resp.json()))
-        .catch(this.handleError);
+   getCollectionByCusine(cusine, city , cityId , category ) {
+       return this.searchService.getCollectionByCusine(cusine, city , cityId , category);
   };
 
    private handleError(error: any): Promise<any> {
        console.error('An error occurred', error);
        return Promise.reject(error.message || error);
    };
-
 };

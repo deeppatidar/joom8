@@ -21,13 +21,12 @@
     top: 25px;
 }
 
-.search-bar {
-    min-width: 230px;
+ .search-bar {
     text-indent: 30px !important;
     box-sizing: border-box;
 }
 
-.search-drop-down {
+/*.search-drop-down {
     position: absolute;
     width: 100%;
     max-height: 300px;
@@ -55,7 +54,7 @@
 
 .search-results:hover {
     background: #ffe4c3;
-}
+} */
 
 .color-purple {
     color: #A550BC;

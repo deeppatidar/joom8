@@ -25,6 +25,7 @@ public searchCollection : SearchCollection[] = [];
   displaysearchCollection: SearchCollection[] = [];
   enablePrev: boolean = true;
   enableNext: boolean = false;
+  category: string;
 
   constructor(private collectionService : CollectionService, private route : ActivatedRoute) {}
 
@@ -32,6 +33,8 @@ public searchCollection : SearchCollection[] = [];
     this.end  = ((this.pageNumber+1) * this.pageSize -1) ;
     if(this.route.params) {
         this.route.params.subscribe(params => {
+        this.category = params.category.split("-")[0];
+        this.category;
         this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
         this.collectionService.getCityByCityName(this.cityName).subscribe(data => {
         this.cityId = data['cityObj']['id'];

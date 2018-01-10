@@ -21,30 +21,6 @@
     top: 25px;
 }
 
-.search-bar {
-    min-width: 348px;
-    text-indent: 30px !important;
-    box-sizing: border-box;
-}
-
-.search-drop-down {
-    position: absolute;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 10;
-    background-color: #F6F6F6;
-    font-family: sans-serif;
-    opacity: 0.98;
-}
-
-.search-results {
-    padding: 10px;
-}
-
-.search-results:hover {
-    background: #707070;
-}
 
 .color-purple {
     color: #A550BC;
