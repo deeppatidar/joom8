@@ -45,7 +45,7 @@ export class CollectionService {
    };
 
    getfreeFlowSearch(id, value) : Observable<SearchCollection[]> {
-        var _url = this.url + 'search?entity_id='+id+'&entity_type=city&q=' + value;
+        var _url = this.url + 'search?entity_id=' + id + '&entity_type=city&q=' + value;
         var options = new RequestOptions({
            headers: new Headers({
            'Accept': 'application/json',

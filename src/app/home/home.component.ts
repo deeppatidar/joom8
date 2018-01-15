@@ -18,21 +18,33 @@ export class HomeComponent {
   cityId : number;
   cityName : string;
   public collections : Collection[] = [];
+  public quickSearchList : Collection [] = [];
   constructor( private searchService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService ) {
   }
 
   private ngOnInit() {
-    if(this.route.params) {
-      this.route.params.subscribe(params => {
-        this.cityName = params['city'] ? params['city'] : 'Indore';
-        this.configService.setCityName(this.cityName);
-        this.searchService.getCityByCityName(this.cityName).subscribe(data => {
-        this.cityId = data['cityObj']['id'];
-        this.configService.setCityId(this.cityId);
-        this.searchService.getCityCollection(data['cityObj']['id'])
-        .subscribe(data => {this.collections = data['collections']});
-          });
-       });
-     }
+      if(this.route.params) {
+        this.route.params.subscribe(params => {
+          this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
+          this.configService.setCityName(this.cityName);
+          this.searchService.getCityByCityName(this.cityName).subscribe(data => {
+            this.cityId = data['cityObj']['id'];
+            this.configService.setCityId(this.cityId);
+            this.searchService.getCuisinesCollectionList(this.cityId).subscribe(data => {
+                let quickSearchList = data['results']['restaurants'];
+                this.quickSearchList = quickSearchList.length > 8 ? quickSearchList.splice(0, 8): quickSearchList;
+            });
+            this.searchService.getCityCollection(data['cityObj']['id']).subscribe(data => {
+                let collections = data['collections'];
+                this.collections = collections.length > 4 ? collections.splice(0, 4): collections;
+            });
+        });
+      });
+    }
+  }
+
+  public goToCategoryDetail(event, val) {
+    event.preventDefault();
+    this.router.navigate([this.cityName+'/' + val + "-in-" + this.cityName]);
    }
 }
