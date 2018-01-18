@@ -2253,19 +2253,19 @@ ul {
     background: #FFBA00;
     border-color: #FFBA00!important
 }
-.level-5 {
+.rating-average {
     background: #CDD614;
     border-color: #CDD614!important
 }
-.level-6 {
+.rating-good {
     background: #9ACD32;
     border-color: #9ACD32!important
 }
-.level-7 {
+.rating-very-good {
     background: #5BA829;
     border-color: #5BA829!important
 }
-.level-8 {
+.rating-excellent {
     background: #3F7E00;
     border-color: #3F7E00!important
 }
@@ -7467,9 +7467,9 @@ only screen and (max-width: 740px) and (-webkit-device-pixel-ratio: 3) {
     top: 0;
     right: 0;
     left: 0;
-    background-size: cover;
-    background-position: center center;
-    border-radius: 4px
+    height: 100px;
+    width: 110px;
+    border-radius: 4px;
 }
 .search-result .search_left_featured .discount_label {
     z-index: 1;

@@ -7,12 +7,12 @@
                         <div class="l-pre-1" role="link" aria-label="Please type a location..." aria-describedby="location_input_sp" tabindex="0" aria-flowto="explore-location-suggest">
                             <label class="hdn" id="label_search_location">Please type a location...</label>
                             <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
-                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown()' class=' input-underline search-bar' type='text'
+                                 <input id='search' placeholder="Search for a state" formControlName='search' (click)='openDropDown()' class=' input-underline search-bar' type='text'
                                  autocomplete="off">
                              </form>
                              <div clickOutside (clickOutside)="closeDropDown()">
                                  <div *ngIf='showDropDown' class='search-drop-down '>
-                                     <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
+                                     <div (click)='onLocationChange(s)' class='search-results ' *ngFor="let s of states | searchFilter: getSearchValue()">
                                          <a [innerHTML]="s | letterBold: getSearchValue()">
                                                 {{s}}
                                          </a>
@@ -52,7 +52,7 @@
                         <div>
                             <ul id="explore-by">
                                <li class="label">Suggested Searches</li>
-                               <li (click)="selectval(cusine.description , cusine.item_id)" *ngFor="let cusine of collectionslist" class="item" data-item_type="cat" data-item_id="1" >
+                               <li (click)="onCusineValueChange(cusine.description , cusine.item_id)" *ngFor="let cusine of collectionslist" class="item" data-item_type="cat" data-item_id="1" >
                                    <div class="start-step-label">
                                        <img class="ui middle aligned pr5 micro image search-drop-down-lazy" data-original={cusine.image_url}} src={{cusine.image_url}} alt={{cusine.description}} />
                                        <span>{{cusine.description}}</span>

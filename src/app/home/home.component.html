@@ -108,7 +108,27 @@
                 <div class="collections-grid row">
                     <div class="col-l-8 col-s-16 mbot" *ngFor = "let collection of collections">
                         <div class="ui fluid card">
-                            <a href="/indore/top-restaurants">
+                            <!-- <a href="/indore/top-restaurants">
+                                <div class="row">
+                                    <div class="col-s-7">
+                                        <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
+                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="{{collection.getImage_url()}}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-s-9">
+                                        <div class="row">
+                                            <div class="ptop0 mr20 ml5 coll_detail">
+                                                <div class="heading bold ln20">
+                                                    {{collection.getTitle()}}
+                                                </div>
+                                                <div class="zblack fontsize4 description mt5  hp ">{{collection.getDescription()}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a> -->
+
+                            <a routerLink = "/{{cityName}}/collection/{{collection.getCollection_id()}}">
                                 <div class="row">
                                     <div class="col-s-7">
                                         <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
@@ -134,7 +154,7 @@
                             <div class="ui segment zred tac">
                                 All collections in Indore </div>
                         </a> -->
-                        <a (click)="redirectToCollection()">
+                        <a href="#" (click)="redirectToCollection()">
                           <div class="ui segment zred tac">
                               All collections in {{cityName}}</div>
                         </a>
@@ -195,7 +215,7 @@
         </h2>
         <div class="ui segment eight column doubling padded grid">
             <a href="#" *ngFor="let searchType of quickSearchList" (click)="goToCategoryDetail($event, searchType.text)" _class="column ta-center start-categories-item">
-              <img class="ui middle aligned mini image mb5 lazy" src="{{searchType.image_url}}" style="height: 48px; width: 48px;" />
+              <img class="ui middle aligned mini image mb5" src="{{searchType.image_url}}" style="height: 48px; width: 48px; display: inline-block;" />
               <div>{{searchType.text}}</div>
             </a>
         </div>

@@ -14,12 +14,19 @@ import {HeaderComponent} from '../header/header.component'
 
 export class CollectionComponent implements OnInit {
 
-  public collection : CollectionInterface[] = [];
-  public collections : Collection[] = [];
-  errorMessage: string;
-  cityName;
-  constructor(private collectionService : CollectionService, private route : ActivatedRoute, private router : Router) {}
+    public collection : CollectionInterface[] = [];
+    public collections : Collection[] = [];
+    errorMessage: string;
+    cityName: string;
+    activeTab: string;
+
+    constructor(private collectionService : CollectionService, private route : ActivatedRoute, private router : Router) {}
+
     ngOnInit() {
-    //  this.router.events.subscribe((url:any) => console.log(url));
-  }
+        if (this.route.params) {
+          this.route.params.subscribe(params => {
+            this.cityName = params['cityName'];
+          })
+        }
+    };
 }

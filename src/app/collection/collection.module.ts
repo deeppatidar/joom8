@@ -12,7 +12,10 @@ import {FeaturedComponent} from './featured.component';
 import {NetworkComponent} from './network.component';
 import {BookmarkedComponent} from './bookmark.component';
 import {MyCollectionComponent} from './mycollection.component';
+
 import {CollectionDetailComponent} from './collectionDetail.component';
+
+import {SearchByCategoryComponent} from './searchByCategory.component';
 import {CollectionService} from './collection.service';
 import { ConfigService } from '../shared/config.service';
 
@@ -21,7 +24,7 @@ import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   imports:      [CollectionRoutingModule, HttpModule, CommonModule, BrowserModule, HeaderModule, FooterModule],
-  declarations: [CollectionComponent, FeaturedComponent, NetworkComponent, BookmarkedComponent, MyCollectionComponent, CollectionDetailComponent],
+  declarations: [CollectionComponent, FeaturedComponent, NetworkComponent, BookmarkedComponent, MyCollectionComponent, SearchByCategoryComponent, CollectionDetailComponent],
   providers:    [CollectionService, ConfigService]
 })
 export class CollectionModule { }

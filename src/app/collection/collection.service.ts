@@ -18,6 +18,7 @@ export class CollectionService {
 
    constructor (private http: Http) {}
    //85d045a17a9a97b7bedc15a8e910f8f4
+
    getCityByCityName(city) : Observable<City> {
         var _url = this.url + 'cities?q=' +city;
         var options = new RequestOptions({
@@ -74,6 +75,21 @@ export class CollectionService {
        console.error('An error occurred', error);
        return Promise.reject(error.message || error);
    };
+
+   public getCollectionListByCollId(params) : Observable<SearchCollection[]> {
+      // entity_id = 280, entity_type = city and collection_id = 1
+      var _url = this.url + 'search?entity_id=' + params.cityId + '&entity_type=city&collection_id=' + params.collectionId  + '&count=100';
+      var options = new RequestOptions({
+         headers: new Headers({
+         'Accept': 'application/json',
+          'user-key' : '85d045a17a9a97b7bedc15a8e910f8f4'
+         })
+      });
+      return this.http.get(_url, options)
+       .map((resp: Response) => new SearchCollectionAdapter(resp.json()))
+       .catch(this.handleError);
+   }
+
 
 };
 

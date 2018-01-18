@@ -30,10 +30,12 @@ export class HomeComponent {
           this.searchService.getCityByCityName(this.cityName).subscribe(data => {
             this.cityId = data['cityObj']['id'];
             this.configService.setCityId(this.cityId);
+
             this.searchService.getCuisinesCollectionList(this.cityId).subscribe(data => {
                 let quickSearchList = data['results']['restaurants'];
                 this.quickSearchList = quickSearchList.length > 8 ? quickSearchList.splice(0, 8): quickSearchList;
             });
+
             this.searchService.getCityCollection(data['cityObj']['id']).subscribe(data => {
                 let collections = data['collections'];
                 this.collections = collections.length > 4 ? collections.splice(0, 4): collections;
@@ -44,7 +46,12 @@ export class HomeComponent {
   }
 
   public goToCategoryDetail(event, val) {
-    event.preventDefault();
-    this.router.navigate([this.cityName+'/' + val + "-in-" + this.cityName]);
-   }
+      event.preventDefault();
+      this.router.navigate([this.cityName+'/' + val + "-in-" + this.cityName]);
+   };
+
+   public redirectToCollection() {
+       event.preventDefault();
+       this.router.navigate([this.cityName + '/collections']);
+   };
 }
