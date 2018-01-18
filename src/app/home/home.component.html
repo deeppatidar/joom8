@@ -108,7 +108,27 @@
                 <div class="collections-grid row">
                     <div class="col-l-8 col-s-16 mbot" *ngFor = "let collection of collections">
                         <div class="ui fluid card">
-                            <a href="/indore/top-restaurants">
+                            <!-- <a href="/indore/top-restaurants">
+                                <div class="row">
+                                    <div class="col-s-7">
+                                        <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
+                                            <img style="width: 145px;" class="collection-box-bg lazy-collection-load" src="{{collection.getImage_url()}}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-s-9">
+                                        <div class="row">
+                                            <div class="ptop0 mr20 ml5 coll_detail">
+                                                <div class="heading bold ln20">
+                                                    {{collection.getTitle()}}
+                                                </div>
+                                                <div class="zblack fontsize4 description mt5  hp ">{{collection.getDescription()}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a> -->
+
+                            <a routerLink = "/{{cityName}}/collection/{{collection.getCollection_id()}}">
                                 <div class="row">
                                     <div class="col-s-7">
                                         <div title={{collection.getTitle()}} class="collection-box-bg lazy-collection-load">
@@ -134,7 +154,7 @@
                             <div class="ui segment zred tac">
                                 All collections in Indore </div>
                         </a> -->
-                        <a (click)="redirectToCollection()">
+                        <a href="#" (click)="redirectToCollection()">
                           <div class="ui segment zred tac">
                               All collections in {{cityName}}</div>
                         </a>
@@ -188,49 +208,27 @@
 
     <section class="wrapper mtop2 ptop">
         <h2 class="ui header">
-                <span class="segment_heading">Quick Searches</span>
-                <span class="sub header">
-                    <span class="segment_sub_heading">
-                        Discover restaurants by type of meal                    </span>
-                </span>
-            </h2>
+            <span class="segment_heading">Quick Searches</span>
+            <span class="sub header">
+              <span class="segment_sub_heading">Discover restaurants by type of meal</span>
+            </span>
+        </h2>
         <div class="ui segment eight column doubling padded grid">
-            <a href="https://www.zomato.com/indore/delivery" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_1.png" style="height: 48px; width: 48px;" />
-                <div>Delivery</div>
-            </a>
-            <a href="https://www.zomato.com/indore/breakfast" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_3.png" data-original="assets/images/category_10.png" style="height: 48px; width: 48px;" />
-                <div>Breakfast</div>
-            </a>
-            <a href="https://www.zomato.com/indore/lunch" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_6.png" data-original="assets/images/category_3.png" style="height: 48px; width: 48px;" />
-                <div>Lunch</div>
-            </a>
-            <a href="https://www.zomato.com/indore/dinner" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_8.png" data-original="assets/images/category_6.png" style="height: 48px; width: 48px;" />
-                <div>Dinner</div>
-            </a>
-            <a href="https://www.zomato.com/indore/cafés" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_9.png" data-original="assets/images/category_8.png" style="height: 48px; width: 48px;" />
-                <div>Cafés</div>
-            </a>
-            <a href="https://www.zomato.com/indore/restaurants?category=3" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5 lazy" src="assets/images/category_10.png" data-original="assets/images/category_9.png" style="height: 48px; width: 48px;" />
-                <div>Drinks & Nightlife</div>
+            <a href="#" *ngFor="let searchType of quickSearchList" (click)="goToCategoryDetail($event, searchType.text)" _class="column ta-center start-categories-item">
+              <img class="ui middle aligned mini image mb5" src="{{searchType.image_url}}" style="height: 48px; width: 48px; display: inline-block;" />
+              <div>{{searchType.text}}</div>
             </a>
         </div>
     </section>
-
     <section class="wrapper mtop2 ptop">
         <h2 class="ui header">
-                <span class="segment_heading">
-                    Popular localities in and around Indore                </span>
-                <span class="sub header">
-                    <span class="segment_sub_heading">
-                        Explore restaurants, bars, and cafés by locality                    </span>
-                </span>
-            </h2>
+          <span class="segment_heading">
+              Popular localities in and around Indore                </span>
+          <span class="sub header">
+              <span class="segment_sub_heading">
+                  Explore restaurants, bars, and cafés by locality                    </span>
+          </span>
+        </h2>
         <div class="ui segment row">
             <a class="col-l-1by3 col-s-8 pbot0" title="Restaurants in Vijay Nagar" href="https://www.zomato.com/indore/vijay-nagar-restaurants">
                         Vijay Nagar                        <span class="grey-text hide-on-mobile">(312 places)</span>

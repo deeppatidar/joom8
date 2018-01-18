@@ -9,7 +9,7 @@ export class Collection {
 
       static getCollection(responseData) {
         var obj = new Collection();
-        obj.setCollection_id(responseData.collection_id);
+        obj.setCollectionId(responseData.collection_id);
         obj.setImage_url(responseData.image_url);
         obj.setUrl(responseData.url);
         obj.setTitle(responseData.title);
@@ -29,7 +29,7 @@ export class Collection {
         return this.collectionId;
       };
 
-      public setCollection_id(c) {
+      public setCollectionId(c) {
         this.collectionId = c;
       };
 
@@ -41,6 +41,7 @@ export class Collection {
         this.image = imageUrl;
       };
 
+      public setCollection_id
       public getUrl() {
         return this.url;
       };

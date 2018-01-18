@@ -8,6 +8,7 @@ export class SearchCollection {
     private name: string;
     private url:string;
     private photos_url:string;
+    private featured_image: string;
     private user_rating: UserRating;
     private offer: string;
     private currency : string;
@@ -29,6 +30,7 @@ export class SearchCollection {
         obj.setAverageCostForTwo(responseData.average_cost_for_two);
         obj.setCuisines(responseData.cuisines);
         obj.setLocation(responseData.location);
+        obj.setCollImage(responseData.featured_image);
         return obj;
       };
 
@@ -48,8 +50,16 @@ export class SearchCollection {
         this.photos_url = p;
       };
 
+      public setCollImage(img) {
+        this.featured_image = img;
+      }
+
       public setUserRating(ur) {
         this.user_rating = ur;
+        this.user_rating['isAverage'] = (ur.rating_text == 'Average');
+        this.user_rating['isExcellent'] = (ur.rating_text == 'Excellent');
+        this.user_rating['isVeryGood'] = (ur.rating_text == 'Very Good');
+        this.user_rating['isGood'] = (ur.rating_text == 'Good');
       };
 
       public setOffer(o) {
@@ -119,5 +129,4 @@ export class SearchCollection {
       public getLocation() {
         return this.location;
       };
-
 }

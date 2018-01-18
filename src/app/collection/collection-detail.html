@@ -1,773 +1,105 @@
-
-<!DOCTYPE html>
-<html  lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <title>Zomato Collections | Explore the best restaurants in Indore with Zomato Collections</title>
-      <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, initial-scale=1">
-      <link rel="icon" type="image/png" href="https://b.zmtcdn.com/images/logo/zomato_favicon5.png" />
-      <link rel="apple-touch-icon-precomposed" href="https://b.zmtcdn.com/images/logo/zomato_favicon5.png" /
-      <link rel="stylesheet" type="text/css" href="https://static.zmtcdn.com/gencss/t-fce05e705b469d889fdc20033ca4cdb8/l-H4sIAAAAAAAAA0tKLE7Vz0nVTS_KTNFLLi7WqcrPTUosKYawi0sSSzKTwezi1NzEPCBHH8YAiQIAP2LJTT4AAAA/h-2f145239b917f063e3211aa83757f44d" />
-
-   </head>
-   <body class="collections_page is-responsive en"  >
-      <div class="ghboxcontainer"  style="visibility: hidden; display: none;">
-         <div id="ghbox"></div>
-      </div>
-      <div class="claims-app-container" id="claims-app-container"></div>
-      <div id="sticky_header" class="ui sticky v2" >
-         <header-component></header-component>
-         <div class="mini-header row">
-            <div class="wrapper">
-               <div class="row mini-header__breadcrumb">
-                  <div class="col-l-10 col-m-10">
-                     <ol itemscope itemtype="http://schema.org/BreadcrumbList">
-                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
-                           class="ui mini breadcrumb">
-                           <span>
-                           <!-- <a href="https://www.zomato.com" itemprop="item" class="tduh section home"> -->
-                           <span>Home
-                           </span>
-                           <!-- </a> -->
-                           </span>
-                           <meta itemprop="position" content="1" />
+<div *ngIf="isDataLoaded">
+  <div id="sticky_header" class="ui sticky v2">
+      <header-component></header-component>
+      <div class="mini-header row">
+        <div class="wrapper">
+            <div class="row mini-header__breadcrumb">
+                <div class="col-l-10 col-m-10">
+                    <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+                      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
+                        class="ui mini breadcrumb">
+                          <span>
+                              <a href="https://www.zomato.com" itemprop="item" class="tduh section home">
+                                  <span itemprop="name" class="grey-text">Home
+                                  </span>
+                              </a>
+                          </span>
+                      </li>
+                      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="ui mini breadcrumb ">
+                          <div class="left"> <i class="right angle tiny icon"></i></div>
+                          <span>
+                              <a href="https://www.zomato.com/mumbai/" itemprop="item">
+                                  <span itemprop="name" class="tduh grey-text">{{cityName}}</span>
+                              </a>
+                          </span>
                         </li>
-                        <li itemprop="itemListElement"
-                           class="ui mini breadcrumb ">
-                           <div class="left"> <i class="right angle tiny icon"></i>
-                           </div>
-                           <span>
-                           <!-- <a href="https://www.zomato.com/indore/" itemprop="item"> -->
-                           <span >{{cityName}}</span>
-                           <!-- </a> -->
-                           </span>
-                           <meta itemprop="position" content="2" />
+                        <li class="ui mini breadcrumb ">
+                          <div class="left"> <i class="right angle tiny icon"></i></div>
+                          <span>
+                              <a href="https://www.zomato.com/collections#featured" itemprop="item">
+                                  <span itemprop="name" class="tduh grey-text">Collections</span>
+                              </a>
+                          </span>
                         </li>
-                        <!-- <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"
-                           class="ui mini breadcrumb ">
-                           <div class="left"> <i class="right angle tiny icon"></i>
-                           </div>
-                           <span>
-                           <a href="https://www.zomato.com/indore/collections#featured" itemprop="item">
-                           <span itemprop="name" class="tduh grey-text">Collections</span>
-                           </a>
-                           </span>
-                           <meta itemprop="position" content="3" />
-                        </li> -->
-                     </ol>
+                        <li class="ui mini breadcrumb">
+                            <div class="left"> <i class="right angle tiny icon"></i></div>
+                            <span class="grey-text">{{collectionTittle}}
+                            </span>
+                        </li>
+                      </ol>
                   </div>
-               </div>
-            </div>
-         </div>
+              </div>
+          </div>
       </div>
-      <div>
-        <div id="mainframe" class="wrapper">
-           <div class="ui inverted dimmer result-loading">
-            <div class="ui red text loader"></div>
-           </div>
-           <div class="row">
-            <div class="col-l-16 search-top-area clearfix">
-             <div class="search-header mb5">
-              <h1 class="search_title ptop pb5 fn mb0 mt10 "> {{category}} in {{cityName}}  </h1>
-              <div class="clear"></div>
-              <div class="pl0 pr0 mt5 recommended_tags_text_container">
-               <span class="trending-icon pr10 pt5"> <img class="ui micro image" src="https://b.zmtcdn.com/images/trending_icon.svg"> </span>
-               <p class="pb5"><b> Recommended for this area </b></p>
+  </div>
+  <div class="wrapper mtop ">
+      <div class="row">
+          <div class="collections-page">
+              <div class="collections_header col-l-16 " data-collection-id = "274852" >
+                  <div class="ui segment plr0i pt0">
+                      <div id="progressive_image" class="header-img progressive_img" [style.background-image]="getBackground(displayCollection.image)" style="background-size: cover; background-position:center; background-repeat:no-repeat; height:  290px;">
+                          <div class="progressive_img_loaded" style="background-size: cover; background-position:center;"></div>
+                      </div>
+                      <div class="ml15 mr15 mt15">
+                          <h1 class="hero_title collections_title mb5 mt5 " title="{{displayCollection.title}}">{{displayCollection.title}}</h1>
+                          <div class="collection_description mb5 fontsize3">{{displayCollection.description}}</div>
+                          <div class="grey-text mb5">{{restaurantCount}} Places</div>
+                          <div class="left mb5"><button data-track_type = "bookmarkcollections" class="ui basic large label ui-label-col app-tracker-link bookmark_btn act-wishlist-collections" data-page = "collections" data-edit-type = "add" data-collection-id = "274852"><span class="wishlist-text">Save Collection</span></button></div>
+                          <div class="clear"></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <section class="section mtop pbot0">
+            <div class="bb0 collections-grid col-l-16">
+                <div class="pb5">
+                    <div class="row col-res-list collection_listings_container">
+                        <div class="col-s-8 col-l-1by3" *ngFor="let restaurant of restaurantList">
+                            <div class="relative  top-res-box entity-ads-snippet-track mbot">
+                                <a href="https://www.zomato.com/mumbai/oc-the-oriental-cuisine-mulund-west?zrp_bid=118878&amp;zrp_pid=14&amp;zrp_cid=257659" class="relative lazy top-res-box-bg pl10 ptop0" [style.background-image]="getBackground(restaurant.featured_image)" style="border-bottom: 4px solid #FBBD08;background-size:cover;  height:150px;  display: block; border-radius: 4px; background-position:center;">
+                                  <div class="ads-res-snippet-rating-large" [ngClass]="{'rating-average': restaurant.user_rating.isAverage, 'rating-excellent': restaurant.user_rating.isExcellent, 'rating-very-good': restaurant.user_rating.isVeryGood, 'rating-good': restaurant.user_rating.isGood}">{{restaurant.user_rating.aggregate_rating}}</div>
+                                  <!-- <div class="ui tiny yellow label">
+                                      <span class="ttupper">Featured</span>
+                                  </div> -->
+                                </a>
+                                <div class="ptop0 pbot0 pl10 pr10">
+                                    <a href="https://www.zomato.com/mumbai/oc-the-oriental-cuisine-mulund-west?zrp_bid=118878&amp;zrp_pid=14&amp;zrp_cid=257659" class="jumbo_track_collections">
+                                        <div class="res_title zblack bold nowrap" title="OC-The Oriental Cuisine">{{restaurant.name}}</div>
+                                    </a>
+                                    <a class="zone jumbo_track_collections">
+                                        <div class="nowrap grey-text fontsize5 ttupper">{{restaurant.location.address}}</div>
+                                    </a>
+                                    <div class="nowrap grey-text">{{restaurant.cuisines}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
               </div>
-              <!-- <div class="col-l-16 pb20 pt5 pl0 pr0 hero_searches_container " data-query-type="category" data-query-id="8">
-               <a href="/index.php?city=14&amp;newly-opened=1&amp;hero_searches_data=YXR0cmlidXRlJCQzMTY%3D&amp;category=8" data-query-type="attribute" data-query-id="316" data-query-name="Newly Opened" class="hero_search_tags">
-                <div class="
-                                                                            round_tag_button_without_subtitle
-                                                                    ">
-                 <div class="zred bold fontsize3 hero_search_tag_title">
-                   Newly Opened
-                 </div>
-                </div> </a>
-               <a href="/index.php?city=14&amp;buffet=1&amp;hero_searches_data=YXR0cmlidXRlJCQ4Ng%3D%3D&amp;category=8" data-query-type="attribute" data-query-id="86" data-query-name="Buffet" class="hero_search_tags">
-                <div class="
-                                                                            round_tag_button_without_subtitle
-                                                                    ">
-                 <div class="zred bold fontsize3 hero_search_tag_title">
-                   Buffet
-                 </div>
-                </div> </a>
-               <a href="/index.php?city=14&amp;establishment_type=291&amp;hero_searches_data=ZXN0YWJsaXNobWVudCQkMjkx&amp;category=8" data-query-type="establishment" data-query-id="291" data-query-name="Sweets" class="hero_search_tags">
-                <div class="
-                                                                            round_tag_button_without_subtitle
-                                                                    ">
-                 <div class="zred bold fontsize3 hero_search_tag_title">
-                   Sweets
-                 </div>
-                </div> </a>
-               <a href="/index.php?city=14&amp;cuisine=90&amp;hero_searches_data=Y3Vpc2luZSQkOTA%3D&amp;category=8" data-query-type="cuisine" data-query-id="90" data-query-name="Street Food" class="hero_search_tags">
-                <div class="
-                                                                            round_tag_button_without_subtitle
-                                                                    ">
-                 <div class="zred bold fontsize3 hero_search_tag_title">
-                   Street Food
-                 </div>
-                </div> </a>
-               <a href="/index.php?city=14&amp;establishment_type=1&amp;hero_searches_data=ZXN0YWJsaXNobWVudCQkMQ%3D%3D&amp;category=8" data-query-type="establishment" data-query-id="1" data-query-name="Cafe" class="hero_search_tags">
-                <div class="
-                                                                            round_tag_button_without_subtitle
-                                                                    ">
-                 <div class="zred bold fontsize3 hero_search_tag_title">
-                   Cafe
-                 </div>
-                </div> </a>
-               <a href="/index.php?city=14&amp;establishment_type=31&amp;hero_searches_data=ZXN0YWJsaXNobWVudCQkMzE%3D&amp;category=8" data-query-type="establishment" data-query-id="31" data-query-name="Desserts &amp; Bakes" class="hero_search_tags">
-                <div class="
-                                                                            round_tag_button_without_subtitle
-                                                                    ">
-                 <div class="zred bold fontsize3 hero_search_tag_title">
-                   Desserts &amp; Bakes
-                 </div>
-                </div> </a>
-              </div>
- -->
-              <div class="clear"></div>
-              <!-- tag functionality end -->
-             </div>
-             <div class="clear"></div>
             </div>
             <div class="clear"></div>
-            <div class="col-l-16">
-             <div class="search_category_wrapper col-l-11 hidden">
-              <div class="search_category_container search_category_container_no_scroll ui stackable menu" style="overflow: hidden;">
-               <a id="scroll_left_arrow" class="item left cursor-pointer"><i class="chevron circle left icon"></i></a>
-               <a href="https://www.zomato.com/indore/restaurants" class="item search_category search_cat_all ">All</a>
-               <a href="https://www.zomato.com/indore/breakfast" class="search_category item active red">Breakfast</a>
-               <a href="https://www.zomato.com/indore/delivery" class="item search_category">Delivery</a>
-               <a href="https://www.zomato.com/indore/lunch" class="item search_category">Lunch</a>
-               <a href="https://www.zomato.com/indore/dinner" class="item search_category">Dinner</a>
-               <a href="https://www.zomato.com/indore/cafés" class="item search_category">Cafés</a>
-               <a href="https://www.zomato.com/indore/restaurants?category=3" class="item search_category">Drinks &amp; Nightlife</a>
-               <a href="https://www.zomato.com/indore/restaurants/north-indian" class="item search_category">North Indian</a>
-               <a href="https://www.zomato.com/indore/restaurants/chinese" class="item search_category">Chinese</a>
-               <a id="scroll_right_arrow" class="item right cursor-pointer"><i class="chevron circle right icon"></i></a>
-              </div>
-             </div>
-             <div class="row">
-              <div class="mt10">
-               <div role="group" class="col-s-16 col-l-3 search-filter-container pr0 ">
-                <div class="additional-options mt0 ui segment">
-                 <div class="ui header medium mt0 mb10">
-                   Filters
-                 </div>
-                 <div class="clear"></div>
-                 <div class="filter-padding search-filter-tab pt0 pb0">
-                  <div class=""></div>
-                  <div class="ui header small margin0">
-                   <div class="search-filter-label pb5" tabindex="0" title="Sort by">
-                    Sort by
-                   </div>
-                  </div>
-                  <!-- <a (click)="getCollectionByFilter('Popularity','desc')">
-                   <div class="search_filter sort cursor-pointer">
-                    <span class="zgreen bold">Popularity <span class="grey-text"> - high to low </span></span>
-                   </div></a> -->
-                  <a (click)="getCollectionByFilter('rating','desc')">
-                   <div class="search_filter sort cursor-pointer">
-                    <span class="link_hover">Rating <span class="grey-text"> - high to low </span></span>
-                   </div></a>
-                  <a (click)="getCollectionByFilter('cost','desc')">
-                   <div class="search_filter sort cursor-pointer">
-                    <span class="link_hover">Cost <span class="grey-text"> - high to low </span></span>
-                   </div></a>
-                  <a (click)="getCollectionByFilter('cost','asc')">
-                   <div class="search_filter sort cursor-pointer">
-                    <span class="link_hover">Cost <span class="grey-text"> - low to high </span></span>
-                   </div></a>
-                  <!-- <a href="/indore/breakfast?sort=recent">
-                   <div class="search_filter sort cursor-pointer">
-                    <span class="link_hover">Recently Added <span class="grey-text"> - new to old </span></span>
-                   </div></a> -->
-                 </div>
-                 <!-- <div class="filter-padding search-filter-tab pt0 pb0 mtop">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb5" tabindex="0" title="Category">
-                    Category
-                   </div>
-                  </div>
-                  <a class="fontsize4" href="/indore/breakfast?category=1">
-                   <div class="link_hover search_filter category">
-                    Delivery
-                    <span class="right num grey-text">526</span>
-                   </div></a>
-                  <a class="fontsize4" href="/indore/breakfast?category=2">
-                   <div class="link_hover search_filter category">
-                    Dine-out
-                    <span class="right num grey-text">792</span>
-                   </div></a>
-                  <a class="fontsize4" href="/indore/breakfast?category=6">
-                   <div class="link_hover search_filter category">
-                    Cafés
-                    <span class="right num grey-text">146</span>
-                   </div></a>
-                  <a class="fontsize4" href="/indore/breakfast?category=3">
-                   <div class="link_hover search_filter category">
-                    Drinks &amp; Nightlife
-                    <span class="right num grey-text">28</span>
-                   </div></a>
-                 </div>
-                 <div class="search-filter-tab pt0 pb0 green mtop">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb5" tabindex="0" title="Location">
-                    Location
-                   </div>
-                  </div>
-                  <a class="clear" title="Restaurants in Vijay Nagar" href="/indore/breakfast-in-vijay-nagar">
-                   <div class="link_hover w100 search_filter location">
-                    <div class="w75 left nowrap">
-                     Vijay Nagar
-                    </div>
-                    <div class="num grey-text ta-right">
-                     70
-                    </div>
-                   </div></a>
-                  <a class="clear" title="Restaurants in RNT Marg" href="/indore/breakfast-in-rnt-marg">
-                   <div class="link_hover w100 search_filter location">
-                    <div class="w75 left nowrap">
-                     RNT Marg
-                    </div>
-                    <div class="num grey-text ta-right">
-                     24
-                    </div>
-                   </div></a>
-                  <a class="clear" title="Restaurants in New Palasia" href="/indore/breakfast-in-new-palasia">
-                   <div class="link_hover w100 search_filter location">
-                    <div class="w75 left nowrap">
-                     New Palasia
-                    </div>
-                    <div class="num grey-text ta-right">
-                     21
-                    </div>
-                   </div></a>
-                  <a class="clear" title="Restaurants in Bhawar Kuan" href="/indore/breakfast-in-bhawar-kuan">
-                   <div class="link_hover w100 search_filter location">
-                    <div class="w75 left nowrap">
-                     Bhawar Kuan
-                    </div>
-                    <div class="num grey-text ta-right">
-                     21
-                    </div>
-                   </div></a>
-                  <a class="clear" title="Restaurants in Old Palasia" href="/indore/breakfast-in-old-palasia">
-                   <div class="link_hover w100 search_filter location">
-                    <div class="w75 left nowrap">
-                     Old Palasia
-                    </div>
-                    <div class="num grey-text ta-right">
-                     20
-                    </div>
-                   </div></a>
-                  <div style="display:block;" class="cursor-pointer s-cat-filter-loc link_hover w100 search_filter location grey-text red_see_all clear" data-city-id="14" data-cat-details="{&quot;image_url&quot;:&quot;https:\/\/b.zmtcdn.com\/images\/homescreens\/34-n.jpg&quot;,&quot;get_copy&quot;:{&quot;new_router&quot;:&quot;1&quot;,&quot;category&quot;:&quot;8&quot;},&quot;url_append&quot;:&quot;?new_router=1&amp;category=8&quot;}" hidden>
-                   See all locations
-                  </div>
-                 </div>
-                 <div class="search-filter-tab pt0 pb0 mtop" id="filter-cuisines-html-area">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb5" tabindex="0" title="Cuisine">
-                    Cuisine
-                   </div>
-                  </div>
-                  <div class="cursor-pointer">
-                   <a href="/indore/restaurants/fast-food?category=8">
-                    <div title="Fast Food Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Fast Food
-                     <span class="right grey-text">134</span>
-                    </div></a>
-                   <a href="/indore/restaurants/north-indian?category=8">
-                    <div title="North Indian Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     North Indian
-                     <span class="right grey-text">117</span>
-                    </div></a>
-                   <a href="/indore/restaurants/chinese?category=8">
-                    <div title="Chinese Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Chinese
-                     <span class="right grey-text">71</span>
-                    </div></a>
-                   <a href="/indore/restaurants/cafes?category=8">
-                    <div title="Cafe Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Cafe
-                     <span class="right grey-text">48</span>
-                    </div></a>
-                   <a href="/indore/restaurants/south-indian?category=8">
-                    <div title="South Indian Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     South Indian
-                     <span class="right grey-text">44</span>
-                    </div></a>
-                   <a href="/indore/restaurants/street-food?category=8">
-                    <div title="Street Food Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Street Food
-                     <span class="right grey-text">42</span>
-                    </div></a>
-                   <a href="/indore/restaurants/mithai?category=8">
-                    <div title="Mithai Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Mithai
-                     <span class="right grey-text">27</span>
-                    </div></a>
-                   <a href="/indore/restaurants/bakery?category=8">
-                    <div title="Bakery Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Bakery
-                     <span class="right grey-text">19</span>
-                    </div></a>
-                   <a href="/indore/restaurants/italian?category=8">
-                    <div title="Italian Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Italian
-                     <span class="right grey-text">15</span>
-                    </div></a>
-                   <a href="/indore/restaurants/beverages?category=8">
-                    <div title="Beverages Restaurants in Indore" class="link_hover w100 search_filter cuisine">
-                     Beverages
-                     <span class="right grey-text">12</span>
-                    </div></a>
-                   <div style="display: block;" class="cursor-pointer show-more-cuisines-filter link_hover w100 search_filter cuisine grey-text red_see_all clear" data-city-id="14" data-cat-details="{&quot;url_append&quot;:&quot;new_router=1&amp;category=8&quot;}" hidden>
-                    See all cuisines
-                   </div>
-                  </div>
-                 </div>
-                 <div class="search-filter-tab pt0 pb0 mtop">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb5" tabindex="0" title="Establishment Type">
-                    Establishment Type
-                   </div>
-                  </div>
-                  <div class="cursor-pointer">
-                   <a title="Quick Bites in Indore" href="https://www.zomato.com/indore/quick-bites?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Quick Bites
-                     <span class="right grey-text">146</span>
-                    </div></a>
-                   <a title="Casual Dining in Indore" href="https://www.zomato.com/indore/casual-dining?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Casual Dining
-                     <span class="right grey-text">84</span>
-                    </div></a>
-                   <a title="Cafés in Indore" href="https://www.zomato.com/indore/café?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Cafés
-                     <span class="right grey-text">47</span>
-                    </div></a>
-                   <a title="Sweet Shops in Indore" href="https://www.zomato.com/indore/sweet-shop?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Sweet Shops
-                     <span class="right grey-text">22</span>
-                    </div></a>
-                   <a title="Bakeries in Indore" href="https://www.zomato.com/indore/bakeries?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Bakeries
-                     <span class="right grey-text">19</span>
-                    </div></a>
-                   <a title="Dessert Parlor in Indore" href="https://www.zomato.com/indore/dessert-parlour?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Dessert Parlor
-                     <span class="right grey-text">4</span>
-                    </div></a>
-                   <a title="Bars in Indore" href="https://www.zomato.com/indore/bar?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Bars
-                     <span class="right grey-text">3</span>
-                    </div></a>
-                   <a title="Fine Dining in Indore" href="https://www.zomato.com/indore/fine-dining?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Fine Dining
-                     <span class="right grey-text">3</span>
-                    </div></a>
-                   <a title="Beverage Shops in Indore" href="https://www.zomato.com/indore/beverage-shop?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Beverage Shops
-                     <span class="right grey-text">3</span>
-                    </div></a>
-                   <a title="Food Trucks in Indore" href="https://www.zomato.com/indore/food-truck?category=8">
-                    <div class="link_hover w100 search_filter establishment cursor-pointer">
-                     Food Trucks
-                     <span class="right grey-text">1</span>
-                    </div></a>
-                  </div>
-                 </div> -->
-                 <div class="clear"></div>
-                 <!-- <div class="search-filter-tab pt0 pb0 mtop" id="filter-cost-html-area-close">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb5" tabindex="0" title="Cost for two">
-                    Cost for two
-                   </div>
-                  </div>
-                  <div id="filter-cost-html-area" class="facet-list-dialog">
-                   <a href="/indore/breakfast?cft=0">
-                    <div class="link_hover w100 search_filter cft cursor-pointer">
-                     Less than ₹350
-                     <span class="right grey-text">147</span>
-                    </div></a>
-                   <a href="/indore/breakfast?cft=1">
-                    <div class="link_hover w100 search_filter cft cursor-pointer">
-                      ₹350 to ₹750
-                     <span class="right grey-text">86</span>
-                    </div></a>
-                   <a href="/indore/breakfast?cft=2">
-                    <div class="link_hover w100 search_filter cft cursor-pointer">
-                      ₹750 to ₹1,500
-                     <span class="right grey-text">27</span>
-                    </div></a>
-                   <a href="/indore/breakfast?cft=3">
-                    <div class="link_hover w100 search_filter cft cursor-pointer">
-                     ₹1,500 +
-                     <span class="right grey-text">6</span>
-                    </div></a>
-                  </div>
-                 </div> -->
-
-                 <!-- <div class="search-filter-tab pt0 pb0 mtop" role="input">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb10" tabindex="0">
-                    Restaurant Offers
-                   </div>
-                  </div>
-                  <div class="additional-options clearfix search_filter checkboxes">
-                   <div class="prom-filter pb5 clearfix">
-                    <a title="Delightful offers for Axis Bank cardholders" class="filter bboth drop option pos-relative ui checkbox left" href="/indore/breakfast?axis=1"> <span class="link_hover">Axis Bank</span> </a>
-                    <img class="right lazy-inv-image ml10" width="36" src="https://b.zmtcdn.com/images/pixel.gif" data-original="https://www.zomato.com/images/axis-icon.png">
-                   </div>
-                  </div>
-                  <div class="additional-options clearfix search_filter checkboxes">
-                   <div class="prom-filter pb5 clearfix">
-                    <a title="Exclusive offers for ICICI Bank cardholders" class="filter bboth drop option pos-relative ui checkbox left" href="/indore/breakfast?icici=1"> <span class="link_hover">ICICI Bank</span> </a>
-                    <img class="right lazy-inv-image ml10" width="36" src="https://b.zmtcdn.com/images/pixel.gif" data-original="https://www.zomato.com/images/icici_logo.png">
-                   </div>
-                  </div>
-                 </div> -->
-
-                 <!-- <div class="filter-padding search-filter-tab pt0 pb0 mtop">
-                  <div class="ui header small mb0">
-                   <div class="search-filter-label pb10" tabindex="0" title="Apply additional filters">
-                    More filters
-                   </div>
-                  </div>
-                  <div class="content">
-                   <div class="search-filters-container">
-                    <div id="filter-more-html-area">
-                     <div class="clear"></div>
-                     <div id="more-filters">
-                      <form id="search-page-form" method="GET">
-                       <input id="category-input" name="category" type="hidden" class="hidden" value="8">
-                       <div class="ui celled list additional-options clearfix mt0">
-                        <div class="open-now-filter prom-filter-1 search_filter checkboxes pb5">
-
-                         <a title="Show restaurants which are open right now" class="pos-relative sf filter bboth option ui checkbox left" href="/indore/breakfast?open=now"> <span class="link_hover left">Open at</span>&nbsp;
-                          <div class="right opennow_timer" data-ts="1513229298">
-                           10:58 AM
-                          </div> </a>
-                         <small role="link" title="Edit Time" id="edit-time" style="*display:none;" class="ml5 left grey-text time-colse-btn">edit</small>
-                         <div class="time-select mt5 mb10 hidden">
-                          <select class="ui dropdown compact open_time"> <option value="1100AM">1100AM</option> <option value="0100AM">01&nbsp;00&nbsp;AM</option><option value="0115AM">01&nbsp;15&nbsp;AM</option><option value="0130AM">01&nbsp;30&nbsp;AM</option><option value="0145AM">01&nbsp;45&nbsp;AM</option><option value="0200AM">02&nbsp;00&nbsp;AM</option><option value="0215AM">02&nbsp;15&nbsp;AM</option><option value="0230AM">02&nbsp;30&nbsp;AM</option><option value="0245AM">02&nbsp;45&nbsp;AM</option><option value="0300AM">03&nbsp;00&nbsp;AM</option><option value="0315AM">03&nbsp;15&nbsp;AM</option><option value="0330AM">03&nbsp;30&nbsp;AM</option><option value="0345AM">03&nbsp;45&nbsp;AM</option><option value="0400AM">04&nbsp;00&nbsp;AM</option><option value="0415AM">04&nbsp;15&nbsp;AM</option><option value="0430AM">04&nbsp;30&nbsp;AM</option><option value="0445AM">04&nbsp;45&nbsp;AM</option><option value="0500AM">05&nbsp;00&nbsp;AM</option><option value="0515AM">05&nbsp;15&nbsp;AM</option><option value="0530AM">05&nbsp;30&nbsp;AM</option><option value="0545AM">05&nbsp;45&nbsp;AM</option><option value="0600AM">06&nbsp;00&nbsp;AM</option><option value="0615AM">06&nbsp;15&nbsp;AM</option><option value="0630AM">06&nbsp;30&nbsp;AM</option><option value="0645AM">06&nbsp;45&nbsp;AM</option><option value="0700AM">07&nbsp;00&nbsp;AM</option><option value="0715AM">07&nbsp;15&nbsp;AM</option><option value="0730AM">07&nbsp;30&nbsp;AM</option><option value="0745AM">07&nbsp;45&nbsp;AM</option><option value="0800AM">08&nbsp;00&nbsp;AM</option><option value="0815AM">08&nbsp;15&nbsp;AM</option><option value="0830AM">08&nbsp;30&nbsp;AM</option><option value="0845AM">08&nbsp;45&nbsp;AM</option><option value="0900AM">09&nbsp;00&nbsp;AM</option><option value="0915AM">09&nbsp;15&nbsp;AM</option><option value="0930AM">09&nbsp;30&nbsp;AM</option><option value="0945AM">09&nbsp;45&nbsp;AM</option><option value="1000AM">10&nbsp;00&nbsp;AM</option><option value="1015AM">10&nbsp;15&nbsp;AM</option><option value="1030AM">10&nbsp;30&nbsp;AM</option><option value="1045AM">10&nbsp;45&nbsp;AM</option><option value="1100AM">11&nbsp;00&nbsp;AM</option><option value="1115AM">11&nbsp;15&nbsp;AM</option><option value="1130AM">11&nbsp;30&nbsp;AM</option><option value="1145AM">11&nbsp;45&nbsp;AM</option><option value="0100PM">01&nbsp;00&nbsp;PM</option><option value="0115PM">01&nbsp;15&nbsp;PM</option><option value="0130PM">01&nbsp;30&nbsp;PM</option><option value="0145PM">01&nbsp;45&nbsp;PM</option><option value="0200PM">02&nbsp;00&nbsp;PM</option><option value="0215PM">02&nbsp;15&nbsp;PM</option><option value="0230PM">02&nbsp;30&nbsp;PM</option><option value="0245PM">02&nbsp;45&nbsp;PM</option><option value="0300PM">03&nbsp;00&nbsp;PM</option><option value="0315PM">03&nbsp;15&nbsp;PM</option><option value="0330PM">03&nbsp;30&nbsp;PM</option><option value="0345PM">03&nbsp;45&nbsp;PM</option><option value="0400PM">04&nbsp;00&nbsp;PM</option><option value="0415PM">04&nbsp;15&nbsp;PM</option><option value="0430PM">04&nbsp;30&nbsp;PM</option><option value="0445PM">04&nbsp;45&nbsp;PM</option><option value="0500PM">05&nbsp;00&nbsp;PM</option><option value="0515PM">05&nbsp;15&nbsp;PM</option><option value="0530PM">05&nbsp;30&nbsp;PM</option><option value="0545PM">05&nbsp;45&nbsp;PM</option><option value="0600PM">06&nbsp;00&nbsp;PM</option><option value="0615PM">06&nbsp;15&nbsp;PM</option><option value="0630PM">06&nbsp;30&nbsp;PM</option><option value="0645PM">06&nbsp;45&nbsp;PM</option><option value="0700PM">07&nbsp;00&nbsp;PM</option><option value="0715PM">07&nbsp;15&nbsp;PM</option><option value="0730PM">07&nbsp;30&nbsp;PM</option><option value="0745PM">07&nbsp;45&nbsp;PM</option><option value="0800PM">08&nbsp;00&nbsp;PM</option><option value="0815PM">08&nbsp;15&nbsp;PM</option><option value="0830PM">08&nbsp;30&nbsp;PM</option><option value="0845PM">08&nbsp;45&nbsp;PM</option><option value="0900PM">09&nbsp;00&nbsp;PM</option><option value="0915PM">09&nbsp;15&nbsp;PM</option><option value="0930PM">09&nbsp;30&nbsp;PM</option><option value="0945PM">09&nbsp;45&nbsp;PM</option><option value="1000PM">10&nbsp;00&nbsp;PM</option><option value="1015PM">10&nbsp;15&nbsp;PM</option><option value="1030PM">10&nbsp;30&nbsp;PM</option><option value="1045PM">10&nbsp;45&nbsp;PM</option><option value="1100PM">11&nbsp;00&nbsp;PM</option><option value="1115PM">11&nbsp;15&nbsp;PM</option><option value="1130PM">11&nbsp;30&nbsp;PM</option><option value="1145PM">11&nbsp;45&nbsp;PM</option> </select>
-                          <div role="button" data-href="indore/breakfast?" id="time-select-submit" class="et go ui button">
-                           Go
-                          </div>
-                         </div>
-                         <div class="clear"></div>
+             <section class="mtop">
+                <div class="collections-grid hp-tour clearfix col-l-16">
+                    <div class="hp-collection-data clearfix">
+                        <div class="collections-tab-content mtop0">
+                          <h2 class="fontsize2 mbot">More Collections</h2>
+                          <featured-collection></featured-collection>
                         </div>
-                        <div role="presentation" class="search_filter checkboxes pb5">
-                         <a role="checkbox" aria-label="Show vegetarian restaurants only" aria-checked="false" title="Show vegetarian restaurants only" class="filter bboth sf option ui checkbox" href="/indore/breakfast?veg=1"> <input type="checkbox" name="example"> <span class="link_hover">Pure veg</span>
-                          <div class="clear"></div> </a>
-                         <div class="clear"></div>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="credit-card" title="Show restaurants accepting credit cards " href="/indore/breakfast?credit-card=1" class="filter bboth sf option  ui checkbox" data-credit-card="0" id="credit-card-filter"> <span class="link_hover">Credit cards</span> </a>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="buffet" title="Show restaurants having buffet " href="/indore/breakfast?buffet=1" class="filter bboth sf option  ui checkbox" data-buffet="0" id="buffet-filter"> <span class="link_hover">Buffet</span> </a>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="happyhour" title="Show restaurants having happy hours " href="/indore/breakfast?happyhour=1" class="filter bboth sf option  ui checkbox" data-happyhour="0" id="happyhour-filter"> <span class="link_hover">Happy hours</span> </a>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="wifi" title="Show restaurants with internet access " href="/indore/breakfast?wifi=1" class="filter bboth sf option  ui checkbox" data-wifi="0" id="wifi-filter"> <span class="link_hover">Wifi</span> </a>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="bar" title="Show restaurants serving alcohol " href="/indore/breakfast?bar=1" class="filter bboth sf option  ui checkbox" data-bar="0" id="bar-filter"> <span class="link_hover">Alcohol served</span> </a>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="no-bar" title="Show restaurants not serving alcohol " href="/indore/breakfast?no-bar=1" class="filter bboth sf option  ui checkbox" data-no-bar="0" id="no-bar-filter"> <span class="link_hover">Alcohol not served</span> </a>
-                        </div>
-                        <div class="search_filter checkboxes pb5">
-                         <a data-input-name="outdoor" title="Show restaurants with outdoor seating " href="/indore/breakfast?outdoor=1" class="filter bboth sf option  ui checkbox" data-outdoor="0" id="outdoor-filter"> <span class="link_hover">Outdoor seating</span> </a>
-                        </div>
-                       </div>
-                      </form>
-                      <div class="clear"></div>
-                     </div>
-                     <div class="clear"></div>
                     </div>
-                   </div>
-                  </div>
-                 </div> -->
-
                 </div>
-                <div class="clear"></div>
-               </div>
-               <div class="clear hidden filters_clearfix"></div>
-               <div class="hidden mobile-block tablet-portrait-block">
-                <div class="clear"></div>
-               </div>
-               <div class="col-l-13 plr15">
-                <div class="dm-map-contianer  hdn map_fade_container">
-                 <div class="ui inverted dimmer result-loading">
-                  <div class="ui red text loader"></div>
-                 </div>
-                 <div class="">
-                  <a class="dm-map-refresh ui basic label">
-                   <div class="ui checkbox">
-                    <input type="checkbox" name="example">
-                    <label><span class="grey-text normal">Search when I move the map</span></label>
-                   </div> </a>
-                  <div class="ui basic label search-close-btn cursor-pointer">
-                   <i class="remove tiny icon"></i>Close
-                  </div>
-                  <div id="dm-map-canvas" style="min-height:240px;"></div>
-                  <div class="dm-locate tooltip" data-icon="8" title="Detect my Location"></div>
-                  <div class="dm-map-expand hidden dm-toggle">
-                   Expand
-                  </div>
-                  <div class="dm-map-collapse dm-toggle hidden">
-                   Collapse
-                  </div>
-                 </div>
-                </div>
-                <div class="dm-frame ui card" style="display: none;"></div>
-                <div class="grey-text tac mb5 mt5 pr5 ta-right hidden map-ads-label">
-                 <div class="ttupper ad-banner-text">
-                  Sponsored &amp; Popular
-                 </div>
-                </div>
-               </div>
-               <div class="search-bar-filler"></div>
-               <div class="col-s-16 search-start plr15 col-l-8 " id="search-start">
-                <div class="row">
-                 <div class="col-s-16 search_results mbot">
-                  <section id="search-results-container" class="clearfix">
-                      <div class="spinner"
-                      [ngStyle]="showSpinner ? {'align': 'center'} : {'display' :'none'}">
-                      <h2>Loading:</h2>
-                        <i class="fa fa-circle-o-notch fa-spin"></i>
-                        </div>
-                   <div class="orig-search-list-container" *ngIf="!showSpinner">
-                    <div class="ui inverted dimmer">
-                     <div class="ui red text loader" style="top: 70%; position: fixed;"></div>
-                    </div>
-                    <div class="clear"></div>
-                    <div id="orig-search-list" class="ui cards">
-                     <!-- START SHOWING SEARCH RESULTS -->
-
-                       <div  *ngFor="let searchObj of displaysearchCollection" class="card  search-snippet-card  all_web_jumbo_impr_track all_web_jumbo_click_track   search-card">
-                        <div class="content">
-                         <div class="js-search-result-li even  status 1">
-                          <article class="search-result  first  ">
-                           <div class="pos-relative clearfix    ">
-                            <div class="row">
-                             <div class="col-s-6 col-m-4">
-                              <div class="search_left_featured clearfix">
-                               <a href="#" class="feat-img lazy" style="background-image:url(https://b.zmtcdn.com/images/placeholder_200.png);background-repeat: repeat;"></a>
-                              </div>
-                             </div>
-                             <div class="col-s-16  col-m-12  pl0  ">
-                              <div class="zgold col-l-5 fontsize5">
-                               <div class="row">
-                                SPONSORED
-                               </div>
-                              </div>
-                              <div class="row">
-                               <div class="col-s-12">
-                                <div class="res-snippet-small-establishment mt5" style="margin-bottom: 7px;">
-                                 <a title="Bars in Indore" href="https://www.zomato.com/indore/bar " class="zdark ttupper fontsize6">Bar</a>
-                                 <span class="zdark mr5">,</span>
-                                 <a title="Casual Dining in Indore" href="https://www.zomato.com/indore/casual-dining " class="zdark ttupper fontsize6">Casual Dining</a>
-                                </div>
-                                <a class="result-title hover_feedback zred bold ln24   fontsize0 " href="https://www.zomato.com/indore/hobnob-gourmet-cafébar-vijay-nagar" title="{{searchObj.location.address | json}}" >{{searchObj.getName()}} </a>
-                                <div class="clear"></div>
-                                <a class="ln24 search-page-text mr10 zblack search_result_subzone left" href="https://www.zomato.com/indore/restaurants/in/infiniti-hotel-vijay-nagar" title="{{searchObj.getName()}}, {{searchObj.location.locality}}"><b>{{searchObj.location.locality}}</b></a>
-                               </div>
-                               <div class="ta-right floating search_result_rating col-s-4 clearfix" style="line-height: 14px;">
-                                <div data-res-id="1402314" data-variation="mini inverted" data-content="Very Good" class="rating-popup rating-for-1402314 res-rating-nf right level-7 bold">
-                                  {{searchObj.user_rating.aggregate_rating}}
-                                </div>
-                                <div class="clear mb5"></div>
-                                <!-- show the vote count only if there's a rating -->
-                                <span class="rating-votes-div-1402314 grey-text fontsize5">{{searchObj.user_rating.votes}} votes</span>
-                               </div>
-                              </div>
-                              <div class="row">
-                               <div style=" max-width:370px; " class="col-m-16 search-result-address grey-text nowrap ln22" title="{{searchObj.location.address}}">
-                                 {{searchObj.location.address}}
-                               </div>
-                              </div>
-                             </div>
-                            </div>
-                           </div>
-                           <div class="ui divider"></div>
-                           <div class="search-page-text clearfix row">
-                            <div class="clearfix">
-                             <span class="col-s-5 col-m-4 ttupper fontsize5 grey-text">Cuisines: </span>
-                             <span class="col-s-11 col-m-12 nowrap  pl0">{{searchObj.getCuisines()}} </span>
-                            </div>
-                            <div class="res-cost clearfix">
-                             <span class="col-s-5 col-m-4 ttupper fontsize5 grey-text">Cost for two:</span>
-                             <span class="col-s-11 col-m-12 pl0">₹{{searchObj.getAverageCostForTwo()}} </span>
-                            </div>
-                            <div class="res-timing clearfix" title="7 AM to 12 Midnight">
-                             <span class="col-s-5 col-m-4 ttupper   fontsize5  grey-text left">Hours:</span>
-                             <div class="col-s-11 col-m-12 pl0 search-grid-right-text ">
-                               7 AM to 12 Midnight (Mon-Sun)
-                             </div>
-                             <div class="clear"></div>
-                            </div>
-                           </div>
-                          </article>
-                         </div>
-                        </div>
-                      <div class="ui two item menu search-result-action mt0">
-                       <a class="item res-snippet-ph-info" data-res-name="Hobnob Gourmet Cafébar" data-phone-no-str="0731 3301436"> <span data-icon="" class="zdark fontsize4 bold action_btn_icon">Call</span> </a>
-                       <a class="item result-menu" href="https://www.zomato.com/indore/hobnob-gourmet-cafébar-vijay-nagar/menu#tabtop" title="hobnob gourmet cafébar Menu" data-result-type="ResCard_Menu"> <span data-icon="" class="zdark fontsize4 bold action_btn_icon">View Menu</span> </a>
-                      </div>
-                     </div>
-
-
-                   </div>
-                   </div>
-                   <div class="search-pagination-top clearfix  mtop " *ngIf="!showSpinner">
-                    <div class="row">
-                     <div class="col-l-12">
-                      <div class="res-right right">
-                       <div role="listbox" data-only_page_str="" class=" ui pagination menu small pagination-control res-menu-paginator">
-                        <div class="item paginator_item  prev" aria-hidden="true">
-                         <div class="pr5">
-                          <i class="left angle icon"></i>
-                         </div>
-                        </div>
-                        <a
-                        [ngStyle]="enablePrev ? {'color': '#d7d7dc','cursor': 'no-drop'} : {'color' :'blue'}"
-                        [ngClass]="{disabled:enablePrev}"
-                        class="paginator_item item" aria-selected="true" aria-label="Go to Page 1" title="Go to Page 1" (click)="previous()">Prev</a>
-
-                        <a
-                        [ngStyle]="enableNext ? {'color': '#d7d7dc','cursor': 'no-drop'} : {'color' :'blue'}"
-                        [ngClass]="{disabled:enableNext}"
-                        class="paginator_item active item " aria-selected="true" aria-label="Go to Page 1" title="Go to Page 1" (click)="next()">Next</a>
-
-                        <a
-                        class="paginator_item next item" aria-label="Next Page" title="Next Page">
-                         <div class="ml5">
-                          <i class="right angle icon"></i>
-                         </div> </a>
-                       </div>
-                      </div>
-                     </div>
-                     <div class="clear"></div>
-                    </div>
-                    <div class="ui divider"></div>
-                   </div>
-                   <script>
-                    var tdata = tdata || {};
-                     tdata["restaurants_shown"] = "1402314,1402960,18601095,1401948,18511264,18254231,1400186,1401637,1400208,1400169,1400126,1402359,1400365,1400315,1400478|;"
-                    tdata["empty_search_data"] = {};
-                    tdata["empty_search_data"]= JSON.stringify({"query":"","timestamp":"20171214","city_id":14,"subzone_id":0,"time":1513229298,"extra":""});
-                    tdata["empty_search_data_type"] = "consumer";
-                </script>
-                  </section>
-                 </div>
-                 <div class="col-s-16 restaurant_search hidden">
-                  <div id="orig-search-list" class="restaurant-result ui cards">
-                  </div>
-                 </div>
-                </div>
-               </div>
-               <div class="col-l-5 col-s-16 right-column-container pl0 ">
-                <!-- <div class="ui fluid image lazy show_search_map" data-original="https://b.zmtcdn.com/images/search-map-placeholder.jpg" style="border-radius: 3px;background-image: url('https://b.zmtcdn.com/images/photoback.png'); background-size: cover;height: 60px;border-radius:4px;">
-                 <div class="search-map-overlay fontsize4 medium zblack">
-                  View search results on map
-                 </div>
-                </div>
-                <div role="group" class="zbans container left" style="width:100%">
-                 <div class="grey-text mb5 mt5 pr5 new_ads_right_label">
-                  <small class="ads_title_popup ttupper ad-banner-text">Sponsored &amp; Popular</small>
-                 </div>
-                 <div class="ui inverted popup" id="ads_title_popup">
-                  Showing a selection of sponsored listings and popular places
-                 </div>
-                 <div id="cat-banner-ads"></div>
-                </div> -->
-                <div class="clear"></div>
-                <div id="mobile_banner_search_module" class="clearfix ui segment hidden content">
-                 <div id="mobile-banner-module" class="pb5">
-                  <div id="mobile-banner">
-                   <div class="mobile-banner-intro tac col-l-16">
-                    <div class="fontsize2 bold">
-                     Get the Zomato app
-                    </div>
-                    <div class="grey-text pb5 fontsize5 mt5 mobile-banner-desc" tabindex="0">
-                     See menus and photos for nearby restaurants and bookmark your favorite places on the go
-                    </div>
-                   </div>
-                   <div class="clear"></div>
-                   <div class="image-container p-relative tac">
-                    <img class="app-image" width="139" src="https://b.zmtcdn.com/images/app-sidebar.jpg" alt="Get the Zomato app">
-                    <div class="content-container clearfix mtop0">
-                    </div>
-                   </div>
-                   <div class="send-app-link clearfix">
-                    <div class="mbot0 clearfix">
-                     <div class="col-l-4 col-m-4 left">
-                      <div class="row">
-                       <div class="ui input">
-                        <input size="3" id="country-code" value="" type="text">
-                       </div>
-                      </div>
-                     </div>
-                     <div class="col-l-12 col-m-12 right">
-                      <div class="row">
-                       <div class="ui input fluid">
-                        <input id="phone-no" size="25" placeholder="Enter phone number" type="tel">
-                       </div>
-                      </div>
-                     </div>
-                    </div>
-                    <div id="app-download-sms" class="ui button fluid red">
-                     <span class="ls1">Text App Link</span>
-                    </div>
-                    <div class="col-l-16 hidden" id="send-sms-error-message">
-                     <div class="row mtop0">
-                      <div class="ui red message">
-                       <span class="fontsize5 error-message">Your message is not sent because the SMS limit is reached. Please try again later.</span>
-                      </div>
-                     </div>
-                    </div>
-                    <div class="hidden col-l-16" id="rest-sms-success-message">
-                     <div class="row mtop0">
-                      <div class="ui green message">
-                       <span class="fontsize5">Message sent. Check your phone to find a link to download the app. Happy eating!</span>
-                      </div>
-                     </div>
-                    </div>
-                   </div>
-                   <div class="store-links mtop tac">
-                    <a class="pr15" target="_blank" href="https://bnc.lt/download-zomato-ios"> <img src="https://b.zmtcdn.com/images/mobile/applestore@2x.png" alt="Download Zomato for iOS" height="32"> </a>
-                    <a target="_blank" href="https://bnc.lt/download-z-android"> <img src="https://b.zmtcdn.com/images/mobile/googleplay@2x.png" alt="Download Zomato for Android" height="32"> </a>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-                <div role="group" id="sidebar_google_ad" style="width:100%">
-                 <div class="clear"></div>
-                </div>
-                <div class="clear"></div>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="clear ieclear"></div>
-          </div>
-          </div>
-          <footer-component></footer-component>
-   </body>
-
-</html>
+            </section>
+          </section>
+        </div>
+      </div>
+      <footer-component></footer-component>
+</div>

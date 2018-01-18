@@ -31,23 +31,21 @@ export class SearchComponent {
     private ngOnInit() {
       if(this.route.params) {
         this.route.params.subscribe(params => {
-        this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
-        this.configService.setCityName(this.cityName);
-        this.searchService.getCityByCityName(this.cityName).subscribe(data => {
-        this.cityId = data['cityObj']['id'];
-        this.configService.setCityId(this.cityId);
-        this.searchService.getCuisinesCollectionList(this.cityId).subscribe(data => {
-            this.collectionslist = data['results']['restaurants'];
+          this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
+          this.configService.setCityName(this.cityName);
+          this.searchService.getCityByCityName(this.cityName).subscribe(data => {
+            this.cityId = data['cityObj']['id'];
+            this.configService.setCityId(this.cityId);
+            this.searchService.getCuisinesCollectionList(this.cityId).subscribe(data => {
+                this.collectionslist = data['results']['restaurants'];
+            });
+            this.searchService.getCityCollection(data['cityObj']['id']).subscribe(data => {
+                this.collections = data['collections']
+            });
+          });
         });
-        this.searchService.getCityCollection(data['cityObj']['id'])
-        .subscribe(
-          data => {
-              this.collections = data['collections']});
-          }
-      );
-    });
-  }
-}
+      }
+    }
 
     initForm(): FormGroup {
       return this.stateForm = this.fb.group({
@@ -56,27 +54,28 @@ export class SearchComponent {
       })
     }
 
-    selectValue(value) {
-     this.showDropDown = false;
-     this.cusineDropDown = !this.cusineDropDown;
-     this.cityName = value;
-     this.stateForm.patchValue({"search": value});
-     this.searchService.getCityByCityName(value).subscribe((data) => {
-     if(this.route.params) {
+    onLocationChange(value) {
+       this.showDropDown = false;
+       this.cusineDropDown = !this.cusineDropDown;
+       this.cityName = value;
+       this.stateForm.patchValue({"search": value});
+       this.searchService.getCityByCityName(value).subscribe((data) => {
+         if(this.route.params) {
             this.route.params.subscribe(params => {
                     if((this.router.url.indexOf('home') > 0) && (params.cityName!=this.cityName)) {
                     this.router.navigate(['/home', data['cityObj'].name]);
                 }
             });
-        }
-    });
-}
+         }
+      });
+    }
 
     closeDropDown() {
+
     }
-   openDropDown() {
-     this.showDropDown = !this.showDropDown;
-   }
+     openDropDown() {
+       this.showDropDown = !this.showDropDown;
+     }
 
     openCusineDropDown() {
         this.cusineDropDown = !this.cusineDropDown;
@@ -87,10 +86,11 @@ export class SearchComponent {
     }
 
     redirectToCollection() {
-      var navigate = this.cityName+'/collections/featured';
+      var navigate = this.cityName + '/collections/featured';
       this.router.navigate([navigate]);
-    }
-   selectval(val , category) {
+    };
+
+    onCusineValueChange(val, category) {
        if((this.stateForm.value.search != '') && (this.stateForm.value.search != null)) {
            this.cityName = this.stateForm.value.search;
        }
@@ -103,12 +103,11 @@ export class SearchComponent {
        }
         this.stateForm.patchValue({"keywords_input": val});
         this.searchService.getCollectionByCusine(val,this.cityName,this.cityId , category).subscribe((data) => {
-        this.router.navigate([this.cityName+'/'+val+"-in-"+this.cityName]);
-       }
-    );
-      this.searchService.getCityCollection(this.cityId)
-      .subscribe(data => {
-              this.collections = data['collections']});
-              this.cusineDropDown = !this.cusineDropDown;
-   }
+            this.router.navigate([this.cityName+'/'+val+"-in-"+this.cityName]);
+       });
+
+       this.searchService.getCityCollection(this.cityId).subscribe(data => {
+          this.collections = data['collections']});
+          this.cusineDropDown = !this.cusineDropDown;
+      }
   }

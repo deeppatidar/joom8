@@ -6,6 +6,8 @@ import {FeaturedComponent} from './featured.component';
 import {NetworkComponent} from './network.component';
 import {BookmarkedComponent} from './bookmark.component';
 import {MyCollectionComponent} from './mycollection.component';
+import {SearchByCategoryComponent} from './searchByCategory.component';
+
 import {CollectionDetailComponent} from './collectionDetail.component';
 
 import {CollectionService} from './collection.service';
@@ -23,8 +25,7 @@ import {CollectionService} from './collection.service';
         },
         {
           path: 'featured',
-          component: FeaturedComponent,
-          data : {cityId : 14}
+          component: FeaturedComponent
         },
         {
           path: 'bookmarked',
@@ -33,10 +34,20 @@ import {CollectionService} from './collection.service';
         {
           path: 'me',
           component: MyCollectionComponent,
+        },
+        {
+          path: '' ,
+          redirectTo: 'featured',
+          pathMatch:'full'
         }
       ]
     },
-    { path: ':cityName/:category', component: CollectionDetailComponent }
+    {
+      path: ':cityName/collection/:collectionId',
+      component: CollectionDetailComponent
+
+    },
+    { path: ':cityName/:category', component: SearchByCategoryComponent }
 
   ])],
   exports: [RouterModule]
