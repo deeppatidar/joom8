@@ -9,6 +9,7 @@ import {CollectionModule} from './collection/collection.module';
 import {HeaderModule} from './header/header.module';
 import {SearchModule} from './search/search.module';
 import {FooterModule} from './footer/footer.module';
+import {RestaurantDetailModule} from './restaurantDetail/restaurantDetail.module';
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeModule,
     CollectionModule,
     SearchModule,
+    RestaurantDetailModule,
     AppRoutingModule
   ],
   declarations: [ AppComponent],

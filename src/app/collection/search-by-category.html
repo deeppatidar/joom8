@@ -501,14 +501,9 @@
                           </div>
                           <div class="row">
                            <div class="col-s-12">
-                            <div class="res-snippet-small-establishment mt5" style="margin-bottom: 7px;">
-                             <a title="Bars in Indore" href="https://www.zomato.com/indore/bar " class="zdark ttupper fontsize6">Bar</a>
-                             <span class="zdark mr5">,</span>
-                             <a title="Casual Dining in Indore" href="https://www.zomato.com/indore/casual-dining " class="zdark ttupper fontsize6">Casual Dining</a>
-                            </div>
-                            <a class="result-title hover_feedback zred bold ln24   fontsize0 " href="https://www.zomato.com/indore/hobnob-gourmet-cafébar-vijay-nagar" title="{{searchObj.location.address | json}}" >{{searchObj.getName()}} </a>
+                            <a class="result-title hover_feedback zred bold ln24 fontsize0" routerLink="/{{cityName}}/restaurant/{{searchObj.id}}" title="{{searchObj.location.address | json}}" >{{searchObj.getName()}} </a>
                             <div class="clear"></div>
-                            <a class="ln24 search-page-text mr10 zblack search_result_subzone left" href="https://www.zomato.com/indore/restaurants/in/infiniti-hotel-vijay-nagar" title="{{searchObj.getName()}}, {{searchObj.location.locality}}"><b>{{searchObj.location.locality}}</b></a>
+                            <a class="ln24 search-page-text mr10 zblack search_result_subzone left" title="{{searchObj.getName()}}, {{searchObj.location.locality}}"><b>{{searchObj.location.locality}}</b></a>
                            </div>
                            <div class="ta-right floating search_result_rating col-s-4 clearfix" style="line-height: 14px;">
                             <div class="rating-popup rating-for-1402314 res-rating-nf right bold" [ngClass]="{'rating-average': searchObj.user_rating.isAverage, 'rating-excellent': searchObj.user_rating.isExcellent, 'rating-very-good': searchObj.user_rating.isVeryGood, 'rating-good': searchObj.user_rating.isGood}">

@@ -14,6 +14,7 @@ import {BookmarkedComponent} from './bookmark.component';
 import {MyCollectionComponent} from './mycollection.component';
 
 import {CollectionDetailComponent} from './collectionDetail.component';
+import { RestaurantDetailComponent} from '../restaurantDetail/restaurantDetail.component';
 
 import {SearchByCategoryComponent} from './searchByCategory.component';
 import {CollectionService} from './collection.service';

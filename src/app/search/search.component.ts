@@ -16,7 +16,7 @@ export class SearchComponent {
 
     showDropDown : boolean = false;
     cusineDropDown : boolean = false;
-    stateForm: FormGroup;
+    searchLocationForm: FormGroup;
     cityData : City;
     cityId : number;
     cityName : string;
@@ -25,13 +25,16 @@ export class SearchComponent {
     states = ['Indore', 'Bhopal','Jaipur','Udaipur','Pune','Bangalore','Mumbai','Nagpur'];
 
     constructor( private fb: FormBuilder, private searchService : SearchService, private router : Router, private route : ActivatedRoute, private configService : ConfigService) {
-      this.initForm()
+      this.initiliseSearchForm();
     }
 
     private ngOnInit() {
       if(this.route.params) {
         this.route.params.subscribe(params => {
           this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
+
+          this.searchLocationForm.patchValue({"searchLocation": this.cityName});
+
           this.configService.setCityName(this.cityName);
           this.searchService.getCityByCityName(this.cityName).subscribe(data => {
             this.cityId = data['cityObj']['id'];
@@ -47,10 +50,10 @@ export class SearchComponent {
       }
     }
 
-    initForm(): FormGroup {
-      return this.stateForm = this.fb.group({
-        search: [null],
-         keywords_input: [null]
+    initiliseSearchForm(): FormGroup {
+      return this.searchLocationForm = this.fb.group({
+         searchLocation: [null],
+         category: [null]
       })
     }
 
@@ -58,7 +61,7 @@ export class SearchComponent {
        this.showDropDown = false;
        this.cusineDropDown = !this.cusineDropDown;
        this.cityName = value;
-       this.stateForm.patchValue({"search": value});
+       this.searchLocationForm.patchValue({"searchLocation": value});
        this.searchService.getCityByCityName(value).subscribe((data) => {
          if(this.route.params) {
             this.route.params.subscribe(params => {
@@ -82,7 +85,7 @@ export class SearchComponent {
     }
 
     getSearchValue() {
-      return this.stateForm.value.search;
+      return this.searchLocationForm.value.search;
     }
 
     redirectToCollection() {
@@ -91,8 +94,8 @@ export class SearchComponent {
     };
 
     onCusineValueChange(val, category) {
-       if((this.stateForm.value.search != '') && (this.stateForm.value.search != null)) {
-           this.cityName = this.stateForm.value.search;
+       if((this.searchLocationForm.value.searchLocation != '') && (this.searchLocationForm.value.searchLocation != null)) {
+           this.cityName = this.searchLocationForm.value.searchLocation;
        }
        else {
            if(this.route.params) {
@@ -101,9 +104,9 @@ export class SearchComponent {
                });
            }
        }
-        this.stateForm.patchValue({"keywords_input": val});
+        this.searchLocationForm.patchValue({"category": val});
         this.searchService.getCollectionByCusine(val,this.cityName,this.cityId , category).subscribe((data) => {
-            this.router.navigate([this.cityName+'/'+val+"-in-"+this.cityName]);
+            this.router.navigate([this.cityName + '/category/' + category]);
        });
 
        this.searchService.getCityCollection(this.cityId).subscribe(data => {

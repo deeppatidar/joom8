@@ -1,4 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { CollectionInterface } from '../shared/collectionInterface';
 import { Collection} from '../model/collection';
 import {CollectionService} from './collection.service';
@@ -23,10 +24,16 @@ export class CollectionComponent implements OnInit {
     constructor(private collectionService : CollectionService, private route : ActivatedRoute, private router : Router) {}
 
     ngOnInit() {
-        if (this.route.params) {
-          this.route.params.subscribe(params => {
-            this.cityName = params['cityName'];
-          })
-        }
-    };
+      this.route.params.subscribe(params => {
+          // let readTabFromState = this.route.snapshot._urlSegment.segments;
+          // this.activeTab = readTabFromState[readTabFromState.length - 1];
+          // this.cityName = params['cityName'];
+      });
+    }
+
+    gotoFeatureCollection(event, url) {
+        event.preventDefault();
+        this.activeTab = url;
+        this.router.navigate([url], { relativeTo: this.route });
+    }
 }

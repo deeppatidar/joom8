@@ -47,7 +47,7 @@ import {CollectionService} from './collection.service';
       component: CollectionDetailComponent
 
     },
-    { path: ':cityName/:category', component: SearchByCategoryComponent }
+    { path: ':cityName/category/:categoryId', component: SearchByCategoryComponent }
 
   ])],
   exports: [RouterModule]

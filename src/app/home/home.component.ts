@@ -47,7 +47,7 @@ export class HomeComponent {
 
   public goToCategoryDetail(event, val) {
       event.preventDefault();
-      this.router.navigate([this.cityName+'/' + val + "-in-" + this.cityName]);
+      this.router.navigate([this.cityName+'/category/' + val]);
    };
 
    public redirectToCollection() {

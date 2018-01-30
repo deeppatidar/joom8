@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { ActivatedRoute} from '@angular/router';
 import { Collection} from '../model/collection';
 import { SearchCollection} from '../model/searchcollection';
+import { SearchService } from '../search/search.service';
 import {HeaderComponent} from '../header/header.component';
 
 @Component({
@@ -26,20 +27,29 @@ public searchCollection : SearchCollection[] = [];
   enablePrev: boolean = true;
   enableNext: boolean = false;
   category: string;
+  categoryId: string;
 
-  constructor(private collectionService : CollectionService, private route : ActivatedRoute) {}
+  constructor(private collectionService : CollectionService, private route : ActivatedRoute, private searchService: SearchService) {}
 
   ngOnInit() {
     this.end  = ((this.pageNumber+1) * this.pageSize -1) ;
     if(this.route.params) {
         this.route.params.subscribe(params => {
-          this.category = params.category.split("-")[0];
+          this.categoryId = params.categoryId;
+          this.searchService.getCuisinesCollectionList(this.cityId).subscribe(data => {
+              let quickSearchList = data['results']['restaurants'];
+              for (let i = 0; i < quickSearchList.length; i++) {
+                  if(this.categoryId == quickSearchList[i].item_id) {
+                    this.category = quickSearchList[i].text;
+                  }
+              }
+
+          });
           this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
           this.collectionService.getCityByCityName(this.cityName).subscribe(data => {
             this.cityId = data['cityObj']['id'];
-            this.collectionService.getfreeFlowSearch(this.cityId, this.category).subscribe((data) => {
+            this.collectionService.getfreeFlowSearch(this.cityId, this.categoryId).subscribe((data) => {
                 this.searchCollection = data['searchCollection'];
-                console.log(this.searchCollection);
                 this.showSpinner = false;
                 this.totalPage = Math.ceil(this.searchCollection.length / this.pageSize);
                 this.displaysearchCollection = this.searchCollection.slice(this.start,this.end + 1);

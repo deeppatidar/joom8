@@ -45,7 +45,7 @@
   <div class="wrapper mtop ">
       <div class="row">
           <div class="collections-page">
-              <div class="collections_header col-l-16 " data-collection-id = "274852" >
+              <div class="collections_header col-l-16 ">
                   <div class="ui segment plr0i pt0">
                       <div id="progressive_image" class="header-img progressive_img" [style.background-image]="getBackground(displayCollection.image)" style="background-size: cover; background-position:center; background-repeat:no-repeat; height:  290px;">
                           <div class="progressive_img_loaded" style="background-size: cover; background-position:center;"></div>
@@ -54,7 +54,7 @@
                           <h1 class="hero_title collections_title mb5 mt5 " title="{{displayCollection.title}}">{{displayCollection.title}}</h1>
                           <div class="collection_description mb5 fontsize3">{{displayCollection.description}}</div>
                           <div class="grey-text mb5">{{restaurantCount}} Places</div>
-                          <div class="left mb5"><button data-track_type = "bookmarkcollections" class="ui basic large label ui-label-col app-tracker-link bookmark_btn act-wishlist-collections" data-page = "collections" data-edit-type = "add" data-collection-id = "274852"><span class="wishlist-text">Save Collection</span></button></div>
+                          <div class="left mb5"><button class="ui basic large label ui-label-col app-tracker-link bookmark_btn act-wishlist-collections" data-page = "collections" data-edit-type = "add" data-collection-id = "274852"><span class="wishlist-text">Save Collection</span></button></div>
                           <div class="clear"></div>
                       </div>
                 </div>
@@ -67,14 +67,14 @@
                     <div class="row col-res-list collection_listings_container">
                         <div class="col-s-8 col-l-1by3" *ngFor="let restaurant of restaurantList">
                             <div class="relative  top-res-box entity-ads-snippet-track mbot">
-                                <a href="https://www.zomato.com/mumbai/oc-the-oriental-cuisine-mulund-west?zrp_bid=118878&amp;zrp_pid=14&amp;zrp_cid=257659" class="relative lazy top-res-box-bg pl10 ptop0" [style.background-image]="getBackground(restaurant.featured_image)" style="border-bottom: 4px solid #FBBD08;background-size:cover;  height:150px;  display: block; border-radius: 4px; background-position:center;">
+                                <a routerLink="/{{cityName}}/restaurant/{{restaurant.id}}" class="relative lazy top-res-box-bg pl10 ptop0" [style.background-image]="getBackground(restaurant.featured_image)" style="border-bottom: 4px solid #FBBD08;background-size:cover;  height:150px;  display: block; border-radius: 4px; background-position:center;">
                                   <div class="ads-res-snippet-rating-large" [ngClass]="{'rating-average': restaurant.user_rating.isAverage, 'rating-excellent': restaurant.user_rating.isExcellent, 'rating-very-good': restaurant.user_rating.isVeryGood, 'rating-good': restaurant.user_rating.isGood}">{{restaurant.user_rating.aggregate_rating}}</div>
                                   <!-- <div class="ui tiny yellow label">
                                       <span class="ttupper">Featured</span>
                                   </div> -->
                                 </a>
                                 <div class="ptop0 pbot0 pl10 pr10">
-                                    <a href="https://www.zomato.com/mumbai/oc-the-oriental-cuisine-mulund-west?zrp_bid=118878&amp;zrp_pid=14&amp;zrp_cid=257659" class="jumbo_track_collections">
+                                    <a routerLink="/{{cityName}}/restaurant/{{restaurant.id}}" class="jumbo_track_collections">
                                         <div class="res_title zblack bold nowrap" title="OC-The Oriental Cuisine">{{restaurant.name}}</div>
                                     </a>
                                     <a class="zone jumbo_track_collections">
