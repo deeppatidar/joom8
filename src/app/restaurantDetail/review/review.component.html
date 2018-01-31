@@ -1,0 +1,60 @@
+<div  *ngIf="!isLoading">
+    <div class="ui segment clearfix  brtop " *ngFor="let reviewData of userReviews">
+        <div class="ui warning message error-message-highlight review-message hidden mbot"></div>
+        <div class="ui item clearfix ">
+            <div class="item">
+                <div class="clearfix  mb10 ">
+                    <div class="res-large-snippet ui horizontal list col-s-16  ">
+                        <div class="item col-s-16">
+                            <a href="https://www.zomato.com/cupcakesgirl">
+                                <img class="ui avatar image left tiny" alt="{{reviewData.review.user.name}}" src="{{reviewData.review.user.profile_image}}" style="display: block;">
+                            </a>
+                            <div class="content col-l-11 large-snippet ml5 mt5">
+                                <div class="header nowrap ui left">
+                                    <a href="https://www.zomato.com/cupcakesgirl" data-entity_id="579891">
+                                        {{reviewData.review.user.name}}
+                                    </a>
+                                </div>
+                                <div class="clear"></div>
+                                <span class="grey-text fontsize5 nowrap">
+                                    32 Reviews,467 Followers
+                                </span>
+                                <div class="clear"></div>
+                              <div class="zs-follow-btn-container usr-page-follow-btn clear mt2">
+                                  <a role="button" aria-label="Follow" class="social-button follow-social cgrey ui basic large label ui-label-bb zs-follow-user-button" title="Follow">Follow</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="fs12px pbot0 clearfix">
+              <a class="grey-text" href="https://www.zomato.com/review/vAZxlm">
+                  <time datetime="2017-12-29 18:56:51">{{reviewData.review.user.review_time_friendly}}</time>
+              </a>
+          </div>
+        </div>
+        <div tabindex="0" class="rev-text mbot0 " style="line-height: 20px;">
+            <div class="ttupper fs12px left bold zdhl2 tooltip icon-font-level-6" >Rated</div>&nbsp;
+              <span [style.background-colour]="reviewData.review.rating_color">{{reviewData.review.rating}}</span>{{reviewData.review.review_text}}
+            <div class="clear"></div>
+        </div>
+        <div id="restaurant_review_actions_32938563">
+            <div data-reactroot="">
+                <div class="left mr5 ui tiny labeled button js-btn-thank">
+                    <div class="compact ui tiny button" data-icon="f"><span>Like</span></div>
+                    <div class="ui basic label stats-thanks js-thank-count js-activity-like-count ">{{reviewData.review.likes}}</div>
+                </div>
+                <div class="left ui tiny labeled button comment-btn-to">
+                    <div class="compact ui tiny button" data-icon="÷">Comment</div>
+                    <div class="ui basic label stats-comment" aria-label="0 Comments">0</div>
+                </div>
+            </div>
+            <div class="right clearfix">
+                <div class=" left res-review-top-right-text">
+                    <button class="ui button compact js-btn-share small"data-icon="ß">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

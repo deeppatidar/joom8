@@ -1,6 +1,7 @@
 import { NgModule }           from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent }     from './home.component';
 import { HomeService }     from './home.service';
@@ -13,7 +14,7 @@ import {SearchModule} from '../search/search.module';
 // import {SearchComponent} from '../search/search.component';
 
 @NgModule({
-  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives, FooterModule,SearchModule],
+  imports:  [HomeRoutingModule, CommonModule, FormsModule, ReactiveFormsModule, ApplicationPipes, ApplicationDirectives, FooterModule, SearchModule],
   declarations: [HomeComponent],
   providers:  [ HomeService, ConfigService]
 })

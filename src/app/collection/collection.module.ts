@@ -14,17 +14,21 @@ import {BookmarkedComponent} from './bookmark.component';
 import {MyCollectionComponent} from './mycollection.component';
 
 import {CollectionDetailComponent} from './collectionDetail.component';
+import { RestaurantDetailComponent} from '../restaurantDetail/restaurantDetail.component';
 
 import {SearchByCategoryComponent} from './searchByCategory.component';
 import {CollectionService} from './collection.service';
 import { ConfigService } from '../shared/config.service';
 
+import {localForageConfig} from '../configs/localForageConf';
+import { JoomLocalStorageService } from '../shared/joomStorageLocal.service';
+
 import { HeaderModule } from '../header/header.module';
 import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
-  imports:      [CollectionRoutingModule, HttpModule, CommonModule, BrowserModule, HeaderModule, FooterModule],
+  imports:      [CollectionRoutingModule, HttpModule, CommonModule, BrowserModule, HeaderModule, FooterModule, localForageConfig],
   declarations: [CollectionComponent, FeaturedComponent, NetworkComponent, BookmarkedComponent, MyCollectionComponent, SearchByCategoryComponent, CollectionDetailComponent],
-  providers:    [CollectionService, ConfigService]
+  providers:    [CollectionService, ConfigService, JoomLocalStorageService]
 })
 export class CollectionModule { }

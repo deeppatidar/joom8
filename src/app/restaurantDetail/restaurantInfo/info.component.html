@@ -1,0 +1,94 @@
+<div class="row ui segment" *ngIf="restaurantDetail">
+    <div class="col-l-1by3 pl0 pr20">
+        <div class="mbot">
+          <div class="res-info-group clearfix">
+              <h2 tabindex="0" class="mt0 mb5">Cuisines</h2>
+              <div class="res-info-cuisines clearfix">{{restaurantDetail.cuisines}}</div>
+          </div>
+        </div>
+        <div class="mbot mtop">
+            <div class="res-info-group clearfix">
+                <div class="res-info-detail">
+                    <span class="hdn">{{restaurantDetail.name}} </span>
+                    <div tabindex="0">
+                        <h2 class="left mt0 mb5">Average Cost&nbsp;</h2>
+                        <div tabindex="0" class="tooltip-w left">
+                            <span class="res-info-detail-icon" data-icon="|"></span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <span tabindex="0"> {{restaurantDetail.average_cost_for_two}} for two people (approx.)&nbsp;</span>
+                    <div class="grey-text fontsize5 subtext">Exclusive of applicable taxes and charges, if any</div>
+                    <div class="mt5">
+                        <div tabindex="0" class="res-info-cft-text fontsize5">
+                            <span class="res-info-payment res-info-icon"></span>
+                            <span itemprop="paymentAccepted">Cash</span> and <span itemprop="paymentAccepted" title="Cards accepted at Just My Bakes">Cards accepted</span><br><span>Wallet accepted</span>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mtop"></div>
+    </div>
+    <div class="col-l-1by3   pl20 pr20">
+        <div class="mbot">
+            <div class="res-info-group clearfix">
+                <div class="res-info-detail">
+                    <div tabindex="0" class="s-title hdn">
+                        <div class="left mr10">Opening hours</div>
+                        <span class="res-timings-toggle is-closed" id="res-timings-toggle">(See more +)</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="res-info-timings">
+                        <div class="clearfix" tabindex="0"><h2 class="mt0 mb5 inlineblock">Opening hours</h2>&nbsp;·&nbsp;<span class="fontsize5 zgreen">Open now</span><div class="medium">Today&nbsp;&nbsp;11 AM to 12 Midnight</div><div><div class="res-week-timetable ui popup bottom left transition hidden" id="res-week-timetable"><table style="border:0"><tbody><tr class=""><td class="pr10">Mon</td><td class="pl10">11 AM to 12 Midnight</td></tr><tr class=""><td class="pr10">Tue</td><td class="pl10">11 AM to 12 Midnight</td></tr><tr class="bold"><td class="pr10">Wed</td><td class="pl10">11 AM to 12 Midnight</td></tr><tr class=""><td class="pr10">Thu</td><td class="pl10">11 AM to 12 Midnight</td></tr><tr class=""><td class="pr10">Fri</td><td class="pl10">11 AM to 12 Midnight</td></tr><tr class=""><td class="pr10">Sat</td><td class="pl10">11 AM to 12 Midnight</td></tr><tr class=""><td class="pr10">Sun</td><td class="pl10">11 AM to 12 Midnight</td></tr></tbody></table></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb5">
+            <h2 tabindex="0" aria-label="Address">Address</h2>
+        </div>
+        <div class="mbot0">
+            <div class="borderless res-main-address">
+                <div class="resinfo-icon">
+                  <span>{{restaurantDetail.location.address}}</span>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="mbot0">
+            <div class="resbox__main row">
+                <div class="resmap pos-relative mt5 mb5">
+                    <a href="https://www.zomato.com/indore/just-my-bakes-vijay-nagar/maps#tabtop" class="res-map-link">Just My Bakes address, Just My Bakes location</a>
+                    <div id="res-map-canvas">
+                        <div class="resmap-text-container">Get Directions</div>
+                        <div data-is-zomato="true" data-url="https://www.zomato.com/php/staticmap?center=22.7601192619,75.8925133199&amp;size=240x150&amp;maptype=zomato\&amp;markers=22.7601192619,75.8925133199,pin_res32|&amp;sensor=false&amp;scale=2&amp;zoom=14&amp;language=en" style="background: url(&quot;https://www.zomato.com/php/staticmap?center=22.7601192619,75.8925133199&amp;size=240x150&amp;maptype=zomato&amp;markers=22.7601192619,75.8925133199,pin_res32|&amp;sensor=false&amp;scale=2&amp;zoom=14&amp;language=en&quot;) center center / cover no-repeat rgb(244, 244, 244); width: 100%; height: 100%;" class="resmap-img"></div>
+                    </div>
+                    <script type="text/javascript">
+                      var mapData = {lat: 22.7601192619, lon: 75.8925133199};
+                    </script>
+                </div>
+            </div>
+      </div> -->
+    </div>
+    <div class="col-l-1by3  pl20 pr20">
+        <div class="pbot0 res-info-group ">
+            <div class="res-info-highlights">
+                <h2 class="mbot0 " tabindex="0">More Info</h2>
+                    <div tabindex="0" aria-labelledby="labelledby_veg" class="clearfix mb5">
+                        <i class="ui icon green small checkmark  left icon_veg" title="Pure Vegetarian"></i><div class="res-info-feature-text" id="labelledby_veg">Vegetarian Only</div>
+                    </div>
+                    <div tabindex="0" aria-label="No Alcohol Available" class="res-info-feature clearfix mb5"><i class="ui icon green small checkmark left "></i><div class="res-info-feature-text">No Alcohol Available</div></div><div tabindex="0" aria-label="Outdoor Seating" class="res-info-feature clearfix mb5"><i class="ui icon green small checkmark left  icon_lunch"></i><div class="res-info-feature-text">Outdoor Seating</div></div><div tabindex="0" aria-label="Desserts and Bakes" class="res-info-feature clearfix mb5"><i class="ui icon green small checkmark left "></i><div class="res-info-feature-text">Desserts and Bakes</div></div><div tabindex="0" aria-label="Wallet Accepted" class="res-info-feature clearfix mb5"><i class="ui icon green small checkmark left "></i><div class="res-info-feature-text">Wallet Accepted</div></div>
+            </div>
+        </div>
+        <div class="res-header-claims mbot0 ptop0 ">
+            <div class="hom">
+              <a tabindex="0" id="resinfo-error" class="fontsize5 tooltip_formatted cursor-pointer grey-text">
+                  Report Error                                    </a>
+            </div>
+            <span class="fontsize5 tooltip_formatted claim-listing-info">
+                <i class="mini checkmark icon grey mr0"></i>
+                Claimed listing&nbsp;
+            </span>
+            <a tabindex="0" href="#" class="tooltip_formatted fontsize5 grey-text"></a>
+        </div>
+    </div>
+</div>
