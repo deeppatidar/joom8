@@ -7,6 +7,9 @@ import { SearchCollection} from '../model/searchcollection';
 import { SearchService } from '../search/search.service';
 import {HeaderComponent} from '../header/header.component';
 
+import {localForageConfig} from '../configs/localForageConf';
+import { JoomLocalStorageService } from '../shared/joomStorageLocal.service';
+
 @Component({
   selector: 'search-by-category',
   templateUrl : './search-by-category.html',
@@ -29,7 +32,8 @@ public searchCollection : SearchCollection[] = [];
   category: string;
   categoryId: string;
 
-  constructor(private collectionService : CollectionService, private route : ActivatedRoute, private searchService: SearchService) {}
+  constructor(private collectionService : CollectionService, private route : ActivatedRoute, private searchService: SearchService,
+      private lfConf: localForageConfig, private joomLocalStorageService: JoomLocalStorageService) {}
 
   ngOnInit() {
     this.end  = ((this.pageNumber+1) * this.pageSize -1) ;
@@ -48,6 +52,8 @@ public searchCollection : SearchCollection[] = [];
           this.cityName = params['cityName'] ? params['cityName'] : 'Indore';
           this.collectionService.getCityByCityName(this.cityName).subscribe(data => {
             this.cityId = data['cityObj']['id'];
+            this.joomLocalStorageService.setItem({key: 'categoryId', value: this.categoryId});
+            this.joomLocalStorageService.setItem({key: 'partialSeachType', value: "BY_CATEGORY"});
             this.collectionService.getfreeFlowSearch(this.cityId, this.categoryId).subscribe((data) => {
                 this.searchCollection = data['searchCollection'];
                 this.showSpinner = false;

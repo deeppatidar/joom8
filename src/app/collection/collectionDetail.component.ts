@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import {CollectionService } from './collection.service';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import {localForageConfig} from '../configs/localForageConf';
+import { JoomLocalStorageService } from '../shared/joomStorageLocal.service';
 
 @Component({
     selector: 'collection-detail',
@@ -17,7 +19,8 @@ export class CollectionDetailComponent implements OnInit {
     public displayCollection;
     public isDataLoaded: Boolean = false;
     public restaurantCount: number = 0;
-    constructor(private route: ActivatedRoute, private CollectionService: CollectionService, private sanitizer: DomSanitizer) {}
+    constructor(private route: ActivatedRoute, private CollectionService: CollectionService, private sanitizer: DomSanitizer,
+                private lfConf: localForageConfig, private joomLocalStorageService: JoomLocalStorageService) {}
 
 
     public getCurrentCollection(collections, colId) {
@@ -42,6 +45,9 @@ export class CollectionDetailComponent implements OnInit {
 
               this.CollectionService.getCityByCityName(this.cityName).subscribe(cityData => {
                   this.cityId = cityData['cityObj']['id'];
+
+                  this.joomLocalStorageService.setItem({key: 'collectionId', value: routeParams.collectionId});
+                  this.joomLocalStorageService.setItem({key: 'partialSeachType', value: "BY_COLLECTION"});
 
                   this.CollectionService.getCollection(this.cityId).subscribe(collectionData => {
                       this.displayCollection = this.getCurrentCollection(collectionData['collections'], routeParams.collectionId);

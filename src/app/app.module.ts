@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import {NgForageModule} from "@ngforage/ngforage-ng4";
 /* App Root */
 import { AppComponent }   from './app.component';
 /* Feature Modules */
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     CommonModule,
     BrowserModule,
+    NgForageModule,
     HeaderModule,
     FooterModule,
     HomeModule,

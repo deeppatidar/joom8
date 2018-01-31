@@ -4,80 +4,139 @@
 <div class="container" id="mainframe" *ngIf="!isLoading">
       <div class="wrapper mtop">
           <div class="row">
-              <div class="res-info-left col-l-11" style="min-height: 60px;">
-                  <div class="ui segment res-header-overlay vr" style="padding:0; ">
-                      <div class="">
-                          <div class="">
-                              <div class="row pos-relative">
-                                  <div class=" full_obp  col-s-16 clearfix">
-                                      <div id="progressive_image" data-url="restaurantDetail.featured_image" class="mb0 ui segment o2-tab-res wrapper progressive_img hero--restaurant" [style.background-image]="getBackground(restaurantDetail.featured_image)" style="background-size: cover!important;background-position: center center;background-repeat: no-repeat; overflow:visible;border: none;box-shadow:none; height: 299px; background-color: #fafafa;">
-                                          <div class="col-l-10" style="z-index: 1;">
-                                              <div class="row res-disclaimer">
-                                                  <div class="clearfix">
-                                                      <div class="resbox__header"></div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          <div class="res-header-overlay brbot">
-                              <div class="row ">
-                                  <div class="col-l-12">
-                                      <h1 class="res-name left mb0" style="">
-                                          <a href="#" title="restaurantDetail.name" style="font-size: 120%" class="ui large header left">
-                                              {{restaurantDetail.name}}
-                                          </a>
-                                      </h1>
-                                      <div class="mb5 pt5 clear">
-                                        <!-- TODO: Link restauant of particular area -->
-                                          <a href="#" class="left grey-text fontsize3">{{restaurantDetail.location.city}}</a>
-                                          <span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
-                                          <span class="res-info-estabs grey-text fontsize3">
-                                              <!-- TODO: Link with category search -->
-                                              <!-- <a class="grey-text fontsize3" title="restaurantDetail.cuisines" href="https://www.zomato.com/indore/café">Café</a>, <a class="grey-text fontsize3" title="View all Bakeries in " href="https://www.zomato.com/indore/bakeries">Bakery</a> -->
-                                          </span>
-                                      </div>
-                                      <div class="clear"></div>
-                                  </div>
-                                  <div class="col-l-4 tac left">
-                                      <div class="right">
-                                          <div class="right rating-info rrw-container rrw-container-18395137">
-                                              <div class="res-rating pos-relative clearfix mb5">
-                                                  <div tabindex="0" aria-label="Rated" data-res-id="18395137" class="rating-for-18395137 rating-div rrw-aggregate" [ngClass]="{'rating-average': restaurantDetail.user_rating.isAverage, 'rating-excellent': restaurantDetail.user_rating.isExcellent, 'rating-very-good': restaurantDetail.user_rating.isVeryGood, 'rating-good': restaurantDetail.user_rating.isGood}">{{restaurantDetail.user_rating.aggregate_rating}}<span>/5</span></div>
-                                              </div>
-                                              <span class="mt2 mb0 rating-votes-div rrw-votes grey-text fontsize5 ta-right" tabindex="0">
-                                                  <span class="tooltip_formatted fbold"><span itemprop="ratingCount">{{restaurantDetail.user_rating.votes}}</span>  votes</span>
-                                              </span>
-                                              <span class="grey-text middot hidden">·</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="ui divider clear"></div>
-                                  <div class="row pl10 pr10 pos-relative">
-                                      <div class="res-action-box res-header-container hom hot left">
-                                          <div class="clearfix" style="display: flex; flex-wrap: wrap; margin-bottom: -10px;">
-                                              <div class="ui popup hidden rate_display_popup">
-                                                  <div class="ui divided list main-rating-widget rating-widget  rating-widget-res_18395137" data-res_id="18395137" data-rating-for="restaurant" data-review_id="">
-                                                      <div class="item mbot0">
-                                                          <div class="rating-bar">
-                                                              <div class="rating-top left">
-                                                                  <div tabindex="0" class="ttnone left ttactive pt5 mt2 bold">Rate</div>
-                                                              </div>
-                                                              <div class="left ml10">
-                                                                  <div class="clear"></div>
-                                                                  <span class="ratingtext hidden">Rating: {{restaurantDetail.user_rating.aggregate_rating}}/5 ({{restaurantDetail.user_rating.votes}} votes)</span>
-                                                                  <div class="clear"></div>
-                                                              </div>
-                                                              <div class="rating-widget-num left pt5 pl10 mt2 bold hidden" data-original-rating-num="-">-</div>
-                                                              <div class="left ta-center pl10 pt5">
-                                                                  <a href="#" class="rating-clear zred left mt2 hidden">clear</a>
-                                                                  <!-- <img class="hidden rating-working ie-rating-fix mt2" src="https://b.zmtcdn.com/images/floading.gif" alt="saving"> -->
-                                                              </div>
+            <div class="res-info-left col-l-11" style="min-height: 60px;">
+                <div class="ui segment res-header-overlay vr" style="padding:0; ">
+                    <div class="">
+                        <div class="">
+                            <div class="row pos-relative">
+                                <div class=" full_obp  col-s-16 clearfix">
+                                    <div id="progressive_image" data-url="restaurantDetail.featured_image" class="mb0 ui segment o2-tab-res wrapper progressive_img hero--restaurant" [style.background-image]="getBackground(restaurantDetail.featured_image)" style="background-size: cover!important;background-position: center center;background-repeat: no-repeat; overflow:visible;border: none;box-shadow:none; height: 299px; background-color: #fafafa;">
+                                        <div class="col-l-10" style="z-index: 1;">
+                                            <div class="row res-disclaimer">
+                                                <div class="clearfix">
+                                                    <div class="resbox__header"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="res-header-overlay brbot">
+                            <div class="row ">
+                                <div class="col-l-12">
+                                    <h1 class="res-name left mb0" style="">
+                                        <a href="#" title="restaurantDetail.name" style="font-size: 120%" class="ui large header left">
+                                            {{restaurantDetail.name}}
+                                        </a>
+                                    </h1>
+                                    <div class="mb5 pt5 clear">
+                                      <!-- TODO: Link restauant of particular area -->
+                                        <a href="#" class="left grey-text fontsize3">{{restaurantDetail.location.city}}</a>
+                                        <span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
+                                        <span class="res-info-estabs grey-text fontsize3">
+                                            <!-- TODO: Link with category search -->
+                                            <!-- <a class="grey-text fontsize3" title="restaurantDetail.cuisines" href="https://www.zomato.com/indore/café">Café</a>, <a class="grey-text fontsize3" title="View all Bakeries in " href="https://www.zomato.com/indore/bakeries">Bakery</a> -->
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="col-l-4 tac left">
+                                    <div class="right">
+                                        <div class="right rating-info rrw-container rrw-container-18395137">
+                                            <div class="res-rating pos-relative clearfix mb5">
+                                                <div tabindex="0" aria-label="Rated" data-res-id="18395137" class="rating-for-18395137 rating-div rrw-aggregate" [ngClass]="{'rating-average': restaurantDetail.user_rating.isAverage, 'rating-excellent': restaurantDetail.user_rating.isExcellent, 'rating-very-good': restaurantDetail.user_rating.isVeryGood, 'rating-good': restaurantDetail.user_rating.isGood}">{{restaurantDetail.user_rating.aggregate_rating}}<span>/5</span></div>
+                                            </div>
+                                            <span class="mt2 mb0 rating-votes-div rrw-votes grey-text fontsize5 ta-right" tabindex="0">
+                                                <span class="tooltip_formatted fbold"><span itemprop="ratingCount">{{restaurantDetail.user_rating.votes}}</span>  votes</span>
+                                            </span>
+                                            <span class="grey-text middot hidden">·</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui divider clear"></div>
+                                <div class="row pl10 pr10 pos-relative">
+                                    <div class="res-action-box res-header-container hom hot left">
+                                        <div class="clearfix" style="display: flex; flex-wrap: wrap; margin-bottom: -10px;">
+                                            <div class="ui popup hidden rate_display_popup">
+                                                <div class="ui divided list main-rating-widget rating-widget  rating-widget-res_18395137" data-res_id="18395137" data-rating-for="restaurant" data-review_id="">
+                                                    <div class="item mbot0">
+                                                        <div class="rating-bar">
+                                                            <div class="rating-top left">
+                                                                <div tabindex="0" class="ttnone left ttactive pt5 mt2 bold">Rate</div>
+                                                            </div>
+                                                            <div class="left ml10">
+                                                                <div class="clear"></div>
+                                                                <span class="ratingtext hidden">Rating: {{restaurantDetail.user_rating.aggregate_rating}}/5 ({{restaurantDetail.user_rating.votes}} votes)</span>
+                                                                <div class="clear"></div>
+                                                            </div>
+                                                            <div class="rating-widget-num left pt5 pl10 mt2 bold hidden" data-original-rating-num="-">-</div>
+                                                            <div class="left ta-center pl10 pt5">
+                                                                <a href="#" class="rating-clear zred left mt2 hidden">clear</a>
+                                                                <!-- <img class="hidden rating-working ie-rating-fix mt2" src="https://b.zmtcdn.com/images/floading.gif" alt="saving"> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="respageMenuContainer">
+                    <div class="ui removeMenuBorder respageMenu large menu res-tabs-inner mb0 brstd">
+                        <a href="#" class="item respageMenu-item restaurant-tab-item-jumbo-track" [ngClass]="{'active': (activeTab == 'detail')}" (click)="onTabSelectionChange($event, 'detail')">
+                            <span class="fontsize2">Overview</span>
+                        </a>
+                        <a href="#" class="item respageMenu-item restaurant-tab-item-jumbo-track" [ngClass]="{'active': (activeTab == 'menu')}" (click)="onTabSelectionChange($event, 'menu')">
+                            <span class="fontsize2">Menu</span>
+                        </a>
+                        <a href="#"class="item respageMenu-item restaurant-tab-item-jumbo-track" [ngClass]="{'active': (activeTab == 'review')}" (click)="onTabSelectionChange($event, 'review')">
+                            <span class="fontsize2">Reviews</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="ui segments  mbot" style="margin-top: 0px;">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+            <div class="right-column-container col-l-5">
+              <div class="grey-text mb5 pr5 new_ads_right_label ad-banner-text-res">
+                  <small class="ads_title_popup ttupper ad-banner-text" style="color: #AB9355;font-size: 10px;font-weight: 500;line-height:20px;">Sponsored &amp; Popular
+                  </small>
+              </div>
+              <div class="ui inverted popup" id="ads_title_popup">Showing a selection of sponsored listings and popular places</div>
+              <div id="cat-banner-ads">
+                  <div class="clear"></div>
+                  <div class=" sub-cat-container mbot">
+                      <div class="clear"></div>
+                      <div class="cat-subzone-res mr5">
+                          <div class="row entity-ads-snippet-track" style="display: flex;display: -webkit-flex;">
+                              <div class="col-l-8 col-s-1by3 " *ngFor="let suggestions of processedSuggestions">
+                                  <div class="row">
+                                      <div class="pr5 pl5 mbot0" *ngFor="let suggestion of suggestions.suggestions" style="display: flex;display: -webkit-flex;">
+                                          <div class="ui card">
+                                              <div class="res_ad_banner">
+                                                  <a href="#" routerLink="/{{cityName}}/restaurant/{{suggestion.id}}">
+                                                      <div class="relative res_image" [style.background-image]= "getBackground(suggestion.featured_image)" style="height: 107px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; display: block;">
+                                                          <div class=" ads-res-snippet-rating similar-ad-res-snippet  level-5 ">
+                                                              {{suggestion.user_rating.aggregate_rating}}
                                                           </div>
                                                       </div>
-                                                  </div>
+                                                  </a>
+                                              </div>
+                                              <div class="" style="padding: 5px 10px;">
+                                                  <div class="pt5 pbot0 ad_info">
+                                                    <div style="">
+                                                        <a class="res_name fontsize4" href="#" routerLink="/{{cityName}}/restaurant/{{suggestion.id}}">{{suggestion.name}}</a>
+                                                    </div>
+                                                  <div class="nowrap grey-text subzone_text fontsize6">{{suggestion.location.address}}</div>
+                                                  <div class="grey-text description fontsize6" style="line-height: 15px;">Most Popular Place Near You!</div>
+                                                 </div>
                                               </div>
                                           </div>
                                       </div>
@@ -88,29 +147,7 @@
                   </div>
               </div>
           </div>
-          <div class="ui res-tabs-o clearfix sticky nobound nobottom" style="width: 778px !important; height: 60px !important;">
-              <div class="respageMenuContainer">
-                  <div class="ui removeMenuBorder respageMenu large menu res-tabs-inner mb0 brstd">
-                      <a href="#" class="item respageMenu-item restaurant-tab-item-jumbo-track" [ngClass]="{'active': (activeTab == 'detail')}" (click)="onTabSelectionChange($event, 'detail')">
-                          <span class="fontsize2">Overview</span>
-                      </a>
-                      <a href="#" class="item respageMenu-item restaurant-tab-item-jumbo-track" [ngClass]="{'active': (activeTab == 'menu')}" (click)="onTabSelectionChange($event, 'menu')">
-                          <span class="fontsize2">Menu</span>
-                      </a>
-                      <a href="#"class="item respageMenu-item restaurant-tab-item-jumbo-track" [ngClass]="{'active': (activeTab == 'review')}" (click)="onTabSelectionChange($event, 'review')">
-                          <span class="fontsize2">Reviews</span>
-                      </a>
-                  </div>
-              </div>
-              <div class="clear"></div>
-          </div>
-          <div class="row">
-              <div class="res-info-left col-l-11" style="min-height: 60px;">
-                  <div class="ui segments  mbot" style="margin-top: 0px;">
-                      <router-outlet></router-outlet>
-                  </div>
-              </div>
-          </div>
-      </div>
-</div>
+        </div>
+    </div>
+  </div>
 <footer-component></footer-component>
