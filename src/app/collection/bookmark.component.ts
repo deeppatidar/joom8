@@ -10,13 +10,14 @@ import {CollectionService} from './collection.service';
 })
 
 export class BookmarkedComponent implements OnInit {
-  public collection : CollectionInterface[] = [];
-  public collections : Collection[] = [];
+  public collection: CollectionInterface[] = [];
+  public collections: Collection[] = [];
   errorMessage: string;
 
-  constructor(private collectionService : CollectionService) {}
+  constructor(private collectionService: CollectionService) {}
 
   ngOnInit() {
+    console.log('hello init');
     // this.collectionService.getCollection()
     // .subscribe((data) => this.collections = data['collections']);
 
