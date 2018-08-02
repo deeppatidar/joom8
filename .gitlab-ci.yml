@@ -13,7 +13,6 @@ deploy:
     name: development
   script:
     - npm install
-    - npm run builddev
-    - npm run deploy
+    - npm run build
   only:
     - master
